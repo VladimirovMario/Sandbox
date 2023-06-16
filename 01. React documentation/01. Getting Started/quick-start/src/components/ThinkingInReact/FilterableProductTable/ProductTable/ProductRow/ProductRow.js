@@ -1,3 +1,14 @@
-export default function ProductRow() {
-  return <h2>ProductRow</h2>;
+export default function ProductRow({ product }) {
+  const name = product.stocked ? (
+    product.name
+  ) : (
+    <span style={{ color: "red" }}>{product.name}</span>
+  );
+
+  return (
+    <tr>
+      <td>{name}</td>
+      <td>{product.price}</td>
+    </tr>
+  );
 }

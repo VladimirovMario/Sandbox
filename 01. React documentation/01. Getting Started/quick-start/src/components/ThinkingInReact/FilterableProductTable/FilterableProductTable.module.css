@@ -14,6 +14,7 @@ td {
   padding-right: 40px;
 }
 
-.danger {
-  color: red;
+.centered {
+  margin: 0px auto;
+  max-width: 400px;
 }
