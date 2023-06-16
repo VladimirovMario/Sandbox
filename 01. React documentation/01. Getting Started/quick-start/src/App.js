@@ -1,5 +1,6 @@
 import "./App.css";
-import Game from "./components/Tic-Tac-Toe/TicTacToe";
+import FilterableProductTable from "./components/ThinkingInReact/FilterableProductTable/FilterableProductTable";
+// import Game from "./components/Tic-Tac-Toe/TicTacToe";
 // import Profile from "./components/DisplayingData/Profile";
 // import ShoppingList from "./components/RenderingLists/ShoppingList";
 // import MyCounters from "./components/UpdatingTheScreen/MyCounters";
@@ -7,8 +8,8 @@ import Game from "./components/Tic-Tac-Toe/TicTacToe";
 function App() {
   return (
     <>
-      <Game />
-
+      <FilterableProductTable />
+      {/* <Game /> */}
       {/* <MyCounters /> */}
       {/* <ShoppingList /> */}
       {/* <Profile /> */}
