@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./FilterableProductTable.module.css";
 
 // Start with the mockup
@@ -11,31 +12,45 @@ const PRODUCTS = [
 ];
 
 export default function FilterableProductTable() {
+  const [filterText, setFilterText] = useState("");
+  const [inStockOnly, setInStockOnly] = useState(false);
   return (
     <>
-      <SearchBar />
-      <ProductTable products={PRODUCTS} />
+      <SearchBar filterText={filterText} inStockOnly={inStockOnly} />
+      <ProductTable
+        products={PRODUCTS}
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+      />
     </>
   );
 }
 
-function SearchBar() {
+function SearchBar({ filterText, inStockOnly }) {
   return (
     <form action="">
-      <input type="text" placeholder="Search..." />
+      <input type="text" placeholder="Search..." value={filterText} />
       <label>
-        <input type="checkbox" />
+        <input type="checkbox" checked={inStockOnly} />
         Only show products in stock
       </label>
     </form>
   );
 }
 
-function ProductTable({ products }) {
+function ProductTable({ products, filterText, inStockOnly }) {
   const rows = [];
   let lastCategory = null;
 
   products.forEach((product) => {
+    if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+      return;
+    }
+
+    if (!product.stocked && inStockOnly) {
+      return;
+    }
+
     if (product.category !== lastCategory) {
       rows.push(
         <ProductCategoryRow
