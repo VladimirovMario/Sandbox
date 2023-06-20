@@ -1,4 +1,5 @@
-import AdjustTheImageSize from "./AdjustTheImageSize/AdjustTheImageSize";
+import PassingJSXInAChildren from "./PassingJSXInAChildren/PassingJSXInAChildren";
+// import AdjustTheImageSize from "./AdjustTheImageSize/AdjustTheImageSize";
 // import ExtractAComponent from "./ExtractAComponent/ExtractAComponent";
 // import PassingJSXAsChildren from "./PassingJSXAsChildren/PassingJSXAsChildren";
 // import Profile from "./FamiliarProps/FamiliarProps";
@@ -7,7 +8,8 @@ export default function PassingPropsToAComponent() {
   return (
     <>
       <h1>Passing Props to a Component</h1>
-      <AdjustTheImageSize />
+      <PassingJSXInAChildren />
+      {/* <AdjustTheImageSize /> */}
       {/* <ExtractAComponent /> */}
       {/* <PassingJSXAsChildren /> */}
       {/* <Profile /> */}
