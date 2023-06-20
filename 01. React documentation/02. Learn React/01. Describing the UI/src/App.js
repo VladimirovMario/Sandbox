@@ -1,5 +1,6 @@
 import "./App.css";
-import PassingPropsToAComponent from "./components/PassingPropsToAComponent/PassingPropsToAComponent";
+import ConditionalRendering from "./components/ConditionalRendering/ConditionalRendering";
+// import PassingPropsToAComponent from "./components/PassingPropsToAComponent/PassingPropsToAComponent";
 // import JavaScriptInJSX from "./components/JavaScriptInJSXWithCurlyBraces/JavaScriptInJSX";
 // import WritingMarkupWithJSX from "./components/WritingMarkupWithJSX/WritingMarkupWithJSX";
 // import ImportingAndExportingComponents from "./components/ImportingAndExportingComponents/ImportingAndExportingComponents";
@@ -8,7 +9,8 @@ import PassingPropsToAComponent from "./components/PassingPropsToAComponent/Pass
 function App() {
   return (
     <div className="container">
-      <PassingPropsToAComponent />
+      <ConditionalRendering />
+      {/* <PassingPropsToAComponent /> */}
       {/* <JavaScriptInJSX /> */}
       {/* <WritingMarkupWithJSX /> */}
       {/* <ImportingAndExportingComponents /> */}
