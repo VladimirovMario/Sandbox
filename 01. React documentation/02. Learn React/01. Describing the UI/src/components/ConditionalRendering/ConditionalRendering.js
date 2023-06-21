@@ -1,11 +1,13 @@
-import ShowTheItemImportance from "./ShowTheItemImportance/ShowTheItemImportance";
+import RefactorConditions from "./RefactorConditions/RefactorConditions";
+// import ShowTheItemImportance from "./ShowTheItemImportance/ShowTheItemImportance";
 // import ConditionallyReturningJSX from "./ConditionallyReturningJSX/ConditionallyReturningJSX";
 
 export default function ConditionalRendering() {
   return (
     <>
       <h1>Conditional Rendering</h1>
-      <ShowTheItemImportance />
+      <RefactorConditions />
+      {/* <ShowTheItemImportance /> */}
       {/* <ConditionallyReturningJSX /> */}
     </>
   );
