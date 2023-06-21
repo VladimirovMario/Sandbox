@@ -1,10 +1,12 @@
-import ConditionallyReturningJSX from "./ConditionallyReturningJSX/ConditionallyReturningJSX";
+import ShowTheItemImportance from "./ShowTheItemImportance/ShowTheItemImportance";
+// import ConditionallyReturningJSX from "./ConditionallyReturningJSX/ConditionallyReturningJSX";
 
 export default function ConditionalRendering() {
   return (
     <>
       <h1>Conditional Rendering</h1>
-      <ConditionallyReturningJSX />
+      <ShowTheItemImportance />
+      {/* <ConditionallyReturningJSX /> */}
     </>
   );
 }
