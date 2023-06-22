@@ -1,5 +1,6 @@
 import "./App.css";
-import RenderingLists from "./components/RenderingLists/RenderingLists";
+import KeepingComponentsPure from "./components/KeepingComponentsPure/KeepingComponentsPure";
+// import RenderingLists from "./components/RenderingLists/RenderingLists";
 // import ConditionalRendering from "./components/ConditionalRendering/ConditionalRendering";
 // import PassingPropsToAComponent from "./components/PassingPropsToAComponent/PassingPropsToAComponent";
 // import JavaScriptInJSX from "./components/JavaScriptInJSXWithCurlyBraces/JavaScriptInJSX";
@@ -10,7 +11,8 @@ import RenderingLists from "./components/RenderingLists/RenderingLists";
 function App() {
   return (
     <div className="container">
-      <RenderingLists />
+      <KeepingComponentsPure />
+      {/* <RenderingLists /> */}
       {/* <ConditionalRendering /> */}
       {/* <PassingPropsToAComponent /> */}
       {/* <JavaScriptInJSX /> */}
