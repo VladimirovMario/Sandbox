@@ -1,5 +1,6 @@
 import "./App.css";
-import ConditionalRendering from "./components/ConditionalRendering/ConditionalRendering";
+import RenderingLists from "./components/RenderingLists/RenderingLists";
+// import ConditionalRendering from "./components/ConditionalRendering/ConditionalRendering";
 // import PassingPropsToAComponent from "./components/PassingPropsToAComponent/PassingPropsToAComponent";
 // import JavaScriptInJSX from "./components/JavaScriptInJSXWithCurlyBraces/JavaScriptInJSX";
 // import WritingMarkupWithJSX from "./components/WritingMarkupWithJSX/WritingMarkupWithJSX";
@@ -9,7 +10,8 @@ import ConditionalRendering from "./components/ConditionalRendering/ConditionalR
 function App() {
   return (
     <div className="container">
-      <ConditionalRendering />
+      <RenderingLists />
+      {/* <ConditionalRendering /> */}
       {/* <PassingPropsToAComponent /> */}
       {/* <JavaScriptInJSX /> */}
       {/* <WritingMarkupWithJSX /> */}
