@@ -1,5 +1,6 @@
-import ExtractingItemComponent from "./NestedListsInOneComponent/ExtractingItemComponent";
-import NestedListsInOneComponent from "./NestedListsInOneComponent/NestedListsInOneComponent";
+import ListWithASeparator from "./ListWithASeparator/ListWithASeparator";
+// import ExtractingItemComponent from "./NestedListsInOneComponent/ExtractingItemComponent";
+// import NestedListsInOneComponent from "./NestedListsInOneComponent/NestedListsInOneComponent";
 // import SplittingAListInTwo from "./SplittingAListInTwo/SplittingAListInTwo";
 // import RenderingDataFromArrays from "./RenderingDataFromArrays/RenderingDataFromArrays";
 
@@ -7,8 +8,9 @@ export default function RenderingLists() {
   return (
     <>
       <h1>Rendering lists</h1>
-      <ExtractingItemComponent />
-      <NestedListsInOneComponent />
+      <ListWithASeparator />
+      {/* <ExtractingItemComponent /> */}
+      {/* <NestedListsInOneComponent /> */}
       {/* <SplittingAListInTwo /> */}
       {/* <RenderingDataFromArrays /> */}
     </>
