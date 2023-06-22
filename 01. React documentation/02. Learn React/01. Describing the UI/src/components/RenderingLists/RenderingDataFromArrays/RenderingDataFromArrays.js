@@ -1,4 +1,4 @@
-import { people } from "./data";
+import { people } from "../data";
 import { getImageUrl } from "../../../utils/getImageUrl";
 import styles from "./RenderingDataFromArrays.module.css";
 
