@@ -1,11 +1,13 @@
-import FixABrokenProfile from "./BrokenProfile/BrokenProfile";
+import BrokenStoryTray from "./BrokenStoryTray/BrokenStoryTray";
+// import FixABrokenProfile from "./BrokenProfile/BrokenProfile";
 // import FixABrokenClock from "./FixABrokenClock";
 
 export default function KeepingComponentsPure() {
   return (
     <>
       <h1>Keeping Components Pure</h1>
-      <FixABrokenProfile />
+      <BrokenStoryTray />  
+      {/* <FixABrokenProfile /> */}
       {/* <FixABrokenClock />   */}
     </>
   );
