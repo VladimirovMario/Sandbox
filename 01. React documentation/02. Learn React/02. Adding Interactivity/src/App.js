@@ -1,9 +1,9 @@
-import "./App.css";
+import RespondingToEvents from "./components/RespondingToEvents/RespondingToEvents";
 
 function App() {
   return (
     <div className="container">
-      
+      <RespondingToEvents />
     </div>
   );
 }
