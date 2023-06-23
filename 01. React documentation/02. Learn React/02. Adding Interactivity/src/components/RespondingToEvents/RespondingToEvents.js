@@ -1,4 +1,4 @@
-import FixAnEventHandler from "./FixAnEventHandler/FixAnEventHandler";
+import FixAnEventHandler from './FixAnEventHandler/FixAnEventHandler';
 // import PreventingDefaultBehavior from "./PreventingDefaultBehavior/PreventingDefaultBehavior";
 // import StoppingPropagation from "./StoppingPropagation/StoppingPropagation";
 // import EventPropagation from "./EventPropagation/EventPropagation";
