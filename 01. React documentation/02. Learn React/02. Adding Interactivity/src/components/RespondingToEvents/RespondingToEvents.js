@@ -1,4 +1,5 @@
-import EventPropagation from "./EventPropagation/EventPropagation";
+import StoppingPropagation from "./StoppingPropagation/StoppingPropagation";
+// import EventPropagation from "./EventPropagation/EventPropagation";
 // import NamingEventHandlerProps from "./NamingEventHandlerProps/NamingEventHandlerProps";
 // import PassingEventHandlersAsProps from "./PassingEventHandlersAsProps/PassingEventHandlersAsProps";
 // import ReadingProps from "./ReadingProps/ReadingProps";
@@ -8,7 +9,8 @@ export default function RespondingToEvents() {
   return (
     <>
       <h1>Responding to events</h1>
-      <EventPropagation />
+      <StoppingPropagation />
+      {/* <EventPropagation /> */}
       {/* <NamingEventHandlerProps /> */}
       {/* <PassingEventHandlersAsProps /> */}
       {/* <ReadingProps /> */}
