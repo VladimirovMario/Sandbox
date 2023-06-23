@@ -50,6 +50,15 @@ ul {
   padding-left: 20px;
 }
 
+button {
+  margin-right: 10px;
+  padding: 6px 12px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 .container {
   margin: 0 auto;
   max-width: 1180px;
