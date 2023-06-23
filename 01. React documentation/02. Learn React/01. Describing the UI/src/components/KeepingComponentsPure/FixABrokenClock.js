@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import useTime from "../../hooks/useTime";
 import styles from "./FixABrokenClock.module.css";
 
 export default function FixABrokenClock() {
@@ -19,17 +19,6 @@ function Clock({ time }) {
   }
 
   return <h1 className={currClass}>{time.toLocaleTimeString()}</h1>;
-}
-
-function useTime() {
-  const [time, setTime] = useState(() => new Date());
-  useEffect(() => {
-    const id = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-    return () => clearInterval(id);
-  }, []);
-  return time;
 }
 
 function App() {
