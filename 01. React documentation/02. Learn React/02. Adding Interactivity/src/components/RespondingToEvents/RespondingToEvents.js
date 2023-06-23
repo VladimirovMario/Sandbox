@@ -1,4 +1,5 @@
-import StoppingPropagation from "./StoppingPropagation/StoppingPropagation";
+import PreventingDefaultBehavior from "./PreventingDefaultBehavior/PreventingDefaultBehavior";
+// import StoppingPropagation from "./StoppingPropagation/StoppingPropagation";
 // import EventPropagation from "./EventPropagation/EventPropagation";
 // import NamingEventHandlerProps from "./NamingEventHandlerProps/NamingEventHandlerProps";
 // import PassingEventHandlersAsProps from "./PassingEventHandlersAsProps/PassingEventHandlersAsProps";
@@ -9,7 +10,8 @@ export default function RespondingToEvents() {
   return (
     <>
       <h1>Responding to events</h1>
-      <StoppingPropagation />
+      <PreventingDefaultBehavior />
+      {/* <StoppingPropagation /> */}
       {/* <EventPropagation /> */}
       {/* <NamingEventHandlerProps /> */}
       {/* <PassingEventHandlersAsProps /> */}
