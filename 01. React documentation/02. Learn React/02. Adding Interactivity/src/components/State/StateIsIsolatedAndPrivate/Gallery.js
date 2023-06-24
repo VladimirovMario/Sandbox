@@ -16,7 +16,7 @@ export default function Gallery() {
   let sculpture = sculptureList[index];
 
   return (
-    <div style={{ width: '400px' }}>
+    <div style={{ width: '400px', borderRadius: '12px' , border: '2px solid grey', padding: '12px'}}>
       <button onClick={handleClick}>Next</button>
       <h2>
         <i>{sculpture.name} </i>
