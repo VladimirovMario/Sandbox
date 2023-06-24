@@ -1,4 +1,5 @@
-import FixAnEventHandler from './FixAnEventHandler/FixAnEventHandler';
+import WireUpTheEvents from './WireUpTheEvents/WireUpTheEvents';
+// import FixAnEventHandler from './FixAnEventHandler/FixAnEventHandler';
 // import PreventingDefaultBehavior from "./PreventingDefaultBehavior/PreventingDefaultBehavior";
 // import StoppingPropagation from "./StoppingPropagation/StoppingPropagation";
 // import EventPropagation from "./EventPropagation/EventPropagation";
@@ -11,7 +12,8 @@ export default function RespondingToEvents() {
   return (
     <>
       <h1>Responding to events</h1>
-      <FixAnEventHandler />
+      <WireUpTheEvents />
+      {/* <FixAnEventHandler /> */}
       {/* <PreventingDefaultBehavior /> */}
       {/* <StoppingPropagation /> */}
       {/* <EventPropagation /> */}
