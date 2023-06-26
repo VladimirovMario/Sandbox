@@ -1,4 +1,5 @@
-import FixACrash from './FixACrash/FixACrash';
+import RemoveUnnecessaryState from './RemoveUnnecessaryState/RemoveUnnecessaryState';
+// import FixACrash from './FixACrash/FixACrash';
 // import FixStuckFormInputs from './FixStuckFormInputs/FixStuckFormInputs';
 // import CompleteTheGallery from './CompleteTheGallery/CompleteTheGallery';
 // import StateIsIsolatedAndPrivate from './StateIsIsolatedAndPrivate/StateIsIsolatedAndPrivate';
@@ -8,7 +9,8 @@ export default function State() {
   return (
     <>
       <h1>State: A Component's Memory</h1>
-      <FixACrash />
+      <RemoveUnnecessaryState />
+      {/* <FixACrash /> */}
       {/* <FixStuckFormInputs /> */}
       {/* <CompleteTheGallery /> */}
       {/* <StateIsIsolatedAndPrivate /> */}
