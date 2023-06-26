@@ -1,4 +1,5 @@
-import FixStuckFormInputs from './FixStuckFormInputs/FixStuckFormInputs';
+import FixACrash from './FixACrash/FixACrash';
+// import FixStuckFormInputs from './FixStuckFormInputs/FixStuckFormInputs';
 // import CompleteTheGallery from './CompleteTheGallery/CompleteTheGallery';
 // import StateIsIsolatedAndPrivate from './StateIsIsolatedAndPrivate/StateIsIsolatedAndPrivate';
 // import VariableIsNotEnough from './VariableIsNotEnough/VariableIsNotEnough';
@@ -7,7 +8,8 @@ export default function State() {
   return (
     <>
       <h1>State: A Component's Memory</h1>
-      <FixStuckFormInputs />
+      <FixACrash />
+      {/* <FixStuckFormInputs /> */}
       {/* <CompleteTheGallery /> */}
       {/* <StateIsIsolatedAndPrivate /> */}
       {/* <VariableIsNotEnough /> */}
