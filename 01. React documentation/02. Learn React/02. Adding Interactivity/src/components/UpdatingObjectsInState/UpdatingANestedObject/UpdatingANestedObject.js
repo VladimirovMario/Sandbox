@@ -19,71 +19,58 @@ function Form() {
     },
   });
 
-  function handleNameChange(e) {
-    setPerson({
-      ...person,
-      name: e.target.value,
-    });
-  }
+  /**
+   * Handle change event for form inputs.
+   * Updates the person state object with the new values.
+   *
+   * @param {object} e - The event object containing information about the input change.
+   */
+  function handleChange(e) {
+    const { name, value } = e.target;
 
-  function handleTitleChange(e) {
-    setPerson({
+    setPerson((person) => ({
       ...person,
-      artwork: {
-        ...person.artwork,
-        title: e.target.value,
-      },
-    });
-  }
-
-  function handleCityChange(e) {
-    setPerson({
-      ...person,
-      artwork: {
-        ...person.artwork,
-        city: e.target.value,
-      },
-    });
-  }
-
-  function handleImageChange(e) {
-    setPerson({
-      ...person,
-      artwork: {
-        ...person.artwork,
-        image: e.target.value,
-      },
-    });
+      [name]: value,
+      artwork: { ...person.artwork, [name]: value },
+    }));
   }
 
   return (
     <>
       <label>
         Name:
-        <input type="text" value={person.name} onChange={handleNameChange} />
+        <input
+          name="name"
+          type="text"
+          value={person.name}
+          onChange={handleChange}
+        />
       </label>
       <label>
         Title:
         <input
+          name="title"
           type="text"
           value={person.artwork.title}
-          onChange={handleTitleChange}
+          onChange={handleChange}
         />
       </label>
       <label>
         City:
         <input
+          name="city"
           type="text"
           value={person.artwork.city}
-          onChange={handleCityChange}
+          onChange={handleChange}
         />
       </label>
       <label>
         Image:
         <input
+          name="image"
           type="text"
           value={person.artwork.image}
-          onChange={handleImageChange}
+          onChange={handleChange}
         />
       </label>
 
@@ -98,3 +85,31 @@ function Form() {
     </>
   );
 }
+
+/*
+  // Separate the handler function, reasons:
+  // While having a single handler function can be convenient,
+  // it may become more complex as the form grows.  
+  // Consider separating the handler function to handle specific fields individually.
+
+  function handlePersonChange(e) {
+    const { name, value } = e.target;
+  
+    setPerson(prevPerson => ({
+      ...prevPerson,
+      [name]: value
+    }));
+  }
+  
+  function handleArtworkChange(e) {
+    const { name, value } = e.target;
+  
+    setPerson(prevPerson => ({
+      ...prevPerson,
+      artwork: {
+        ...prevPerson.artwork,
+        [name]: value
+      }
+    }));
+  }
+*/
