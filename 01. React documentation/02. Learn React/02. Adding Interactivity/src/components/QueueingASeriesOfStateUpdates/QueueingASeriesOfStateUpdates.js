@@ -1,10 +1,12 @@
-import UpdatingTheSameState from './UpdatingTheSameState/UpdatingTheSameState';
+import FixARequestCounter from './FixARequestCounter/FixARequestCounter';
+// import UpdatingTheSameState from './UpdatingTheSameState/UpdatingTheSameState';
 
 export default function QueueingASeriesOfStateUpdates() {
   return (
     <>
       <h1>Queueing a Series of State Updates</h1>
-      <UpdatingTheSameState />
+      <FixARequestCounter />
+      {/* <UpdatingTheSameState /> */}
     </>
   );
 }
