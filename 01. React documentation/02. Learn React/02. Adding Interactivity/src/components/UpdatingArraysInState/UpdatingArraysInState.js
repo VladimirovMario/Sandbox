@@ -1,4 +1,5 @@
-import UpdateAnItemInTheShoppingCart from './UpdateAnItemInTheShoppingCart/UpdateAnItemInTheShoppingCart';
+import RemoveItemFromCart from './RemoveAnItemFromTheShoppingCart/RemoveItemFromCart';
+// import UpdateAnItemInTheShoppingCart from './UpdateAnItemInTheShoppingCart/UpdateAnItemInTheShoppingCart';
 // import UpdatingObjectsInsideArrays from './UpdatingObjectsInsideArrays/UpdatingObjectsInsideArrays';
 // import MakingOtherChangesToAnArray from './MakingOtherChangesToAnArray/MakingOtherChangesToAnArray';
 // import InsertingIntoAnArray from './InsertingIntoAnArray/InsertingIntoAnArray';
@@ -11,7 +12,8 @@ export default function UpdatingArraysInState() {
   return (
     <>
       <h1>Updating Arrays in State</h1>
-      <UpdateAnItemInTheShoppingCart />
+      <RemoveItemFromCart />
+      {/* <UpdateAnItemInTheShoppingCart /> */}
       {/* <UpdatingObjectsInsideArrays /> */}
       {/* <MakingOtherChangesToAnArray /> */}
       {/* <InsertingIntoAnArray /> */}
