@@ -1,4 +1,5 @@
-import FixIncorrectStateUpdates from './FixIncorrectStateUpdates/FixIncorrectStateUpdates';
+import FindAndFixTheMutation from './FindAndFixTheMutation/FindAndFixTheMutation';
+// import FixIncorrectStateUpdates from './FixIncorrectStateUpdates/FixIncorrectStateUpdates';
 // import UpdatingANestedObject from './UpdatingANestedObject/UpdatingANestedObject';
 // import CopyingObjectsSpreadSyntax from './CopyingObjectsSpreadSyntax/CopyingObjectsSpreadSyntax';
 // import TreatStateAsReadOnly from './TreatStateAsReadOnly/TreatStateAsReadOnly';
@@ -7,7 +8,8 @@ export default function UpdatingObjectsInState() {
   return (
     <>
       <h1>Updating Objects in State</h1>
-      <FixIncorrectStateUpdates />
+      <FindAndFixTheMutation />
+      {/* <FixIncorrectStateUpdates /> */}
       {/* <UpdatingANestedObject /> */}
       {/* <CopyingObjectsSpreadSyntax /> */}
       {/* <TreatStateAsReadOnly /> */}
