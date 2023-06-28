@@ -1,4 +1,5 @@
-import UpdatingObjectsInState from './components/UpdatingObjectsInState/UpdatingObjectsInState';
+import UpdatingArraysInState from './components/UpdatingArraysInState/UpdatingArraysInState';
+// import UpdatingObjectsInState from './components/UpdatingObjectsInState/UpdatingObjectsInState';
 // import QueueingASeriesOfStateUpdates from './components/QueueingASeriesOfStateUpdates/QueueingASeriesOfStateUpdates';
 // import StateAsASnapshot from './components/StateAsASnapshot/StateAsASnapshot';
 // import RenderAndCommit from './components/RenderAndCommit/RenderAndCommit';
@@ -8,7 +9,8 @@ import UpdatingObjectsInState from './components/UpdatingObjectsInState/Updating
 function App() {
   return (
     <div className="container">
-      <UpdatingObjectsInState />
+      <UpdatingArraysInState />
+      {/* <UpdatingObjectsInState /> */}
       {/* <QueueingASeriesOfStateUpdates /> */}
       {/* <StateAsASnapshot /> */}
       {/* <RenderAndCommit /> */}
