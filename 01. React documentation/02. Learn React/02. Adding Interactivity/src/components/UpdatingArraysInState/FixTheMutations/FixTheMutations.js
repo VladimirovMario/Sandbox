@@ -22,11 +22,9 @@ function TaskApp() {
   const [todos, setTodos] = useState(initialTodos);
 
   function handleAddTodo(title) {
-    todos.push({
-      id: nextId++,
-      title,
-      done: false,
-    });
+    if (title) {
+      setTodos((todo) => [...todo, { id: nextId + 1, title, done: false }]);
+    }
   }
 
   function handleChangeTodo(nextTodo) {
@@ -39,6 +37,8 @@ function TaskApp() {
     const index = todos.findIndex((t) => t.id === todoId);
     todos.splice(index, 1);
   }
+
+  console.log(todos)
 
   return (
     <>

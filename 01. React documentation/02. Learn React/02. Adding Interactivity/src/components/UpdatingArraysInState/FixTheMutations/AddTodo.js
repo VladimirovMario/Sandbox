@@ -16,7 +16,9 @@ export default function AddTodo({ onAddTodo }) {
           setTitle('');
           onAddTodo(title);
         }}
-      >Add</button>
+      >
+        Add
+      </button>
     </>
   );
 }
