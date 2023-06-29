@@ -22,8 +22,8 @@ function TaskApp() {
   const [todos, setTodos] = useState(initialTodos);
 
   function handleAddTodo(title) {
-    if (title) {
-      setTodos((todo) => [...todo, { id: nextId + 1, title, done: false }]);
+    if (title.trim()) {
+      setTodos((todo) => [...todo, { id: nextId++, title, done: false }]);
     }
   }
 
@@ -38,10 +38,9 @@ function TaskApp() {
     todos.splice(index, 1);
   }
 
-  console.log(todos)
-
   return (
     <>
+      {console.log(todos)}
       <AddTodo onAddTodo={handleAddTodo} />
       <TaskList
         todos={todos}
