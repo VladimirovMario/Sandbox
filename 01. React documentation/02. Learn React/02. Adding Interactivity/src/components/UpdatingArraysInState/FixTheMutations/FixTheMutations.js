@@ -34,8 +34,7 @@ function TaskApp() {
   }
 
   function handleDeleteTodo(todoId) {
-    const index = todos.findIndex((t) => t.id === todoId);
-    todos.splice(index, 1);
+    setTodos((state) => state.filter((todo) => todo.id !== todoId));
   }
 
   return (

@@ -41,15 +41,12 @@ function Task({ todo, onChange, onDelete }) {
   }
 
   return (
-    <label htmlFor="">
+    <label>
       <input
         type="checkbox"
         checked={todo.done}
         onChange={(e) => {
-          onChange({
-            ...todo,
-            done: e.target.checked,
-          });
+          onChange({ ...todo, done: e.target.checked });
         }}
       />
       {todoContent}
