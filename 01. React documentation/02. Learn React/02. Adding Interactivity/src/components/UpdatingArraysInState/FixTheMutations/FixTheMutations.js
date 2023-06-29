@@ -28,9 +28,9 @@ function TaskApp() {
   }
 
   function handleChangeTodo(nextTodo) {
-    const todo = todos.find((t) => t.id === nextTodo.id);
-    todo.title = nextTodo.title;
-    todo.done = nextTodo.done;
+    setTodos((state) =>
+      state.map((t) => (t.id === nextTodo.id ? nextTodo : t))
+    );
   }
 
   function handleDeleteTodo(todoId) {
