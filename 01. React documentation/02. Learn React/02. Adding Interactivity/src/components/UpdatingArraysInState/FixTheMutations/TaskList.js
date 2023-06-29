@@ -14,26 +14,23 @@ export default function TaskList({ todos, onChangeTodo, onDeleteTodo }) {
 
 function Task({ todo, onChange, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
-  let todoContent;
-  if (isEditing) {
-    todoContent = (
-      <>
+
+  let todoContent = (
+    <>
+      {!isEditing && todo.title}
+      
+      {isEditing && (
         <input
           type="text"
           value={todo.title}
-          onChange={e => onChange({...todo,title: e.target.value,})}
+          onChange={(e) => onChange({ ...todo, title: e.target.value })}
         />
-        <button onClick={() => setIsEditing(false)}>Save</button>
-      </>
-    );
-  } else {
-    todoContent = (
-      <>
-        {todo.title}
-        <button onClick={() => setIsEditing(true)}>Edit</button>
-      </>
-    );
-  }
+      )}
+      <button onClick={() => setIsEditing(!isEditing)}>
+        {isEditing ? 'Save' : 'Edit'}
+      </button>
+    </>
+  );
 
   return (
     <label>
