@@ -40,7 +40,6 @@ function TaskApp() {
 
   return (
     <>
-      {console.log(todos)}
       <AddTodo onAddTodo={handleAddTodo} />
       <TaskList
         todos={todos}
