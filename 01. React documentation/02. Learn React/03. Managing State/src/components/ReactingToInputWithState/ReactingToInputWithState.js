@@ -1,4 +1,5 @@
-import AddAndRemoveAClass from './AddAndRemoveAClass/AddAndRemoveAClass';
+import ProfileEditor from './ProfileEditor/ProfileEditor';
+// import AddAndRemoveAClass from './AddAndRemoveAClass/AddAndRemoveAClass';
 // import ThinkingAboutUIDeclaratively from './ThinkingAboutUIDeclaratively/ThinkingAboutUIDeclaratively';
 
 
@@ -6,7 +7,8 @@ export default function ReactingToInputWithState() {
   return (
     <>
       <h1>Reacting to input with state</h1>
-      <AddAndRemoveAClass />
+      <ProfileEditor />
+      {/* <AddAndRemoveAClass /> */}
       {/* <ThinkingAboutUIDeclaratively /> */}
     </>
   );
