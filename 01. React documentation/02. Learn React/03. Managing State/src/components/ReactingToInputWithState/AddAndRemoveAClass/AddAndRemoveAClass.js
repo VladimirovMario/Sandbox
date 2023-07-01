@@ -44,3 +44,33 @@ function Picture() {
     </div>
   );
 }
+
+// Solution with tagName check
+/*
+function Picture() {
+  const [isActive, setIsActive] = useState(false);
+
+  let backgroundClassName = styles.background;
+  let pictureClassName = styles.picture;
+
+  const onClickHandler = (e) => {
+    e.target.tagName === 'IMG' ? setIsActive(true) : setIsActive(false);
+  };
+
+  if (isActive) {
+    pictureClassName += ` ${styles['picture--active']}`;
+  } else {
+    backgroundClassName += ` ${styles['background--active']}`;
+  }
+
+  return (
+    <div onClick={onClickHandler} className={backgroundClassName}>
+      <img
+        className={pictureClassName}
+        alt="Rainbow houses in Kampung Pelangi, Indonesia"
+        src="https://i.imgur.com/5qwVYb1.jpeg"
+      />
+    </div>
+  );
+}
+*/
