@@ -1,4 +1,5 @@
-import ComponentNotUpdating from './ComponentNotUpdating/ComponentNotUpdating';
+import FixBrokenPackingList from './FixBrokenPackingList/FixBrokenPackingList';
+// import ComponentNotUpdating from './ComponentNotUpdating/ComponentNotUpdating';
 // import AvoidDeeplyNestedState from './AvoidDeeplyNestedState/AvoidDeeplyNestedState';
 // import AvoidDuplicationInState from './AvoidDuplicationInState/AvoidDuplicationInState';
 // import AvoidRedundantState from './AvoidRedundantState/AvoidRedundantState';
@@ -8,7 +9,8 @@ export default function ChoosingTheStateStructure() {
   return (
     <>
       <h1>Choosing the State Structure</h1>
-      <ComponentNotUpdating/>
+      <FixBrokenPackingList />
+      {/* <ComponentNotUpdating/> */}
       {/* <AvoidDeeplyNestedState /> */}
       {/* <AvoidDuplicationInState /> */}
       {/* <AvoidRedundantState /> */}
