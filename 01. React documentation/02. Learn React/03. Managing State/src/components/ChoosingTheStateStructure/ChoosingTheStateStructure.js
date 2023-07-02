@@ -1,4 +1,5 @@
-import FixBrokenPackingList from './FixBrokenPackingList/FixBrokenPackingList';
+import FixTheDisappearingSelection from './FixTheDisappearingSelection/FixTheDisappearingSelection';
+// import FixBrokenPackingList from './FixBrokenPackingList/FixBrokenPackingList';
 // import ComponentNotUpdating from './ComponentNotUpdating/ComponentNotUpdating';
 // import AvoidDeeplyNestedState from './AvoidDeeplyNestedState/AvoidDeeplyNestedState';
 // import AvoidDuplicationInState from './AvoidDuplicationInState/AvoidDuplicationInState';
@@ -9,7 +10,8 @@ export default function ChoosingTheStateStructure() {
   return (
     <>
       <h1>Choosing the State Structure</h1>
-      <FixBrokenPackingList />
+      <FixTheDisappearingSelection />
+      {/* <FixBrokenPackingList /> */}
       {/* <ComponentNotUpdating/> */}
       {/* <AvoidDeeplyNestedState /> */}
       {/* <AvoidDuplicationInState /> */}
