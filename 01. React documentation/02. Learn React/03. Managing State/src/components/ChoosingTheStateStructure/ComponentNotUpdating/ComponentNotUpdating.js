@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useTime from '../../../hooks/useTime';
 
 export default function ComponentNotUpdating() {
   return (
@@ -10,7 +11,7 @@ export default function ComponentNotUpdating() {
 }
 
 function App() {
-  //   const time = useTime();
+  const time = useTime();
   const [color, setColor] = useState('lightcoral');
 
   return (
@@ -24,16 +25,12 @@ function App() {
         </select>
       </p>
       <p>
-        <Clock
-          color={color}
-          // time={time.toLocaleTimeString()}
-        />
+        <Clock color={color} time={time.toLocaleTimeString()} />
       </p>
     </div>
   );
 }
 
 function Clock(props) {
-  const [color, setColor] = useState(props.color);
-  return <h1 style={{ color: color }}>{props.time}</h1>;
+  return <h1 style={{ color: props.color }}>{props.time}</h1>;
 }
