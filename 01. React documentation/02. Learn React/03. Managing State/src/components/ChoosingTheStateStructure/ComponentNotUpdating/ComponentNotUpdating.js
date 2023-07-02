@@ -24,9 +24,7 @@ function App() {
           <option value="rebeccapurple">rebeccapurple</option>
         </select>
       </p>
-      <p>
-        <Clock color={color} time={time.toLocaleTimeString()} />
-      </p>
+      <Clock color={color} time={time.toLocaleTimeString()} />
     </div>
   );
 }
