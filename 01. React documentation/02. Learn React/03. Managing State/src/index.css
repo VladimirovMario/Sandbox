@@ -81,6 +81,7 @@ input {
 }
 label {
   display: block;
+  clear: both;
 }
 
 .container {
