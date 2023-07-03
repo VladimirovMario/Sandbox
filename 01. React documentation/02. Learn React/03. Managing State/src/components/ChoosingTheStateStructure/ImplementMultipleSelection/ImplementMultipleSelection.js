@@ -20,6 +20,9 @@ To fix this, you can hold a Set in state instead, which provides a fast has() op
 Now each item does a selectedIds.has(letter.id) check, which is very fast.
 Keep in mind that you should not mutate objects in state, and that includes Sets, too. This is why the handleToggle function creates a copy of the Set first, and then updates that copy.
 */
+
+// "This solution contains a mistake where the initial loading is being ignored.
+// As a result, if the data is being retrieved from a database and there is already a checked item, this function will fail to account for it."
 function MailClient() {
   const [selectedIds, setSelectedIds] = useState(new Set());
 
