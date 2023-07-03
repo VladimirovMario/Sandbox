@@ -76,6 +76,13 @@ img {
   height: 120px;
 }
 
+input {
+  margin: 5px;
+}
+label {
+  display: block;
+}
+
 .container {
   margin: 0 auto;
   max-width: 1180px;
