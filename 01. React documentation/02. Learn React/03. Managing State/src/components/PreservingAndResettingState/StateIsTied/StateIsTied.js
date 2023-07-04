@@ -11,24 +11,25 @@ export default function StateIsTied() {
 }
 
 function App() {
-  const [showSecond, setShowSecond] = useState(true);
+  const [isFancy, setIsFancy] = useState(false);
   return (
     <div>
-      <Counter />
-      {showSecond && <Counter />}
+      {isFancy ? <Counter isFancy={true} /> : <Counter isFancy={false} />}
       <label>
         <input
           type="checkbox"
-          checked={showSecond}
-          onChange={(e) => setShowSecond(e.target.checked)}
+          checked={isFancy}
+          onChange={(e) => {
+            setIsFancy(e.target.checked);
+          }}
         />
-        Render the second counter
+        Use fancy styling
       </label>
     </div>
   );
 }
 
-function Counter() {
+function Counter({ isFancy }) {
   const [score, setScore] = useState(0);
   const [hover, setHover] = useState(false);
 
@@ -36,14 +37,17 @@ function Counter() {
   if (hover) {
     className += ` ${styles['hover']}`;
   }
+  if (isFancy) {
+    className += ` ${styles['fancy']}`;
+  }
 
   return (
     <div
       className={className}
-      onPointerMove={() => setHover(true)}
+      onPointerEnter={() => setHover(true)}
       onPointerLeave={() => setHover(false)}
     >
-      <h3>{score}</h3>
+      <h1>{score}</h1>
       <button onClick={() => setScore(score + 1)}>Add one</button>
     </div>
   );
