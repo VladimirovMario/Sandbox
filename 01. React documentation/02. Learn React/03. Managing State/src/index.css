@@ -67,6 +67,12 @@ button {
   padding: 6px 12px;
 }
 
+li button {
+  width: 100px;
+  padding: 10px;
+  margin-right: 10px;
+}
+
 button:hover {
   cursor: pointer;
 }
@@ -79,9 +85,14 @@ img {
 input {
   margin: 5px;
 }
+
 label {
   display: block;
   clear: both;
+}
+
+textarea {
+  height: 150px;
 }
 
 .container {
