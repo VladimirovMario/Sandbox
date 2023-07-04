@@ -1,4 +1,5 @@
-import SwapTwoFormFields from './SwapTwoFormFields/SwapTwoFormFields';
+import ResetADetailForm from './ResetADetailForm/ResetADetailForm';
+// import SwapTwoFormFields from './SwapTwoFormFields/SwapTwoFormFields';
 // import FixDisappearingInputText from './FixDisappearingInputText/FixDisappearingInputText';
 // import ResettingAFormWithAKey from './ResettingAFormWithAKey/ResettingAFormWithAKey';
 // import SamePositionResetState from './SamePositionResetState/SamePositionResetState';
@@ -8,7 +9,8 @@ export default function PreservingAndResettingState() {
   return (
     <>
       <h1>Preserving and Resetting State</h1>
-      <SwapTwoFormFields />
+      <ResetADetailForm />
+      {/* <SwapTwoFormFields /> */}
       {/* <FixDisappearingInputText /> */}
       {/* <ResettingAFormWithAKey /> */}
       {/* <SamePositionResetState /> */}
