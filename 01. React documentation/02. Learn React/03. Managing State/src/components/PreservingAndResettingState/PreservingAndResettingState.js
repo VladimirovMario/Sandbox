@@ -1,4 +1,5 @@
-import ResetADetailForm from './ResetADetailForm/ResetADetailForm';
+import ClearAnImageWhileItIsLoading from './ClearAnImageWhileItIsLoading/ClearAnImageWhileItIsLoading';
+// import ResetADetailForm from './ResetADetailForm/ResetADetailForm';
 // import SwapTwoFormFields from './SwapTwoFormFields/SwapTwoFormFields';
 // import FixDisappearingInputText from './FixDisappearingInputText/FixDisappearingInputText';
 // import ResettingAFormWithAKey from './ResettingAFormWithAKey/ResettingAFormWithAKey';
@@ -9,7 +10,8 @@ export default function PreservingAndResettingState() {
   return (
     <>
       <h1>Preserving and Resetting State</h1>
-      <ResetADetailForm />
+      <ClearAnImageWhileItIsLoading />
+      {/* <ResetADetailForm /> */}
       {/* <SwapTwoFormFields /> */}
       {/* <FixDisappearingInputText /> */}
       {/* <ResettingAFormWithAKey /> */}
