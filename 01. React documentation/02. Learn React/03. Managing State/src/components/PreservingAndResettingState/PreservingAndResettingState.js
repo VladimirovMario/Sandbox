@@ -1,4 +1,5 @@
-import ClearAnImageWhileItIsLoading from './ClearAnImageWhileItIsLoading/ClearAnImageWhileItIsLoading';
+import FixMisplacedStateInTheList from './FixMisplacedStateInTheList/FixMisplacedStateInTheList';
+// import ClearAnImageWhileItIsLoading from './ClearAnImageWhileItIsLoading/ClearAnImageWhileItIsLoading';
 // import ResetADetailForm from './ResetADetailForm/ResetADetailForm';
 // import SwapTwoFormFields from './SwapTwoFormFields/SwapTwoFormFields';
 // import FixDisappearingInputText from './FixDisappearingInputText/FixDisappearingInputText';
@@ -10,7 +11,8 @@ export default function PreservingAndResettingState() {
   return (
     <>
       <h1>Preserving and Resetting State</h1>
-      <ClearAnImageWhileItIsLoading />
+      <FixMisplacedStateInTheList />
+      {/* <ClearAnImageWhileItIsLoading /> */}
       {/* <ResetADetailForm /> */}
       {/* <SwapTwoFormFields /> */}
       {/* <FixDisappearingInputText /> */}
