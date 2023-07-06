@@ -1,10 +1,12 @@
-import ConsolidateStateLogicWithAReducer from './ConsolidateStateLogicWithAReducer/ConsolidateStateLogicWithAReducer';
+import DispatchActionsFromEventHandlers from './DispatchActionsFromEventHandlers/DispatchActionsFromEventHandlers';
+// import ConsolidateStateLogicWithAReducer from './ConsolidateStateLogicWithAReducer/ConsolidateStateLogicWithAReducer';
 
 export default function ExtractingStateLogicIntoAReducer() {
   return (
     <>
       <h1>Extracting State Logic into a Reducer</h1>
-      <ConsolidateStateLogicWithAReducer />
+      <DispatchActionsFromEventHandlers />
+      {/* <ConsolidateStateLogicWithAReducer /> */}
     </>
   );
 }
