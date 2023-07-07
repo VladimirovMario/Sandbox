@@ -1,4 +1,5 @@
-import RestoreInputValues from './RestoreInputValues/RestoreInputValues';
+import ImplementUseReducer from './ImplementUseReducer/ImplementUseReducer';
+// import RestoreInputValues from './RestoreInputValues/RestoreInputValues';
 // import DispatchActionsFromEventHandlers from './DispatchActionsFromEventHandlers/DispatchActionsFromEventHandlers';
 // import ConsolidateStateLogicWithAReducer from './ConsolidateStateLogicWithAReducer/ConsolidateStateLogicWithAReducer';
 
@@ -6,7 +7,8 @@ export default function ExtractingStateLogicIntoAReducer() {
   return (
     <>
       <h1>Extracting State Logic into a Reducer</h1>
-      <RestoreInputValues />
+      <ImplementUseReducer />
+      {/* <RestoreInputValues /> */}
       {/* <DispatchActionsFromEventHandlers /> */}
       {/* <ConsolidateStateLogicWithAReducer /> */}
     </>
