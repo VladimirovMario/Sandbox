@@ -15,38 +15,12 @@ export default function CombiningAReducerWithContext() {
 function TaskApp() {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 
-  function handleAddTask(text) {
-    dispatch({
-      type: 'added',
-      id: nextId++,
-      text: text,
-    });
-  }
-
-  function handleChangeTask(task) {
-    dispatch({
-      type: 'changed',
-      task: task,
-    });
-  }
-
-  function handleDeleteTask(taskId) {
-    dispatch({
-      type: 'deleted',
-      id: taskId,
-    });
-  }
-
   return (
     <TasksContext.Provider value={tasks}>
       <TasksDispatchContext.Provider value={dispatch}>
         <h3>Day off in Kyoto</h3>
-        <AddTask onAddTask={handleAddTask} />
-        <TaskList
-          tasks={tasks}
-          onChangeTask={handleChangeTask}
-          onDeleteTask={handleDeleteTask}
-        />
+        <AddTask />
+        <TaskList />
       </TasksDispatchContext.Provider>
     </TasksContext.Provider>
   );
@@ -75,7 +49,6 @@ function tasksReducer(tasks, action) {
   }
 }
 
-let nextId = 3;
 const initialTasks = [
   { id: 0, text: 'Philosopher’s Path', done: true },
   { id: 1, text: 'Visit the temple', done: false },
