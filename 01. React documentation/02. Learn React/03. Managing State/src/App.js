@@ -1,4 +1,5 @@
-import PassingDataDeeplyWithContext from './components/PassingDataDeeplyWithContext/PassingDataDeeplyWithContext';
+import ScalingUpWithReducerAndContext from './components/ScalingUpWithReducerAndContext/ScalingUpWithReducerAndContext';
+// import PassingDataDeeplyWithContext from './components/PassingDataDeeplyWithContext/PassingDataDeeplyWithContext';
 // import ExtractingStateLogicIntoAReducer from './components/ExtractingStateLogicIntoAReducer/ExtractingStateLogicIntoAReducer';
 // import PreservingAndResettingState from './components/PreservingAndResettingState/PreservingAndResettingState';
 // import SharingStateBetweenComponents from './components/SharingStateBetweenComponents/SharingStateBetweenComponents';
@@ -8,7 +9,8 @@ import PassingDataDeeplyWithContext from './components/PassingDataDeeplyWithCont
 function App() {
   return (
     <div className="container">
-      <PassingDataDeeplyWithContext />
+      <ScalingUpWithReducerAndContext />
+      {/* <PassingDataDeeplyWithContext /> */}
       {/* <ExtractingStateLogicIntoAReducer /> */}
       {/* <PreservingAndResettingState /> */}
       {/* <SharingStateBetweenComponents /> */}
