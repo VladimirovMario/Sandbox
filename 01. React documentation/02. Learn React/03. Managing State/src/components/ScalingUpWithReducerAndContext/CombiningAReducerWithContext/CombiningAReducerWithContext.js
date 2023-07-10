@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 import AddTask from './AddTask';
 import TaskList from './TaskList';
+import { TasksContext, TasksDispatchContext } from './TasksContext';
 
 export default function CombiningAReducerWithContext() {
   return (
@@ -37,15 +38,17 @@ function TaskApp() {
   }
 
   return (
-    <>
-      <h3>Day off in Kyoto</h3>
-      <AddTask onAddTask={handleAddTask} />
-      <TaskList
-        tasks={tasks}
-        onChangeTask={handleChangeTask}
-        onDeleteTask={handleDeleteTask}
-      />
-    </>
+    <TasksContext.Provider value={tasks}>
+      <TasksDispatchContext.Provider value={dispatch}>
+        <h3>Day off in Kyoto</h3>
+        <AddTask onAddTask={handleAddTask} />
+        <TaskList
+          tasks={tasks}
+          onChangeTask={handleChangeTask}
+          onDeleteTask={handleDeleteTask}
+        />
+      </TasksDispatchContext.Provider>
+    </TasksContext.Provider>
   );
 }
 
