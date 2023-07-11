@@ -1,0 +1,24 @@
+.container {
+  max-width: 300px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+nav {
+  text-align: center;
+}
+
+button {
+  margin: 0.25rem;
+}
+
+ul,
+li {
+  list-style: none;
+  white-space: nowrap;
+}
+
+li {
+  display: inline;
+  padding: 0.5rem;
+}
