@@ -1,4 +1,5 @@
-import FlushingStateUpdatesSynchronously from './FlushingStateUpdatesSynchronously/FlushingStateUpdatesSynchronously';
+import PlayAndPauseTheVideo from './PlayAndPauseTheVideo/PlayAndPauseTheVideo';
+// import FlushingStateUpdatesSynchronously from './FlushingStateUpdatesSynchronously/FlushingStateUpdatesSynchronously';
 // import ExposingASubsetOfTheAPI from './ExposingASubsetOfTheAPI/ExposingASubsetOfTheAPI';
 // import AccessingAnotherComponentDOMNodes from './AccessingAnotherComponentDOMNodes/AccessingAnotherComponentDOMNodes';
 // import HowToManageAListOfRefs from './HowToManageAListOfRefs/HowToManageAListOfRefs';
@@ -9,7 +10,8 @@ export default function ManipulatingTheDOMWithRefs() {
   return (
     <>
       <h1>Manipulating the DOM with Refs</h1>
-      <FlushingStateUpdatesSynchronously />
+      <PlayAndPauseTheVideo />
+      {/* <FlushingStateUpdatesSynchronously /> */}
       {/* <ExposingASubsetOfTheAPI /> */}
       {/* <AccessingAnotherComponentDOMNodes /> */}
       {/* <HowToManageAListOfRefs /> */}
