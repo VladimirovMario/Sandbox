@@ -1,4 +1,5 @@
-import ExposingASubsetOfTheAPI from './ExposingASubsetOfTheAPI/ExposingASubsetOfTheAPI';
+import FlushingStateUpdatesSynchronously from './FlushingStateUpdatesSynchronously/FlushingStateUpdatesSynchronously';
+// import ExposingASubsetOfTheAPI from './ExposingASubsetOfTheAPI/ExposingASubsetOfTheAPI';
 // import AccessingAnotherComponentDOMNodes from './AccessingAnotherComponentDOMNodes/AccessingAnotherComponentDOMNodes';
 // import HowToManageAListOfRefs from './HowToManageAListOfRefs/HowToManageAListOfRefs';
 // import ScrollingToAnElement from './ScrollingToAnElement/ScrollingToAnElement';
@@ -8,7 +9,8 @@ export default function ManipulatingTheDOMWithRefs() {
   return (
     <>
       <h1>Manipulating the DOM with Refs</h1>
-      <ExposingASubsetOfTheAPI />
+      <FlushingStateUpdatesSynchronously />
+      {/* <ExposingASubsetOfTheAPI /> */}
       {/* <AccessingAnotherComponentDOMNodes /> */}
       {/* <HowToManageAListOfRefs /> */}
       {/* <ScrollingToAnElement /> */}
