@@ -1,4 +1,5 @@
-import FixDebouncing from './FixDebouncing/FixDebouncing';
+import ReadTheLatestState from './ReadTheLatestState/ReadTheLatestState';
+// import FixDebouncing from './FixDebouncing/FixDebouncing';
 // import FixAComponentFailingToReRender from './FixAComponentFailingToReRender/FixAComponentFailingToReRender';
 // import FixABrokenChatInput from './FixABrokenChatInput/FixABrokenChatInput';
 // import DifferencesBetweenRefsAndState from './DifferencesBetweenRefsAndState/DifferencesBetweenRefsAndState';
@@ -9,7 +10,8 @@ export default function ReferencingValuesWithRefs() {
   return (
     <>
       <h1>Referencing Values with Refs</h1>
-      <FixDebouncing />
+      <ReadTheLatestState />
+      {/* <FixDebouncing /> */}
       {/* <FixAComponentFailingToReRender /> */}
       {/* <FixABrokenChatInput /> */}
       {/* <DifferencesBetweenRefsAndState /> */}
