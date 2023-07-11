@@ -1,4 +1,5 @@
-import FixAComponentFailingToReRender from './FixAComponentFailingToReRender/FixAComponentFailingToReRender';
+import FixDebouncing from './FixDebouncing/FixDebouncing';
+// import FixAComponentFailingToReRender from './FixAComponentFailingToReRender/FixAComponentFailingToReRender';
 // import FixABrokenChatInput from './FixABrokenChatInput/FixABrokenChatInput';
 // import DifferencesBetweenRefsAndState from './DifferencesBetweenRefsAndState/DifferencesBetweenRefsAndState';
 // import ExampleBuildingAStopwatch from './ExampleBuildingAStopwatch/ExampleBuildingAStopwatch';
@@ -8,7 +9,8 @@ export default function ReferencingValuesWithRefs() {
   return (
     <>
       <h1>Referencing Values with Refs</h1>
-      <FixAComponentFailingToReRender />
+      <FixDebouncing />
+      {/* <FixAComponentFailingToReRender /> */}
       {/* <FixABrokenChatInput /> */}
       {/* <DifferencesBetweenRefsAndState /> */}
       {/* <ExampleBuildingAStopwatch /> */}
