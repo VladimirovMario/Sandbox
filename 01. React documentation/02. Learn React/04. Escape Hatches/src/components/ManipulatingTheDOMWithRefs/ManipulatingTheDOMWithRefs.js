@@ -1,4 +1,5 @@
-import FocusTheSearchField from './FocusTheSearchField/FocusTheSearchField';
+import ScrollingAnImageCarousel from './ScrollingAnImageCarousel/ScrollingAnImageCarousel';
+// import FocusTheSearchField from './FocusTheSearchField/FocusTheSearchField';
 // import PlayAndPauseTheVideo from './PlayAndPauseTheVideo/PlayAndPauseTheVideo';
 // import FlushingStateUpdatesSynchronously from './FlushingStateUpdatesSynchronously/FlushingStateUpdatesSynchronously';
 // import ExposingASubsetOfTheAPI from './ExposingASubsetOfTheAPI/ExposingASubsetOfTheAPI';
@@ -11,7 +12,8 @@ export default function ManipulatingTheDOMWithRefs() {
   return (
     <>
       <h1>Manipulating the DOM with Refs</h1>
-      <FocusTheSearchField />
+      <ScrollingAnImageCarousel />
+      {/* <FocusTheSearchField /> */}
       {/* <PlayAndPauseTheVideo /> */}
       {/* <FlushingStateUpdatesSynchronously /> */}
       {/* <ExposingASubsetOfTheAPI /> */}
