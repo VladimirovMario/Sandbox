@@ -1,4 +1,5 @@
-import PlayAndPauseTheVideo from './PlayAndPauseTheVideo/PlayAndPauseTheVideo';
+import FocusTheSearchField from './FocusTheSearchField/FocusTheSearchField';
+// import PlayAndPauseTheVideo from './PlayAndPauseTheVideo/PlayAndPauseTheVideo';
 // import FlushingStateUpdatesSynchronously from './FlushingStateUpdatesSynchronously/FlushingStateUpdatesSynchronously';
 // import ExposingASubsetOfTheAPI from './ExposingASubsetOfTheAPI/ExposingASubsetOfTheAPI';
 // import AccessingAnotherComponentDOMNodes from './AccessingAnotherComponentDOMNodes/AccessingAnotherComponentDOMNodes';
@@ -10,7 +11,8 @@ export default function ManipulatingTheDOMWithRefs() {
   return (
     <>
       <h1>Manipulating the DOM with Refs</h1>
-      <PlayAndPauseTheVideo />
+      <FocusTheSearchField />
+      {/* <PlayAndPauseTheVideo /> */}
       {/* <FlushingStateUpdatesSynchronously /> */}
       {/* <ExposingASubsetOfTheAPI /> */}
       {/* <AccessingAnotherComponentDOMNodes /> */}
