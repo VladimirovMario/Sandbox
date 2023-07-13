@@ -9,29 +9,44 @@ export default function PlayAndPauseTheVideo() {
   );
 }
 
+/**
+ * VideoPlayer Component
+ *
+ * This component handles the functionality of playing and pausing a video.
+ */
 function VideoPlayer() {
+  // State to manage whether the video is currently playing or not
   const [isPlaying, setIsPlaying] = useState(false);
+
+  // Reference to the video element
   const ref = useRef(null);
 
+  /**
+   * Function to handle the click event of the play/pause button.
+   * It toggles the isPlaying state and plays or pauses the video accordingly.
+   */
   function handleClick() {
     const nextIsPlaying = !isPlaying;
     setIsPlaying(nextIsPlaying);
 
     if (nextIsPlaying) {
-      ref.current.play();
+      ref.current.play(); // Play the video
     } else {
-      ref.current.pause();
+      ref.current.pause(); // Pause the video
     }
   }
 
   return (
     <>
+      {/* Button to play or pause the video */}
       <button
         style={{ display: 'block', marginBottom: '20px' }}
         onClick={handleClick}
       >
         {isPlaying ? 'Pause' : 'Play'}
       </button>
+
+      {/* Video element */}
       <video
         width={250}
         ref={ref}
