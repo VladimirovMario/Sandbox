@@ -1,4 +1,5 @@
-import FocusAFieldOnMount from './FocusAFieldOnMount/FocusAFieldOnMount';
+import FocusAFieldConditionally from './FocusAFieldConditionally/FocusAFieldConditionally';
+// import FocusAFieldOnMount from './FocusAFieldOnMount/FocusAFieldOnMount';
 // import PuttingItAllTogether from './PuttingItAllTogether/PuttingItAllTogether';
 // import FixingRaceConditionsInReactWithUseEffect from './FixingRaceConditionsInReactWithUseEffect/FixingRaceConditionsInReactWithUseEffect';
 // import AddCleanupIfNeeded from './AddCleanupIfNeeded/AddCleanupIfNeeded';
@@ -9,7 +10,8 @@ export default function SynchronizingWithEffects() {
   return (
     <>
       <h1>Synchronizing with Effects</h1>
-      <FocusAFieldOnMount />
+      <FocusAFieldConditionally />
+      {/* <FocusAFieldOnMount /> */}
       {/* <PuttingItAllTogether /> */}
       {/* <FixingRaceConditionsInReactWithUseEffect /> */}
       {/* <AddCleanupIfNeeded /> */}
