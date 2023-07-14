@@ -1,4 +1,5 @@
-import FocusAFieldConditionally from './FocusAFieldConditionally/FocusAFieldConditionally';
+import FixAnIntervalThatFiresTwice from './FixAnIntervalThatFiresTwice/FixAnIntervalThatFiresTwice';
+// import FocusAFieldConditionally from './FocusAFieldConditionally/FocusAFieldConditionally';
 // import FocusAFieldOnMount from './FocusAFieldOnMount/FocusAFieldOnMount';
 // import PuttingItAllTogether from './PuttingItAllTogether/PuttingItAllTogether';
 // import FixingRaceConditionsInReactWithUseEffect from './FixingRaceConditionsInReactWithUseEffect/FixingRaceConditionsInReactWithUseEffect';
@@ -10,7 +11,8 @@ export default function SynchronizingWithEffects() {
   return (
     <>
       <h1>Synchronizing with Effects</h1>
-      <FocusAFieldConditionally />
+      <FixAnIntervalThatFiresTwice />
+      {/* <FocusAFieldConditionally /> */}
       {/* <FocusAFieldOnMount /> */}
       {/* <PuttingItAllTogether /> */}
       {/* <FixingRaceConditionsInReactWithUseEffect /> */}
