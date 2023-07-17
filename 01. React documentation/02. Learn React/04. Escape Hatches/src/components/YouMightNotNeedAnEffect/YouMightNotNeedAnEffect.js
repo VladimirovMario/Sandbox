@@ -1,7 +1,10 @@
+import TransformDataWithoutEffects from './TransformDataWithoutEffects/TransformDataWithoutEffects';
+
 export default function YouMightNotNeedAnEffect() {
   return (
     <>
       <h1>You Might Not Need an Effect</h1>
+      <TransformDataWithoutEffects />
     </>
   );
 }
