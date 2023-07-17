@@ -1,4 +1,5 @@
-import FixAnIntervalThatFiresTwice from './FixAnIntervalThatFiresTwice/FixAnIntervalThatFiresTwice';
+import FixFetchingInsideAnEffect from './FixFetchingInsideAnEffect/FixFetchingInsideAnEffect';
+// import FixAnIntervalThatFiresTwice from './FixAnIntervalThatFiresTwice/FixAnIntervalThatFiresTwice';
 // import FocusAFieldConditionally from './FocusAFieldConditionally/FocusAFieldConditionally';
 // import FocusAFieldOnMount from './FocusAFieldOnMount/FocusAFieldOnMount';
 // import PuttingItAllTogether from './PuttingItAllTogether/PuttingItAllTogether';
@@ -11,7 +12,8 @@ export default function SynchronizingWithEffects() {
   return (
     <>
       <h1>Synchronizing with Effects</h1>
-      <FixAnIntervalThatFiresTwice />
+      <FixFetchingInsideAnEffect />
+      {/* <FixAnIntervalThatFiresTwice /> */}
       {/* <FocusAFieldConditionally /> */}
       {/* <FocusAFieldOnMount /> */}
       {/* <PuttingItAllTogether /> */}
