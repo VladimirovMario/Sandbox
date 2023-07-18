@@ -1,4 +1,5 @@
-import YouMightNotNeedAnEffect from './components/YouMightNotNeedAnEffect/YouMightNotNeedAnEffect';
+import LifecycleOfReactiveEffects from './components/LifecycleOfReactiveEffects/LifecycleOfReactiveEffects';
+// import YouMightNotNeedAnEffect from './components/YouMightNotNeedAnEffect/YouMightNotNeedAnEffect';
 // import SynchronizingWithEffects from './components/SynchronizingWithEffects/SynchronizingWithEffects';
 // import ManipulatingTheDOMWithRefs from './components/ManipulatingTheDOMWithRefs/ManipulatingTheDOMWithRefs';
 // import ReferencingValuesWithRefs from './components/ReferencingValuesWithRefs/ReferencingValuesWithRefs';
@@ -6,7 +7,8 @@ import YouMightNotNeedAnEffect from './components/YouMightNotNeedAnEffect/YouMig
 function App() {
   return (
     <div className="App">
-      <YouMightNotNeedAnEffect />
+      <LifecycleOfReactiveEffects />
+      {/* <YouMightNotNeedAnEffect /> */}
       {/* <SynchronizingWithEffects /> */}
       {/* <ManipulatingTheDOMWithRefs /> */}
       {/* <ReferencingValuesWithRefs /> */}
