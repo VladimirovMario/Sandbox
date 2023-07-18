@@ -10,19 +10,30 @@ export default function EffectCanReSynchronize() {
   );
 }
 
-const serverUrl = 'https://localhost:1234';
-
 function ChatRoom({ roomId }) {
+  // Props change over time
+  const [serverUrl, setServerUrl] = useState('https://localhost:1234'); // State may change over time
   useEffect(() => {
-    const connection = createConnection(serverUrl, roomId);
+    const connection = createConnection(serverUrl, roomId); // Your Effect reads props and state
     connection.connect();
 
     return () => {
       connection.disconnect();
     };
-  }, [roomId]);
+  }, [roomId, serverUrl]); // So you tell React that this Effect "depends on" on props and state
 
-  return <h1>Welcome to the {roomId} room!</h1>;
+  return (
+    <>
+      <label>
+        Server URL:{' '}
+        <input
+          value={serverUrl}
+          onChange={(e) => setServerUrl(e.target.value)}
+        />
+      </label>
+      <h1>Welcome to the {roomId} room!</h1>
+    </>
+  );
 }
 
 function App() {
