@@ -1,4 +1,5 @@
-import LifecycleOfReactiveEffects from './components/LifecycleOfReactiveEffects/LifecycleOfReactiveEffects';
+import SeparatingEventsFromEffects from './components/SeparatingEventsFromEffects/SeparatingEventsFromEffects';
+// import LifecycleOfReactiveEffects from './components/LifecycleOfReactiveEffects/LifecycleOfReactiveEffects';
 // import YouMightNotNeedAnEffect from './components/YouMightNotNeedAnEffect/YouMightNotNeedAnEffect';
 // import SynchronizingWithEffects from './components/SynchronizingWithEffects/SynchronizingWithEffects';
 // import ManipulatingTheDOMWithRefs from './components/ManipulatingTheDOMWithRefs/ManipulatingTheDOMWithRefs';
@@ -7,7 +8,8 @@ import LifecycleOfReactiveEffects from './components/LifecycleOfReactiveEffects/
 function App() {
   return (
     <div className="App">
-      <LifecycleOfReactiveEffects />
+      <SeparatingEventsFromEffects />
+      {/* <LifecycleOfReactiveEffects /> */}
       {/* <YouMightNotNeedAnEffect /> */}
       {/* <SynchronizingWithEffects /> */}
       {/* <ManipulatingTheDOMWithRefs /> */}
