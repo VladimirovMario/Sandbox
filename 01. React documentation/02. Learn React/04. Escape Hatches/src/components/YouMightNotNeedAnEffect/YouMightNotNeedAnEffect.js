@@ -1,4 +1,5 @@
-import ResetStateWithoutEffects from './ResetStateWithoutEffects/ResetStateWithoutEffects';
+import SubmitAFormWithoutEffects from './SubmitAFormWithoutEffects/SubmitAFormWithoutEffects';
+// import ResetStateWithoutEffects from './ResetStateWithoutEffects/ResetStateWithoutEffects';
 // import CacheCalculationWithoutEffects from './CacheCalculationWithoutEffects/CacheCalculationWithoutEffects';
 // import TransformDataWithoutEffects from './TransformDataWithoutEffects/TransformDataWithoutEffects';
 
@@ -6,7 +7,8 @@ export default function YouMightNotNeedAnEffect() {
   return (
     <>
       <h1>You Might Not Need an Effect</h1>
-      <ResetStateWithoutEffects />
+      <SubmitAFormWithoutEffects />
+      {/* <ResetStateWithoutEffects /> */}
       {/* <CacheCalculationWithoutEffects /> */}
       {/* <TransformDataWithoutEffects /> */}
     </>
