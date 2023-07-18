@@ -1,4 +1,5 @@
-import InvestigateAStaleValueBug from './InvestigateAStaleValueBug/InvestigateAStaleValueBug';
+import FixAConnectionSwitch from './FixAConnectionSwitch/FixAConnectionSwitch';
+// import InvestigateAStaleValueBug from './InvestigateAStaleValueBug/InvestigateAStaleValueBug';
 // import SwitchSynchronizationOnAndOff from './SwitchSynchronizationOnAndOff/SwitchSynchronizationOnAndOff';
 // import FixReconnectingOnEveryKeystroke from './FixReconnectingOnEveryKeystroke/FixReconnectingOnEveryKeystroke';
 // import EffectCanReSynchronize from './EffectCanReSynchronize/EffectCanReSynchronize';
@@ -7,7 +8,8 @@ export default function LifecycleOfReactiveEffects() {
   return (
     <>
       <h1>Lifecycle of Reactive Effects</h1>
-      <InvestigateAStaleValueBug />
+      <FixAConnectionSwitch />
+      {/* <InvestigateAStaleValueBug /> */}
       {/* <SwitchSynchronizationOnAndOff /> */}
       {/* <FixReconnectingOnEveryKeystroke /> */}
       {/* <EffectCanReSynchronize /> */}
