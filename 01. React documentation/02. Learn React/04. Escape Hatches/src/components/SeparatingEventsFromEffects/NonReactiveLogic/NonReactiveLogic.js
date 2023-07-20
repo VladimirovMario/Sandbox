@@ -29,6 +29,7 @@ function ChatRoom({ roomId, theme }) {
     return () => {
       connection.disconnect();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roomId]); // 🔴 React Hook useEffect has a missing dependency: 'theme'.s
   return <h1>Welcome to the {roomId} room!</h1>;
 }
