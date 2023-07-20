@@ -48,8 +48,9 @@ ul {
 
 input,
 button {
-  display: block;
+  /* display: block; */
   margin-bottom: 20px;
+  margin: 10px; 
 }
 video {
   width: 250px;
