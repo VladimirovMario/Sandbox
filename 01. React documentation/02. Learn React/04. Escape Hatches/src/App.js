@@ -1,4 +1,5 @@
-import SeparatingEventsFromEffects from './components/SeparatingEventsFromEffects/SeparatingEventsFromEffects';
+import RemovingEffectDependencies from './components/RemovingEffectDependencies/RemovingEffectDependencies';
+// import SeparatingEventsFromEffects from './components/SeparatingEventsFromEffects/SeparatingEventsFromEffects';
 // import LifecycleOfReactiveEffects from './components/LifecycleOfReactiveEffects/LifecycleOfReactiveEffects';
 // import YouMightNotNeedAnEffect from './components/YouMightNotNeedAnEffect/YouMightNotNeedAnEffect';
 // import SynchronizingWithEffects from './components/SynchronizingWithEffects/SynchronizingWithEffects';
@@ -8,7 +9,8 @@ import SeparatingEventsFromEffects from './components/SeparatingEventsFromEffect
 function App() {
   return (
     <div className="App">
-      <SeparatingEventsFromEffects />
+      <RemovingEffectDependencies />
+      {/* <SeparatingEventsFromEffects /> */}
       {/* <LifecycleOfReactiveEffects /> */}
       {/* <YouMightNotNeedAnEffect /> */}
       {/* <SynchronizingWithEffects /> */}
