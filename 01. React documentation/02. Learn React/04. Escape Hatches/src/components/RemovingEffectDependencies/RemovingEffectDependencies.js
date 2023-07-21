@@ -1,4 +1,5 @@
-import FixAReconnectingChat from './FixAReconnectingChat/FixAReconnectingChat';
+import FixAReconnectingChatAgain from './FixAReconnectingChatAgain/FixAReconnectingChatAgain';
+// import FixAReconnectingChat from './FixAReconnectingChat/FixAReconnectingChat';
 // import ReTriggeringAnimation from './ReTriggeringAnimation/ReTriggeringAnimation';
 // import FixAResettingInterval from './FixAResettingInterval/FixAResettingInterval';
 
@@ -6,7 +7,8 @@ export default function RemovingEffectDependencies() {
   return (
     <>
       <h1>Removing Effect Dependencies</h1>
-      <FixAReconnectingChat />
+      <FixAReconnectingChatAgain />
+      {/* <FixAReconnectingChat /> */}
       {/* <ReTriggeringAnimation /> */}
       {/* <FixAResettingInterval /> */}
     </>
