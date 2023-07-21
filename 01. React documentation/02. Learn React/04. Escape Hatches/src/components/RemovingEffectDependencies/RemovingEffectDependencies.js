@@ -1,10 +1,12 @@
-import FixAResettingInterval from './FixAResettingInterval/FixAResettingInterval';
+import ReTriggeringAnimation from './ReTriggeringAnimation/ReTriggeringAnimation';
+// import FixAResettingInterval from './FixAResettingInterval/FixAResettingInterval';
 
 export default function RemovingEffectDependencies() {
   return (
     <>
       <h1>Removing Effect Dependencies</h1>
-      <FixAResettingInterval />
+      <ReTriggeringAnimation />
+      {/* <FixAResettingInterval /> */}
     </>
   );
 }
