@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useFormInput } from '../hooks/useFormInput';
 
 export default function ShareStatefulLogic() {
@@ -14,7 +13,7 @@ function Form() {
   const firstNameProps = useFormInput('Mary');
   const lastNameProps = useFormInput('Poppins');
 
-  console.log(firstNameProps);
+  // console.log(firstNameProps);
   return (
     <>
       <label>
