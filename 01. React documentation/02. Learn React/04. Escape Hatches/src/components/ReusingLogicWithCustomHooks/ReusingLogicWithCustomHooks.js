@@ -1,4 +1,5 @@
-import ExtractAUseCounterHook from './ExtractAUseCounterHook/ExtractAUseCounterHook';
+import MakeTheCounterDelayConfigurable from './MakeTheCounterDelayConfigurable/MakeTheCounterDelayConfigurable';
+// import ExtractAUseCounterHook from './ExtractAUseCounterHook/ExtractAUseCounterHook';
 // import PlainCSSAnimation from './PlainCSSAnimation/PlainCSSAnimation';
 // import MoreThanOneWay from './MoreThanOneWay/MoreThanOneWay';
 // import CustomHooksHelpYouMigrate from './CustomHooksHelpYouMigrate/CustomHooksHelpYouMigrate';
@@ -10,7 +11,8 @@ export default function ReusingLogicWithCustomHooks() {
   return (
     <>
       <h1>Reusing Logic with Custom Hooks</h1>
-      <ExtractAUseCounterHook />
+      <MakeTheCounterDelayConfigurable />
+      {/* <ExtractAUseCounterHook /> */}
       {/* <PlainCSSAnimation /> */}
       {/* <MoreThanOneWay /> */}
       {/* <CustomHooksHelpYouMigrate /> */}
