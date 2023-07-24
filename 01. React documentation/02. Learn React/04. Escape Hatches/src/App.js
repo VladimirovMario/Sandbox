@@ -1,4 +1,5 @@
-import RemovingEffectDependencies from './components/RemovingEffectDependencies/RemovingEffectDependencies';
+import ReusingLogicWithCustomHooks from './components/ReusingLogicWithCustomHooks/ReusingLogicWithCustomHooks';
+// import RemovingEffectDependencies from './components/RemovingEffectDependencies/RemovingEffectDependencies';
 // import SeparatingEventsFromEffects from './components/SeparatingEventsFromEffects/SeparatingEventsFromEffects';
 // import LifecycleOfReactiveEffects from './components/LifecycleOfReactiveEffects/LifecycleOfReactiveEffects';
 // import YouMightNotNeedAnEffect from './components/YouMightNotNeedAnEffect/YouMightNotNeedAnEffect';
@@ -9,7 +10,8 @@ import RemovingEffectDependencies from './components/RemovingEffectDependencies/
 function App() {
   return (
     <div className="App">
-      <RemovingEffectDependencies />
+      <ReusingLogicWithCustomHooks />
+      {/* <RemovingEffectDependencies /> */}
       {/* <SeparatingEventsFromEffects /> */}
       {/* <LifecycleOfReactiveEffects /> */}
       {/* <YouMightNotNeedAnEffect /> */}
