@@ -1,9 +1,5 @@
 import { useState } from 'react';
 import ChatRoom from './ChatRoom.js';
-import {
-  createEncryptedConnection,
-  createUnencryptedConnection,
-} from './chat.js';
 import { showNotification } from './showNotification.js';
 
 export default function FixAReconnectingChatAgain() {
@@ -48,20 +44,13 @@ function App() {
       </label>
       <hr />
       <ChatRoom
-        roomId={roomId}
         onMessage={(msg) => {
           showNotification('New message: ' + msg, isDark ? 'dark' : 'light');
         }}
-        createConnection={() => {
-          const options = {
-            serverUrl: 'https://localhost:1234',
-            roomId: roomId,
-          };
-          if (isEncrypted) {
-            return createEncryptedConnection(options);
-          } else {
-            return createUnencryptedConnection(options);
-          }
+        options={{
+          serverUrl: 'https://localhost:1234',
+          roomId: roomId,
+          isEncrypted,
         }}
       />
     </>
