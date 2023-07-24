@@ -1,4 +1,5 @@
-import MakeTheCounterDelayConfigurable from './MakeTheCounterDelayConfigurable/MakeTheCounterDelayConfigurable';
+import ExtractUseIntervalOutOfUseCounter from './ExtractUseIntervalOutOfUseCounter/ExtractUseIntervalOutOfUseCounter';
+// import MakeTheCounterDelayConfigurable from './MakeTheCounterDelayConfigurable/MakeTheCounterDelayConfigurable';
 // import ExtractAUseCounterHook from './ExtractAUseCounterHook/ExtractAUseCounterHook';
 // import PlainCSSAnimation from './PlainCSSAnimation/PlainCSSAnimation';
 // import MoreThanOneWay from './MoreThanOneWay/MoreThanOneWay';
@@ -11,7 +12,8 @@ export default function ReusingLogicWithCustomHooks() {
   return (
     <>
       <h1>Reusing Logic with Custom Hooks</h1>
-      <MakeTheCounterDelayConfigurable />
+      <ExtractUseIntervalOutOfUseCounter />
+      {/* <MakeTheCounterDelayConfigurable /> */}
       {/* <ExtractAUseCounterHook /> */}
       {/* <PlainCSSAnimation /> */}
       {/* <MoreThanOneWay /> */}
