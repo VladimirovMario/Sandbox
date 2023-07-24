@@ -1,4 +1,5 @@
-import PlainCSSAnimation from './PlainCSSAnimation/PlainCSSAnimation';
+import ExtractAUseCounterHook from './ExtractAUseCounterHook/ExtractAUseCounterHook';
+// import PlainCSSAnimation from './PlainCSSAnimation/PlainCSSAnimation';
 // import MoreThanOneWay from './MoreThanOneWay/MoreThanOneWay';
 // import CustomHooksHelpYouMigrate from './CustomHooksHelpYouMigrate/CustomHooksHelpYouMigrate';
 // import PassingReactiveValuesBetweenHooks from './PassingReactiveValuesBetweenHooks/PassingReactiveValuesBetweenHooks';
@@ -9,7 +10,8 @@ export default function ReusingLogicWithCustomHooks() {
   return (
     <>
       <h1>Reusing Logic with Custom Hooks</h1>
-      <PlainCSSAnimation />
+      <ExtractAUseCounterHook />
+      {/* <PlainCSSAnimation /> */}
       {/* <MoreThanOneWay /> */}
       {/* <CustomHooksHelpYouMigrate /> */}
       {/* <PassingReactiveValuesBetweenHooks /> */}
