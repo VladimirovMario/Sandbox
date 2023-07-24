@@ -1,4 +1,5 @@
-import MoreThanOneWay from './MoreThanOneWay/MoreThanOneWay';
+import PlainCSSAnimation from './PlainCSSAnimation/PlainCSSAnimation';
+// import MoreThanOneWay from './MoreThanOneWay/MoreThanOneWay';
 // import CustomHooksHelpYouMigrate from './CustomHooksHelpYouMigrate/CustomHooksHelpYouMigrate';
 // import PassingReactiveValuesBetweenHooks from './PassingReactiveValuesBetweenHooks/PassingReactiveValuesBetweenHooks';
 // import ShareStatefulLogic from './ShareStatefulLogic/ShareStatefulLogic';
@@ -8,7 +9,8 @@ export default function ReusingLogicWithCustomHooks() {
   return (
     <>
       <h1>Reusing Logic with Custom Hooks</h1>
-      <MoreThanOneWay />
+      <PlainCSSAnimation />
+      {/* <MoreThanOneWay /> */}
       {/* <CustomHooksHelpYouMigrate /> */}
       {/* <PassingReactiveValuesBetweenHooks /> */}
       {/* <ShareStatefulLogic /> */}
