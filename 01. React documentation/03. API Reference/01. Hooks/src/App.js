@@ -1,10 +1,12 @@
+import UseContext from './components/UseContext/UseContext';
+// import UseCallback from './components/UseCallback/UseCallback';
 import './App.css';
-import UseCallback from './components/UseCallback/UseCallback';
 
 function App() {
   return (
     <>
-      <UseCallback />
+      <UseContext />
+      {/* <UseCallback /> */}
     </>
   );
 }
