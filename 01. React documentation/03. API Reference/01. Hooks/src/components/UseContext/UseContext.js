@@ -1,4 +1,5 @@
-import UpdatingDataPassedViaContext from './UpdatingDataPassedViaContext/UpdatingDataPassedViaContext';
+import UpdatingAValueViaContext from './UpdatingAValueViaContext/UpdatingAValueViaContext';
+// import UpdatingDataPassedViaContext from './UpdatingDataPassedViaContext/UpdatingDataPassedViaContext';
 // import PassingDataDeeplyIntoTheTree from './PassingDataDeeplyIntoTheTree/PassingDataDeeplyIntoTheTree';
 
 export default function UseContext() {
@@ -8,7 +9,8 @@ export default function UseContext() {
         useContext is a React Hook that lets you read and subscribe to context
         from your component
       </h1>
-      <UpdatingDataPassedViaContext />
+      <UpdatingAValueViaContext />
+      {/* <UpdatingDataPassedViaContext /> */}
       {/* <PassingDataDeeplyIntoTheTree /> */}
     </>
   );
