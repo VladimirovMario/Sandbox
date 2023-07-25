@@ -1,7 +1,12 @@
 import './App.css';
+import UseCallback from './components/UseCallback/UseCallback';
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <UseCallback />
+    </>
+  );
 }
 
 export default App;
