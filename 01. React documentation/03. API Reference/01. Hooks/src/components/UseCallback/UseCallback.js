@@ -1,4 +1,5 @@
-import SkippingReRendering from './SkippingReRendering/SkippingReRendering';
+import AlwaysReRenderingAComponent from './AlwaysReRenderingAComponent/AlwaysReRenderingAComponent';
+// import SkippingReRendering from './SkippingReRendering/SkippingReRendering';
 
 export default function UseCallback() {
   return (
@@ -7,7 +8,8 @@ export default function UseCallback() {
         useCallback is a React Hook that lets you cache a function definition
         between re-renders.
       </h1>
-      <SkippingReRendering />
+      <AlwaysReRenderingAComponent />
+      {/* <SkippingReRendering /> */}
     </>
   );
 }
