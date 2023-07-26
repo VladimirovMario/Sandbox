@@ -1,4 +1,5 @@
-import ScalingUpWithContextAndAReducer from './ScalingUpWithContextAndAReducer/ScalingUpWithContextAndAReducer';
+import OverridingATheme from './OverridingATheme/OverridingATheme';
+// import ScalingUpWithContextAndAReducer from './ScalingUpWithContextAndAReducer/ScalingUpWithContextAndAReducer';
 // import ExtractingProvidersToAComponent from './ExtractingProvidersToAComponent/ExtractingProvidersToAComponent';
 // import MultipleContexts from './MultipleContexts/MultipleContexts';
 // import UpdatingAnObjectViaContext from './UpdatingAnObjectViaContext/UpdatingAnObjectViaContext';
@@ -13,7 +14,8 @@ export default function UseContext() {
         useContext is a React Hook that lets you read and subscribe to context
         from your component
       </h1>
-      <ScalingUpWithContextAndAReducer />
+      <OverridingATheme />
+      {/* <ScalingUpWithContextAndAReducer /> */}
       {/* <ExtractingProvidersToAComponent /> */}
       {/* <MultipleContexts /> */}
       {/* <UpdatingAnObjectViaContext /> */}
