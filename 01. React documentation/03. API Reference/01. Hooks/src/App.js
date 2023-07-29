@@ -1,13 +1,14 @@
-import UseDeferredValue from './components/UseDeferredValue/UseDeferredValue';
+import UseEffect from './components/UseEffect/UseEffect';
+// import UseDeferredValue from './components/UseDeferredValue/UseDeferredValue';
 // import UseDebugValue from './components/UseDebugValue/UseDebugValue';
 // import UseCallback from './components/UseCallback/UseCallback';
 // import UseContext from './components/UseContext/UseContext';
-import './App.css';
 
 function App() {
   return (
     <>
-      <UseDeferredValue />
+      <UseEffect />
+      {/* <UseDeferredValue /> */}
       {/* <UseDebugValue /> */}
       {/* <UseContext /> */}
       {/* <UseCallback /> */}
