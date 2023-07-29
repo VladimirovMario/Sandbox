@@ -1,4 +1,5 @@
-import ConnectingToAChatServer from './ConnectingToAChatServer/ConnectingToAChatServer';
+import ListeningToAGlobalBrowserEvent from './ListeningToAGlobalBrowserEvent/ListeningToAGlobalBrowserEvent';
+// import ConnectingToAChatServer from './ConnectingToAChatServer/ConnectingToAChatServer';
 
 export default function UseEffect() {
   return (
@@ -7,7 +8,8 @@ export default function UseEffect() {
         useEffect is a React Hook that lets you synchronize a component with an
         external system
       </h1>
-      <ConnectingToAChatServer />
+      <ListeningToAGlobalBrowserEvent />
+      {/* <ConnectingToAChatServer /> */}
     </>
   );
 }
