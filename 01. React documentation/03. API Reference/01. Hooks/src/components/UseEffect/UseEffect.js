@@ -1,4 +1,5 @@
-import ListeningToAGlobalBrowserEvent from './ListeningToAGlobalBrowserEvent/ListeningToAGlobalBrowserEvent';
+import TriggeringAnAnimation from './TriggeringAnAnimation/TriggeringAnAnimation';
+// import ListeningToAGlobalBrowserEvent from './ListeningToAGlobalBrowserEvent/ListeningToAGlobalBrowserEvent';
 // import ConnectingToAChatServer from './ConnectingToAChatServer/ConnectingToAChatServer';
 
 export default function UseEffect() {
@@ -8,7 +9,8 @@ export default function UseEffect() {
         useEffect is a React Hook that lets you synchronize a component with an
         external system
       </h1>
-      <ListeningToAGlobalBrowserEvent />
+      <TriggeringAnAnimation />
+      {/* <ListeningToAGlobalBrowserEvent /> */}
       {/* <ConnectingToAChatServer /> */}
     </>
   );
