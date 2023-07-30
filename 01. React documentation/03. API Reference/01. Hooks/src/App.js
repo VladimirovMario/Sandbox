@@ -1,4 +1,5 @@
-import UseEffect from './components/UseEffect/UseEffect';
+import UseId from './components/UseId/UseId';
+// import UseEffect from './components/UseEffect/UseEffect';
 // import UseDeferredValue from './components/UseDeferredValue/UseDeferredValue';
 // import UseDebugValue from './components/UseDebugValue/UseDebugValue';
 // import UseCallback from './components/UseCallback/UseCallback';
@@ -7,7 +8,8 @@ import UseEffect from './components/UseEffect/UseEffect';
 function App() {
   return (
     <>
-      <UseEffect />
+      <UseId />
+      {/* <UseEffect /> */}
       {/* <UseDeferredValue /> */}
       {/* <UseDebugValue /> */}
       {/* <UseContext /> */}
