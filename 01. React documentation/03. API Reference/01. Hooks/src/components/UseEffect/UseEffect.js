@@ -1,4 +1,5 @@
-import CustomUseChatRoomHook from './CustomUseChatRoomHook/CustomUseChatRoomHook';
+import CustomUseWindowListenerHook from './CustomUseWindowListenerHook/CustomUseWindowListenerHook';
+// import CustomUseChatRoomHook from './CustomUseChatRoomHook/CustomUseChatRoomHook';
 // import TrackingElementVisibility from './TrackingElementVisibility/TrackingElementVisibility';
 // import ControllingAModalDialog from './ControllingAModalDialog/ControllingAModalDialog';
 // import TriggeringAnAnimation from './TriggeringAnAnimation/TriggeringAnAnimation';
@@ -12,7 +13,8 @@ export default function UseEffect() {
         useEffect is a React Hook that lets you synchronize a component with an
         external system
       </h1>
-      <CustomUseChatRoomHook />
+      <CustomUseWindowListenerHook />
+      {/* <CustomUseChatRoomHook /> */}
       {/* <TrackingElementVisibility /> */}
       {/* <ControllingAModalDialog /> */}
       {/* <TriggeringAnAnimation /> */}
