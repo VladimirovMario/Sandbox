@@ -1,4 +1,5 @@
-import FetchingDataWithEffects from './FetchingDataWithEffects/FetchingDataWithEffects';
+import PassingADependencyArray from './PassingADependencyArray/PassingADependencyArray';
+// import FetchingDataWithEffects from './FetchingDataWithEffects/FetchingDataWithEffects';
 // import ControllingANonReactWidget from './ControllingANonReactWidget/ControllingANonReactWidget';
 // import CustomUseIntersectionObserverHook from './CustomUseIntersectionObserverHook/CustomUseIntersectionObserverHook';
 // import CustomUseWindowListenerHook from './CustomUseWindowListenerHook/CustomUseWindowListenerHook';
@@ -16,7 +17,8 @@ export default function UseEffect() {
         useEffect is a React Hook that lets you synchronize a component with an
         external system
       </h1>
-      <FetchingDataWithEffects />
+      <PassingADependencyArray />
+      {/* <FetchingDataWithEffects /> */}
       {/* <ControllingANonReactWidget /> */}
       {/* <CustomUseIntersectionObserverHook /> */}
       {/* <CustomUseWindowListenerHook /> */}
