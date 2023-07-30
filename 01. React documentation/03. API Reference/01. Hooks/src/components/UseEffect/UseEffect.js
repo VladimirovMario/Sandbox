@@ -1,4 +1,5 @@
-import CustomUseIntersectionObserverHook from './CustomUseIntersectionObserverHook/CustomUseIntersectionObserverHook';
+import ControllingANonReactWidget from './ControllingANonReactWidget/ControllingANonReactWidget';
+// import CustomUseIntersectionObserverHook from './CustomUseIntersectionObserverHook/CustomUseIntersectionObserverHook';
 // import CustomUseWindowListenerHook from './CustomUseWindowListenerHook/CustomUseWindowListenerHook';
 // import CustomUseChatRoomHook from './CustomUseChatRoomHook/CustomUseChatRoomHook';
 // import TrackingElementVisibility from './TrackingElementVisibility/TrackingElementVisibility';
@@ -14,7 +15,8 @@ export default function UseEffect() {
         useEffect is a React Hook that lets you synchronize a component with an
         external system
       </h1>
-      <CustomUseIntersectionObserverHook />
+      <ControllingANonReactWidget />
+      {/* <CustomUseIntersectionObserverHook /> */}
       {/* <CustomUseWindowListenerHook /> */}
       {/* <CustomUseChatRoomHook /> */}
       {/* <TrackingElementVisibility /> */}
