@@ -1,4 +1,5 @@
-import UseId from './components/UseId/UseId';
+import UseImperativeHandle from './components/UseImperativeHandle/UseImperativeHandle';
+// import UseId from './components/UseId/UseId';
 // import UseEffect from './components/UseEffect/UseEffect';
 // import UseDeferredValue from './components/UseDeferredValue/UseDeferredValue';
 // import UseDebugValue from './components/UseDebugValue/UseDebugValue';
@@ -8,7 +9,8 @@ import UseId from './components/UseId/UseId';
 function App() {
   return (
     <>
-      <UseId />
+      <UseImperativeHandle />
+      {/* <UseId /> */}
       {/* <UseEffect /> */}
       {/* <UseDeferredValue /> */}
       {/* <UseDebugValue /> */}
