@@ -1,4 +1,5 @@
-import UseLayoutEffectBlocksTheBrowser from './UseLayoutEffectBlocksTheBrowser/UseLayoutEffectBlocksTheBrowser';
+import UseEffectDoesNotBlockTheBrowser from './UseEffectDoesNotBlockTheBrowser/UseEffectDoesNotBlockTheBrowser';
+// import UseLayoutEffectBlocksTheBrowser from './UseLayoutEffectBlocksTheBrowser/UseLayoutEffectBlocksTheBrowser';
 
 export default function UseLayoutEffect() {
   return (
@@ -7,7 +8,15 @@ export default function UseLayoutEffect() {
         useLayoutEffect is a version of useEffect that fires before the browser
         repaints the screen
       </h1>
-      <UseLayoutEffectBlocksTheBrowser />
+      <UseEffectDoesNotBlockTheBrowser />
+      {/* <UseLayoutEffectBlocksTheBrowser /> */}
     </>
   );
 }
+
+/*
+Note
+
+Rendering in two passes and blocking the browser hurts performance.
+Try to avoid this when you can.
+*/
