@@ -2,15 +2,15 @@ import { forwardRef, useImperativeHandle, useRef } from 'react';
 import styles from './CommentList.module.css';
 
 const CommentList = forwardRef(function CommentList(props, ref) {
-  const difRef = useRef(null);
+  const divRef = useRef(null);
 
   useImperativeHandle(
     ref,
     () => {
       return {
         scrollToBottom() {
-          const node = difRef.current;
-          node.scroll = node.scrollHeight;
+          const node = divRef.current;
+          node.scrollTop = node.scrollHeight;
         },
       };
     },
@@ -24,7 +24,7 @@ const CommentList = forwardRef(function CommentList(props, ref) {
   }
 
   return (
-    <div className={styles.CommentList} ref={difRef}>
+    <div className={styles.CommentList} ref={divRef}>
       {comments}
     </div>
   );
