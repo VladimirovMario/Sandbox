@@ -1,4 +1,5 @@
-import UseLayoutEffect from './components/UseLayoutEffect/UseLayoutEffect';
+import UseMemo from './components/UseMemo/UseMemo';
+// import UseLayoutEffect from './components/UseLayoutEffect/UseLayoutEffect';
 // import UseImperativeHandle from './components/UseImperativeHandle/UseImperativeHandle';
 // import UseId from './components/UseId/UseId';
 // import UseEffect from './components/UseEffect/UseEffect';
@@ -10,7 +11,8 @@ import UseLayoutEffect from './components/UseLayoutEffect/UseLayoutEffect';
 function App() {
   return (
     <>
-      <UseLayoutEffect />
+      <UseMemo />
+      {/* <UseLayoutEffect /> */}
       {/* <UseImperativeHandle /> */}
       {/* <UseId /> */}
       {/* <UseEffect /> */}
