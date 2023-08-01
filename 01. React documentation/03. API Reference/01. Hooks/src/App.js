@@ -1,4 +1,5 @@
-import UseMemo from './components/UseMemo/UseMemo';
+import UseReducer from './components/UseReducer/UseReducer';
+// import UseMemo from './components/UseMemo/UseMemo';
 // import UseLayoutEffect from './components/UseLayoutEffect/UseLayoutEffect';
 // import UseImperativeHandle from './components/UseImperativeHandle/UseImperativeHandle';
 // import UseId from './components/UseId/UseId';
@@ -11,7 +12,8 @@ import UseMemo from './components/UseMemo/UseMemo';
 function App() {
   return (
     <>
-      <UseMemo />
+      <UseReducer />
+      {/* <UseMemo /> */}
       {/* <UseLayoutEffect /> */}
       {/* <UseImperativeHandle /> */}
       {/* <UseId /> */}
