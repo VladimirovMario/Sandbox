@@ -1,4 +1,5 @@
-import FormObject from './FormObject/FormObject';
+import TodoListArray from './TodoListaAray/TodoListArray';
+// import FormObject from './FormObject/FormObject';
 // import AddingAReducerToAComponent from './AddingAReducerToAComponent/AddingAReducerToAComponent';
 
 export default function UseReducer() {
@@ -7,7 +8,8 @@ export default function UseReducer() {
       <h1>
         useReducer is a React Hook that lets you add a reducer to your component
       </h1>
-      <FormObject />
+      <TodoListArray />
+      {/* <FormObject /> */}
       {/* <AddingAReducerToAComponent /> */}
     </>
   );
