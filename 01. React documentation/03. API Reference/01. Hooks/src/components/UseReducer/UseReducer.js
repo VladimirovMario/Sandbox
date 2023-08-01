@@ -1,6 +1,6 @@
 import PassingTheInitialStateDirectly from './PassingTheInitialStateDirectly/PassingTheInitialStateDirectly';
 // import PassingTheInitializerFunction from './PassingTheInitializerFunction/PassingTheInitializerFunction';
-import TodoListArray from './TodoListArray/TodoListArray';
+// import TodoListArray from './TodoListArray/TodoListArray';
 // import FormObject from './FormObject/FormObject';
 // import AddingAReducerToAComponent from './AddingAReducerToAComponent/AddingAReducerToAComponent';
 
@@ -12,7 +12,7 @@ export default function UseReducer() {
       </h1>
       <PassingTheInitialStateDirectly />
       {/* <PassingTheInitializerFunction /> */}
-      <TodoListArray />
+      {/* <TodoListArray /> */}
       {/* <FormObject /> */}
       {/* <AddingAReducerToAComponent /> */}
     </>
