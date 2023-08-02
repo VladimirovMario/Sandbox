@@ -1,4 +1,5 @@
-import FocusingATextInput from './FocusingATextInput/FocusingATextInput';
+import ScrollingAnImageIntoView from './ScrollingAnImageIntoView/ScrollingAnImageIntoView';
+// import FocusingATextInput from './FocusingATextInput/FocusingATextInput';
 // import AStopwatch from './AStopwatch/AStopwatch';
 // import ClickCounter from './ClickCounter/ClickCounter';
 
@@ -9,7 +10,8 @@ export default function UseRef() {
         useRef is a React Hook that lets you reference a value that’s not needed
         for rendering
       </h1>
-      <FocusingATextInput />
+      <ScrollingAnImageIntoView />
+      {/* <FocusingATextInput /> */}
       {/* <AStopwatch /> */}
       {/* <ClickCounter /> */}
     </>
