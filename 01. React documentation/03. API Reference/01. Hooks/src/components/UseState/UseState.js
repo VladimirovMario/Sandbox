@@ -1,4 +1,5 @@
-import ListExample from './ListExample/ListExample';
+import InitializerFunction from './InitializerFunction/InitializerFunction';
+// import ListExample from './ListExample/ListExample';
 // import FormExampleWithNestedObject from './FormExampleWithNestedObject/FormExampleWithNestedObject';
 // import FormExampleWithObject from './FormExampleWithObject/FormExampleWithObject';
 // import PassingNheNextStateDirectly from './PassingNheNextStateDirectly/PassingNheNextStateDirectly';
@@ -15,7 +16,8 @@ export default function UseState() {
         useState is a React Hook that lets you add a state variable to your
         component
       </h1>
-      <ListExample />
+      <InitializerFunction />
+      {/* <ListExample /> */}
       {/* <FormExampleWithNestedObject /> */}
       {/* <FormExampleWithObject /> */}
       {/* <PassingNheNextStateDirectly /> */}
