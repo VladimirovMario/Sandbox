@@ -1,4 +1,5 @@
-import UseReducer from './components/UseReducer/UseReducer';
+import UseRef from './components/UseRef/UseRef';
+// import UseReducer from './components/UseReducer/UseReducer';
 // import UseMemo from './components/UseMemo/UseMemo';
 // import UseLayoutEffect from './components/UseLayoutEffect/UseLayoutEffect';
 // import UseImperativeHandle from './components/UseImperativeHandle/UseImperativeHandle';
@@ -12,7 +13,8 @@ import UseReducer from './components/UseReducer/UseReducer';
 function App() {
   return (
     <>
-      <UseReducer />
+      <UseRef />
+      {/* <UseReducer /> */}
       {/* <UseMemo /> */}
       {/* <UseLayoutEffect /> */}
       {/* <UseImperativeHandle /> */}
