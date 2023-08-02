@@ -1,4 +1,5 @@
-import PassingTheUpdaterFunction from './PassingTheUpdaterFunction/PassingTheUpdaterFunction';
+import PassingNheNextStateDirectly from './PassingNheNextStateDirectly/PassingNheNextStateDirectly';
+// import PassingTheUpdaterFunction from './PassingTheUpdaterFunction/PassingTheUpdaterFunction';
 // import FormExample from './FormExample/FormExample';
 // import Checkbox from './Checkbox/Checkbox';
 // import TextField from './TextField/TextField';
@@ -11,7 +12,8 @@ export default function UseState() {
         useState is a React Hook that lets you add a state variable to your
         component
       </h1>
-      <PassingTheUpdaterFunction />
+      <PassingNheNextStateDirectly />
+      {/* <PassingTheUpdaterFunction /> */}
       {/* <FormExample /> */}
       {/* <Checkbox /> */}
       {/* <TextField /> */}
