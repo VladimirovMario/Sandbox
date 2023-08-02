@@ -1,4 +1,5 @@
-import InitializerFunction from './InitializerFunction/InitializerFunction';
+import ResettingStateWithAKey from './ResettingStateWithAKey/ResettingStateWithAKey';
+// import InitializerFunction from './InitializerFunction/InitializerFunction';
 // import ListExample from './ListExample/ListExample';
 // import FormExampleWithNestedObject from './FormExampleWithNestedObject/FormExampleWithNestedObject';
 // import FormExampleWithObject from './FormExampleWithObject/FormExampleWithObject';
@@ -16,7 +17,8 @@ export default function UseState() {
         useState is a React Hook that lets you add a state variable to your
         component
       </h1>
-      <InitializerFunction />
+      <ResettingStateWithAKey />
+      {/* <InitializerFunction /> */}
       {/* <ListExample /> */}
       {/* <FormExampleWithNestedObject /> */}
       {/* <FormExampleWithObject /> */}
