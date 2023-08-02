@@ -1,4 +1,5 @@
-import ClickCounter from './ClickCounter/ClickCounter';
+import AStopwatch from './AStopwatch/AStopwatch';
+// import ClickCounter from './ClickCounter/ClickCounter';
 
 export default function UseRef() {
   return (
@@ -7,7 +8,8 @@ export default function UseRef() {
         useRef is a React Hook that lets you reference a value that’s not needed
         for rendering
       </h1>
-      <ClickCounter />
+      <AStopwatch />
+      {/* <ClickCounter /> */}
     </>
   );
 }
