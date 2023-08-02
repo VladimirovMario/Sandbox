@@ -1,4 +1,5 @@
-import PlayingAndPausingAVideo from './PlayingAndPausingAVideo/PlayingAndPausingAVideo';
+import ExposingARefToYourOwnComponent from './ExposingARefToYourOwnComponent/ExposingARefToYourOwnComponent';
+// import PlayingAndPausingAVideo from './PlayingAndPausingAVideo/PlayingAndPausingAVideo';
 // import ScrollingAnImageIntoView from './ScrollingAnImageIntoView/ScrollingAnImageIntoView';
 // import FocusingATextInput from './FocusingATextInput/FocusingATextInput';
 // import AStopwatch from './AStopwatch/AStopwatch';
@@ -11,7 +12,8 @@ export default function UseRef() {
         useRef is a React Hook that lets you reference a value that’s not needed
         for rendering
       </h1>
-      <PlayingAndPausingAVideo />
+      <ExposingARefToYourOwnComponent />
+      {/* <PlayingAndPausingAVideo /> */}
       {/* <ScrollingAnImageIntoView /> */}
       {/* <FocusingATextInput /> */}
       {/* <AStopwatch /> */}
