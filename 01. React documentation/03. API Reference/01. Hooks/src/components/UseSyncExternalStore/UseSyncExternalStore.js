@@ -1,4 +1,5 @@
-import SubscribingToAnExternalStore from './SubscribingToAnExternalStore/SubscribingToAnExternalStore';
+import SubscribingToABrowserAPI from './SubscribingToABrowserAPI/SubscribingToABrowserAPI';
+// import SubscribingToAnExternalStore from './SubscribingToAnExternalStore/SubscribingToAnExternalStore';
 
 export default function UseSyncExternalStore() {
   return (
@@ -7,7 +8,8 @@ export default function UseSyncExternalStore() {
         useSyncExternalStore is a React Hook that lets you subscribe to an
         external store
       </h1>
-      <SubscribingToAnExternalStore />
+      <SubscribingToABrowserAPI />
+      {/* <SubscribingToAnExternalStore /> */}
     </>
   );
 }
