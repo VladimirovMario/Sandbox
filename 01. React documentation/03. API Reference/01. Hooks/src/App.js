@@ -1,4 +1,5 @@
-import UseSyncExternalStore from './components/UseSyncExternalStore/UseSyncExternalStore';
+import UseTransition from './components/UseTransition/UseTransition';
+// import UseSyncExternalStore from './components/UseSyncExternalStore/UseSyncExternalStore';
 // import UseState from './components/UseState/UseState';
 // import UseRef from './components/UseRef/UseRef';
 // import UseReducer from './components/UseReducer/UseReducer';
@@ -15,7 +16,8 @@ import UseSyncExternalStore from './components/UseSyncExternalStore/UseSyncExter
 function App() {
   return (
     <>
-      <UseSyncExternalStore />
+      <UseTransition />
+      {/* <UseSyncExternalStore /> */}
       {/* <UseState /> */}
       {/* <UseRef /> */}
       {/* <UseReducer /> */}
