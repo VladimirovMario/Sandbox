@@ -1,15 +1,18 @@
-import { useTransition } from 'react';
+import { Profiler, useTransition } from 'react';
 import { useState } from 'react';
 import { Suspense } from 'react';
 import IndexPage from './IndexPage';
 import ArtistPage from './ArtistPage';
 import Layout from './Layout';
+import { onRender } from './onRender';
 
 export default function SuspenseEnabledRouter() {
   return (
     <>
       <h2>Building a Suspense-enabled router</h2>
-      <App />
+      <Profiler id="router" onRender={onRender}>
+        <App />
+      </Profiler>
     </>
   );
 }
