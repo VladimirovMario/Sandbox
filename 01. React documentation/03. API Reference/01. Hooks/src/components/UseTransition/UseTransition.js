@@ -1,4 +1,5 @@
-import UpdatingTheCurrentTabInATransition from './UpdatingTheCurrentTabInATransition/UpdatingTheCurrentTabInATransition';
+import DisplayingAPendingVisualState from './DisplayingAPendingVisualState/DisplayingAPendingVisualState';
+// import UpdatingTheCurrentTabInATransition from './UpdatingTheCurrentTabInATransition/UpdatingTheCurrentTabInATransition';
 
 export default function UseTransition() {
   return (
@@ -7,7 +8,8 @@ export default function UseTransition() {
         useTransition is a React Hook that lets you update the state without
         blocking the UI
       </h1>
-      <UpdatingTheCurrentTabInATransition />
+      <DisplayingAPendingVisualState />
+      {/* <UpdatingTheCurrentTabInATransition /> */}
     </>
   );
 }
