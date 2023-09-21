@@ -1,28 +1,35 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { postAdded } from './postsSlice';
+import { selectAllUsers } from '../users/usersSlice';
 
 export default function AddPostForm() {
   const dispatch = useDispatch();
 
+  // Select all users from the Redux store
+  const users = useSelector(selectAllUsers);
+
   // State to store form input values
-  const [values, setValues] = useState({ title: '', content: '' });
+  const [values, setValues] = useState({ title: '', content: '', userId: '' });
+  const { title, content, userId } = values;
 
   // Function to handle input changes
   function handleChange(e) {
-    // Update the specific field (title or content) in the 'values' state
+    // Update the specific field (title, content, or userId) in the 'values' state
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
   }
+
+  // Determine if the form can be saved based on input values
+  const canSave = Boolean(title) && Boolean(content) && Boolean(userId);
 
   // Function to handle form submission
   function handlePostSave(e) {
     e.preventDefault();
 
-    // Check if both 'title' and 'content' fields have values
-    if (values.title && values.content) {
-      // Dispatch the 'postAdded' action with title and content as parameters
-      dispatch(postAdded(values.title, values.content));
+    if (canSave) {
+      // Dispatch the 'postAdded' action with title, content, and userId as parameters
+      dispatch(postAdded(title, content, userId));
 
       // Reset form fields to empty strings
       setValues(
@@ -30,6 +37,13 @@ export default function AddPostForm() {
       );
     }
   }
+
+  // Create options for the user dropdown menu
+  const usersOptions = users.map((user) => (
+    <option key={user.id} value={user.id}>
+      {user.name}
+    </option>
+  ));
 
   return (
     <section>
@@ -44,6 +58,17 @@ export default function AddPostForm() {
           value={values.title}
           onChange={handleChange}
         />
+        {/* Dropdown menu for choosing the author */}
+        <label htmlFor="postAuthor">Author:</label>
+        <select
+          id="postAuthor"
+          name="userId"
+          value={values.userId}
+          onChange={handleChange}
+        >
+          <option value=""></option> {/* Empty option for no author selected */}
+          {usersOptions} {/* Populate user options */}
+        </select>
         {/* Input for Post Content */}
         <label htmlFor="content">Post Content:</label>
         <textarea
@@ -54,7 +79,8 @@ export default function AddPostForm() {
           onChange={handleChange}
         />
         {/* Submit Button */}
-        <button>Save Post</button>
+        <button disabled={!canSave}>Save Post</button>{' '}
+        {/* Disable if canSave is false */}
       </form>
     </section>
   );
