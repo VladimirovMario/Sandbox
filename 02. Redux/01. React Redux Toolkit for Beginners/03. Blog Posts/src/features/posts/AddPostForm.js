@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { postAdded } from './postsSlice';
+import {
+  // postAdded,
+  addNewPost,
+} from './postsSlice';
 import { selectAllUsers } from '../users/usersSlice';
 
 export default function AddPostForm() {
@@ -13,6 +16,7 @@ export default function AddPostForm() {
   // State to store form input values
   const [values, setValues] = useState({ title: '', content: '', userId: '' });
   const { title, content, userId } = values;
+  const [addRequestStatus, setAddRequestStatus] = useState('idle');
 
   // Function to handle input changes
   function handleChange(e) {
@@ -20,21 +24,28 @@ export default function AddPostForm() {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
   }
 
-  // Determine if the form can be saved based on input values
-  const canSave = Boolean(title) && Boolean(content) && Boolean(userId);
+  // Determine if the form can be saved based on input values and request status
+  const canSave =
+    [title, content, userId].every(Boolean) && addRequestStatus === 'idle';
 
   // Function to handle form submission
   function handlePostSave(e) {
     e.preventDefault();
 
     if (canSave) {
-      // Dispatch the 'postAdded' action with title, content, and userId as parameters
-      dispatch(postAdded(title, content, userId));
+      try {
+        setAddRequestStatus('pending');
+        // Dispatch the 'postAdded' action with title, content, and userId as parameters
+        dispatch(addNewPost({ title, body: content, userId })).unwrap();
 
-      // Reset form fields to empty strings
-      setValues(
-        Object.fromEntries(Object.keys(values).map((key) => [key, '']))
-      );
+        // Reset form fields to empty strings
+        setValues(
+          Object.fromEntries(Object.keys(values).map((key) => [key, '']))
+        );
+      } catch (error) {
+        console.log('Failed to save the post', error.message);
+      }
+      setAddRequestStatus('idle');
     }
   }
 
