@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPostById, updatePost } from './postsSlice';
+import { getPostById, updatePost, deletePost } from './postsSlice';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import { selectAllUsers } from '../users/usersSlice';
@@ -19,7 +19,7 @@ export default function EditPost() {
     userId: post?.userId,
   });
   const { title, body, userId } = values;
-  const [addRequestStatus, setAddRequestStatus] = useState('idle');
+  const [requestStatus, setRequestStatus] = useState('idle');
 
   if (!post) {
     return (
@@ -34,14 +34,14 @@ export default function EditPost() {
   }
 
   const canSave =
-    [title, body, userId].every(Boolean) && addRequestStatus === 'idle';
+    [title, body, userId].every(Boolean) && requestStatus === 'idle';
 
   function handlePostSave(e) {
     e.preventDefault();
 
     if (canSave) {
       try {
-        setAddRequestStatus('pending');
+        setRequestStatus('pending');
 
         dispatch(
           updatePost({
@@ -61,7 +61,7 @@ export default function EditPost() {
       } catch (error) {
         console.log('Failed to save the post', error.message);
       } finally {
-        setAddRequestStatus('idle');
+        setRequestStatus('idle');
       }
     }
   }
@@ -72,6 +72,22 @@ export default function EditPost() {
       {user.name}
     </option>
   ));
+
+  function handlePostDelete() {
+    try {
+      setRequestStatus('pending');
+      dispatch(deletePost({ id: post.id })).unwrap();
+
+      setValues(
+        Object.fromEntries(Object.keys(values).map((key) => [key, '']))
+      );
+      navigate('/');
+    } catch (error) {
+      console.log('Failed to delete the post', error);
+    } finally {
+      setRequestStatus('idle');
+    }
+  }
 
   return (
     <section>
@@ -107,6 +123,10 @@ export default function EditPost() {
         />
         {/* Submit Button */}
         <button disabled={!canSave}>Save Post</button>
+        <button className="deleteButton" onClick={handlePostDelete}>
+          Delete Post
+        </button>
+
         {/* Disable if canSave is false */}
       </form>
     </section>
