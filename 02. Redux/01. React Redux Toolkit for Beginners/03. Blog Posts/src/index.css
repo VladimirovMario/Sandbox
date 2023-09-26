@@ -44,6 +44,11 @@ h1 {
   font-size: 3.5rem;
 }
 
+a {
+  color: orange;
+  margin-right: 6px;
+}
+
 p {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
