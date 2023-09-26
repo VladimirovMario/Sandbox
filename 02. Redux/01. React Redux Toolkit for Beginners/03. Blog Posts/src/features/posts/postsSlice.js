@@ -95,10 +95,11 @@ const postsSlice = createSlice({
           };
           return post;
         });
-        // Add any fetched posts to the array
-        state.posts = state.posts.concat(loadedPosts);
 
-        // console.log('before', current(state.posts));
+        // Add any fetched posts to the array
+        // console.log('before', current(state));
+        state.posts = [...loadedPosts];
+        // console.log('after', current(state));
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = 'failed';
@@ -123,6 +124,8 @@ const postsSlice = createSlice({
 export const selectAllPosts = (state) => state.posts.posts;
 export const getPostsStatus = (state) => state.posts.status;
 export const getPostsError = (state) => state.posts.error;
+export const getPostById = (state, postId) =>
+  state.posts.posts.find((post) => post.id === postId);
 
 export { fetchPosts, addNewPost };
 

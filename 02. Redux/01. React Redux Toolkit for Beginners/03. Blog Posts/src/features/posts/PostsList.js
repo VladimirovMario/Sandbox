@@ -33,7 +33,7 @@ export default function PostsList() {
     content = posts
       .slice()
       .sort((a, b) => b.id - a.id)
-      .map((post, i) => <PostsExcerpt key={i} post={post} />);
+      .map((post) => <PostsExcerpt key={post.id} post={post} />);
   }
   if (postsStatus === 'failed') {
     content = <p>{error}</p>;
