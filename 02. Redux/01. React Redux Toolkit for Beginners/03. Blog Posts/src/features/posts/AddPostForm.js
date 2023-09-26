@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -8,6 +9,7 @@ import {
 import { selectAllUsers } from '../users/usersSlice';
 
 export default function AddPostForm() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   // Select all users from the Redux store
@@ -42,6 +44,7 @@ export default function AddPostForm() {
         setValues(
           Object.fromEntries(Object.keys(values).map((key) => [key, '']))
         );
+        navigate('/');
       } catch (error) {
         console.log('Failed to save the post', error.message);
       }
