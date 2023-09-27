@@ -7,6 +7,7 @@ import {
   createSlice,
   nanoid,
   createAsyncThunk,
+  createSelector,
   // current,
 } from '@reduxjs/toolkit';
 import axios from 'axios';
@@ -18,6 +19,7 @@ const initialState = {
   posts: [],
   status: 'idle', //'idle' | 'loading' | 'succeeded' | 'failed'
   error: null,
+  count: 0,
 };
 
 const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
@@ -97,6 +99,9 @@ const postsSlice = createSlice({
         existingPost.reactions[reaction]++;
       }
     },
+    increaseCount(state, _) {
+      state.count = state.count + 1;
+    },
   },
   extraReducers(builder) {
     builder
@@ -169,11 +174,19 @@ const postsSlice = createSlice({
 export const selectAllPosts = (state) => state.posts.posts;
 export const getPostsStatus = (state) => state.posts.status;
 export const getPostsError = (state) => state.posts.error;
+export const getCount = (state) => state.posts.count;
 export const getPostById = (state, postId) =>
   state.posts.posts.find((post) => post.id === postId);
 
+// Memoized selector function
+// https://redux.js.org/usage/deriving-data-selectors#optimizing-selectors-with-memoization
+export const selectPostsByUser = createSelector(
+  [selectAllPosts, (state, userId) => userId],
+  (posts, userId) => posts.filter((post) => post.userId === userId)
+);
+
 export { fetchPosts, addNewPost, updatePost, deletePost };
 
-export const { postAdded, reactionAdded } = postsSlice.actions;
+export const { postAdded, reactionAdded, increaseCount } = postsSlice.actions;
 
 export default postsSlice.reducer;
