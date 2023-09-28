@@ -8,6 +8,11 @@ In the project directory, you can run:
 
 ### `npm start`
 
+```
+In order to use db.json file install the 'json-server'. Open new terminal and type: 'npm install -g json-server'
+To start the server and change the port type in: 'json-server --watch data/db.json --port 3030'
+```
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
