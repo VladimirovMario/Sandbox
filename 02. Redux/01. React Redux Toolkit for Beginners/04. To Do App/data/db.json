@@ -1167,7 +1167,7 @@
     {
       "userId": 1,
       "title": "Another new todo!",
-      "completed": false,
+      "completed": true,
       "id": 201
     }
   ]
