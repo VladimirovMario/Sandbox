@@ -1,54 +1,36 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import {
-  // postAdded,
-  addNewPost,
-} from './postsSlice';
 import { selectAllUsers } from '../users/usersSlice';
+import { useNavigate } from 'react-router-dom';
+import { useAddNewPostMutation } from './postsSlice';
 
 export default function AddPostForm() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  // Select all users from the Redux store
+  const [addNewPost, { isLoading }] = useAddNewPostMutation();
   const users = useSelector(selectAllUsers);
 
-  // State to store form input values
-  const [values, setValues] = useState({ title: '', content: '', userId: '' });
-  const { title, content, userId } = values;
-  const [addRequestStatus, setAddRequestStatus] = useState('idle');
+  const navigate = useNavigate();
 
-  // Function to handle input changes
+  const [values, setValues] = useState({ title: '', body: '', userId: '' });
+  const { title, body, userId } = values;
+
   function handleChange(e) {
-    // Update the specific field (title, content, or userId) in the 'values' state
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
   }
 
-  // Determine if the form can be saved based on input values and request status
-  const canSave =
-    [title, content, userId].every(Boolean) && addRequestStatus === 'idle';
+  const canSave = [title, body, userId].every(Boolean) && !isLoading;
 
-  // Function to handle form submission
-  function handlePostSave(e) {
+  async function handlePostSave(e) {
     e.preventDefault();
 
     if (canSave) {
       try {
-        setAddRequestStatus('pending');
-        // Dispatch the 'postAdded' action with title, content, and userId as parameters
-        dispatch(addNewPost({ title, body: content, userId })).unwrap();
-
-        // Reset form fields to empty strings
-        setValues(
-          Object.fromEntries(Object.keys(values).map((key) => [key, '']))
-        );
+        await addNewPost({ title, body, userId }).unwrap();
+        setValues(Object.fromEntries(Object.keys(values).map((k) => [k, ''])));
         navigate('/');
       } catch (error) {
-        console.log('Failed to save the post', error.message);
+        console.log('Failed to save the post', error);
       }
-      setAddRequestStatus('idle');
     }
   }
 
@@ -69,7 +51,7 @@ export default function AddPostForm() {
           type="text"
           id="title"
           name="title"
-          value={values.title}
+          value={title}
           onChange={handleChange}
         />
         {/* Dropdown menu for choosing the author */}
@@ -77,23 +59,23 @@ export default function AddPostForm() {
         <select
           id="postAuthor"
           name="userId"
-          value={values.userId}
+          value={userId}
           onChange={handleChange}
         >
           <option value=""></option> {/* Empty option for no author selected */}
           {usersOptions} {/* Populate user options */}
         </select>
         {/* Input for Post Content */}
-        <label htmlFor="content">Post Content:</label>
+        <label htmlFor="body">Post Content:</label>
         <textarea
           type="text"
-          id="content"
-          name="content"
-          value={values.content}
+          id="body"
+          name="body"
+          value={body}
           onChange={handleChange}
         />
         {/* Submit Button */}
-        <button disabled={!canSave}>Save Post</button>{' '}
+        <button disabled={!canSave}>Save Post</button>
         {/* Disable if canSave is false */}
       </form>
     </section>

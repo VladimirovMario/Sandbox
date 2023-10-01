@@ -4,10 +4,10 @@ import ReactionButtons from './ReactionButtons';
 import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
-import { getPostById } from './postsSlice';
+import { selectById } from './postsSlice';
 
 export default function PostsExcerpt({ postId }) {
-  const post = useSelector((state) => getPostById(state, postId));
+  const post = useSelector((state) => selectById(state, postId));
   return (
     <article>
       <h2>{post.title}</h2>

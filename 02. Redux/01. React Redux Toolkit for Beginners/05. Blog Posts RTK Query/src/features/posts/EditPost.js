@@ -1,16 +1,20 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getPostById, updatePost, deletePost } from './postsSlice';
+import { useSelector } from 'react-redux';
+import { selectById } from './postsSlice';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import { selectAllUsers } from '../users/usersSlice';
 
+import { useUpdatePostMutation, useDeletePostMutation } from './postsSlice';
+
 export default function EditPost() {
   const { postId } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const post = useSelector((state) => getPostById(state, Number(postId)));
+  const [updatePost, { isLoading }] = useUpdatePostMutation();
+  const [deletePost] = useDeletePostMutation();
+
+  const post = useSelector((state) => selectById(state, Number(postId)));
   const users = useSelector(selectAllUsers);
 
   const [values, setValues] = useState({
@@ -19,7 +23,6 @@ export default function EditPost() {
     userId: post?.userId,
   });
   const { title, body, userId } = values;
-  const [requestStatus, setRequestStatus] = useState('idle');
 
   if (!post) {
     return (
@@ -33,35 +36,19 @@ export default function EditPost() {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
   }
 
-  const canSave =
-    [title, body, userId].every(Boolean) && requestStatus === 'idle';
+  const canSave = [title, body, userId].every(Boolean) && !isLoading;
 
-  function handlePostSave(e) {
+  async function handlePostSave(e) {
     e.preventDefault();
 
     if (canSave) {
       try {
-        setRequestStatus('pending');
+        await updatePost({ id: post.id, title, body, userId }).unwrap();
 
-        dispatch(
-          updatePost({
-            id: post.id,
-            title,
-            body,
-            userId,
-            reactions: post.reactions,
-          })
-        ).unwrap();
-
-        setValues(
-          Object.fromEntries(Object.keys(values).map((key) => [key, '']))
-        );
-
+        setValues(Object.fromEntries(Object.keys(values).map((k) => [k, ''])));
         navigate(`/post/${postId}`);
       } catch (error) {
         console.log('Failed to save the post', error.message);
-      } finally {
-        setRequestStatus('idle');
       }
     }
   }
@@ -73,19 +60,14 @@ export default function EditPost() {
     </option>
   ));
 
-  function handlePostDelete() {
+  async function handlePostDelete() {
     try {
-      setRequestStatus('pending');
-      dispatch(deletePost({ id: post.id })).unwrap();
+      await deletePost({ id: post.id }).unwrap();
 
-      setValues(
-        Object.fromEntries(Object.keys(values).map((key) => [key, '']))
-      );
+      setValues(Object.fromEntries(Object.keys(values).map((k) => [k, ''])));
       navigate('/');
     } catch (error) {
       console.log('Failed to delete the post', error);
-    } finally {
-      setRequestStatus('idle');
     }
   }
 

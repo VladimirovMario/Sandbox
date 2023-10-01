@@ -1,25 +1,24 @@
-// https://redux.js.org/tutorials/fundamentals/part-5-ui-react#reading-state-from-the-store-with-useselector
 import { useSelector } from 'react-redux';
-import { selectPostIds, getPostsStatus, getPostsError } from './postsSlice';
-
+import { selectIds } from './postsSlice';
+import { useGetPostsQuery } from './postsSlice';
 import PostsExcerpt from './PostsExcerpt';
 
 export default function PostsList() {
-  const orderedPostIds = useSelector(selectPostIds);
-  const postsStatus = useSelector(getPostsStatus);
-  const error = useSelector(getPostsError);
+  const { isLoading, isSuccess, isError, error } = useGetPostsQuery();
+
+  const orderedPostIds = useSelector(selectIds);
 
   let content = <></>;
 
-  if (postsStatus === 'loading') {
+  if (isLoading) {
     content = <p>Loading...</p>;
   }
-  if (postsStatus === 'succeeded') {
+  if (isSuccess) {
     content = orderedPostIds.map((postId) => (
       <PostsExcerpt key={postId} postId={postId} />
     ));
   }
-  if (postsStatus === 'failed') {
+  if (isError) {
     content = <p>{error}</p>;
   }
 

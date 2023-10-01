@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { getPostById } from './postsSlice';
+import { selectById } from './postsSlice';
 
 import PostAuthor from './PostAuthor';
 import TimeAgo from './TimeAgo';
@@ -9,7 +9,7 @@ import { Link, useParams } from 'react-router-dom';
 export default function SinglePost() {
   const { postId } = useParams();
 
-  const post = useSelector((state) => getPostById(state, Number(postId)));
+  const post = useSelector((state) => selectById(state, Number(postId)));
 
   if (!post) {
     return (
