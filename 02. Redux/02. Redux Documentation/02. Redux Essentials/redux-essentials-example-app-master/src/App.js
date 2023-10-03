@@ -27,7 +27,7 @@ function App() {
               </>
             )}
           />
-          <Route exact path="/posts/:postId" children={<PostPage />} />
+          <Route path="/posts/:postId" children={<PostPage />} />
           <Redirect to="/" />
         </Switch>
       </div>
