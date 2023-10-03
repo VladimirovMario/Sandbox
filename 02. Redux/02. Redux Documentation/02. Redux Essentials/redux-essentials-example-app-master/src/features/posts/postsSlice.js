@@ -1,4 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  // , current
+} from '@reduxjs/toolkit';
 
 const initialState = [
   { id: '1', title: 'First Post!', content: 'Hello!' },
@@ -8,7 +11,14 @@ const initialState = [
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {},
+  reducers: {
+    postAdded(state, action) {
+      // console.log('before', current(state));
+      state.push(action.payload);
+      // console.log('after', current(state));
+    },
+  },
 });
 
+export const { postAdded } = postsSlice.actions;
 export default postsSlice.reducer;
