@@ -10,6 +10,7 @@ import { PostsList } from './features/posts/PostsList';
 import { Navbar } from './app/Navbar';
 import { AddPostForm } from './features/posts/AddFormPost';
 import { PostPage } from './features/posts/PostPage';
+import { EditPostForm } from './features/posts/EditPostForm';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             )}
           />
           <Route path="/posts/:postId" children={<PostPage />} />
+          <Route path="/editPost/:postId" children={<EditPostForm />} />
           <Redirect to="/" />
         </Switch>
       </div>
