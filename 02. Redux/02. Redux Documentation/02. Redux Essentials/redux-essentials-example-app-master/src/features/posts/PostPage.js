@@ -20,12 +20,14 @@ export const PostPage = () => {
     <section>
       <article className="post">
         <h2>{post.title}</h2>
+        <div>
+          <PostAuthor userId={post.user} />
+          <TimeAgo timestamp={post.date} />
+        </div>
         <p className="post-content">{post.content}</p>
         <Link to={`/editPost/${post.id}`} className="button">
           Edit Post
         </Link>
-        <PostAuthor userId={post.user} />
-        <TimeAgo timestamp={post.date} />
       </article>
     </section>
   );
