@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { PostAuthor } from './PostAuthor';
+import { TimeAgo } from './TimeAgo';
 
 export const PostPage = () => {
   const { postId } = useParams();
@@ -24,6 +25,7 @@ export const PostPage = () => {
           Edit Post
         </Link>
         <PostAuthor userId={post.user} />
+        <TimeAgo timestamp={post.date} />
       </article>
     </section>
   );
