@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
+import { PostAuthor } from './PostAuthor';
 
 export const PostPage = () => {
   const { postId } = useParams();
@@ -22,6 +23,7 @@ export const PostPage = () => {
         <Link to={`/editPost/${post.id}`} className="button">
           Edit Post
         </Link>
+        <PostAuthor userId={post.user} />
       </article>
     </section>
   );
