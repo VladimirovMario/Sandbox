@@ -11,6 +11,8 @@ import { Navbar } from './app/Navbar';
 import { AddPostForm } from './features/posts/AddFormPost';
 import { PostPage } from './features/posts/PostPage';
 import { EditPostForm } from './features/posts/EditPostForm';
+import { UserList } from './features/users/UserList';
+import { UserPage } from './features/users/UserPage';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           />
           <Route path="/posts/:postId" children={<PostPage />} />
           <Route path="/editPost/:postId" children={<EditPostForm />} />
+          <Route exact path="/users" children={<UserList />} />
+          <Route path="/users/:userId" children={<UserPage />} />
           <Redirect to="/" />
         </Switch>
       </div>
