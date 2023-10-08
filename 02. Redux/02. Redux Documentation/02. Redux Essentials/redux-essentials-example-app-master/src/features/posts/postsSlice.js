@@ -1,4 +1,9 @@
-import { createSlice, nanoid, createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  nanoid,
+  createAsyncThunk,
+  createSelector,
+} from '@reduxjs/toolkit';
 import { client } from '../../api/client';
 
 const initialState = {
@@ -97,5 +102,12 @@ export const selectAllPosts = (state) => state.posts.posts;
 
 export const selectPostById = (state, postId) =>
   state.posts.posts.find((post) => post.id === postId);
+
+// Memoizing Selector Functions
+// https://redux.js.org/tutorials/essentials/part-6-performance-normalization#memoizing-selector-functions
+export const selectPostsByUser = createSelector(
+  [selectAllPosts, (state, userId) => userId],
+  (posts, userId) => posts.filter((post) => post.user === userId)
+);
 
 export { fetchPosts, addNewPost };
