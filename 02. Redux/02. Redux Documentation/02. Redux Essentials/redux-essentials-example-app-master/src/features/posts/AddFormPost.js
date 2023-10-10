@@ -1,16 +1,15 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { addNewPost } from './postsSlice';
 import { selectAllUsers } from '../users/usersSlice';
+import { useAddNewPostMutation } from '../api/apiSlice';
 
 export const AddPostForm = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [userId, setUserId] = useState('');
-  const [addRequestStatus, setAddRequestStatus] = useState('idle');
 
-  const dispatch = useDispatch();
+  const [addNewPost, { isLoading }] = useAddNewPostMutation();
 
   const users = useSelector(selectAllUsers);
 
@@ -18,28 +17,23 @@ export const AddPostForm = () => {
   const onContentChanged = (e) => setContent(e.target.value);
   const onAuthorChanged = (e) => setUserId(e.target.value);
 
-  const canSave =
-    [title, content, userId].every(Boolean) && addRequestStatus === 'idle';
+  const canSave = [title, content, userId].every(Boolean) && !isLoading;
 
   const handleSavePost = async (e) => {
     e.preventDefault();
 
     if (canSave) {
       try {
-        setAddRequestStatus('pending');
-        await dispatch(addNewPost({ title, content, user: userId }))
-          // Redux Toolkit adds a .unwrap() function to the returned Promise,
-          // which will return a new Promise that either has the actual action.payload
-          // value from a fulfilled action, or throws an error if it's the rejected action.
-          .unwrap();
+        // Redux Toolkit adds a .unwrap() function to the returned Promise,
+        // which will return a new Promise that either has the actual action.payload
+        // value from a fulfilled action, or throws an error if it's the rejected action.
+        await addNewPost({ title, content, user: userId }).unwrap();
 
         setTitle('');
         setContent('');
         setUserId('');
       } catch (error) {
         console.error('Failed to save the post: ', error);
-      } finally {
-        setAddRequestStatus('idle');
       }
     }
   };
