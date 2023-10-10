@@ -4,13 +4,17 @@ import { useGetPostsQuery } from '../api/apiSlice';
 import { Spinner } from '../../components/Spinner';
 import { PostExcerpt } from './PostExcerpt';
 
+import classnames from 'classnames';
+
 export const PostsList = () => {
   const {
     data: posts = [],
     isLoading,
+    isFetching,
     isSuccess,
     isError,
     error,
+    refetch,
   } = useGetPostsQuery();
 
   const sortedPosts = useMemo(
@@ -24,9 +28,15 @@ export const PostsList = () => {
     content = <Spinner text="Loading..." />;
   }
   if (isSuccess) {
-    content = sortedPosts.map((post) => (
+    const renderedPosts = sortedPosts.map((post) => (
       <PostExcerpt key={post.id} post={post} />
     ));
+
+    const containerClassName = classnames('posts-container', {
+      disabled: isFetching,
+    });
+
+    content = <div className={containerClassName}>{renderedPosts}</div>;
   }
   if (isError) {
     content = <div>{error.toString()}</div>;
@@ -35,6 +45,7 @@ export const PostsList = () => {
   return (
     <section className="posts-list">
       <h2>Posts</h2>
+      <button onClick={refetch}>Refetch Posts</button>
       {content}
     </section>
   );
