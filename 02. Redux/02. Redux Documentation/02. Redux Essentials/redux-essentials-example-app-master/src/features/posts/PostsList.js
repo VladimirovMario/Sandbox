@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useGetPostsQuery } from '../api/apiSlice';
 
 import { Spinner } from '../../components/Spinner';
@@ -5,12 +6,17 @@ import { PostExcerpt } from './PostExcerpt';
 
 export const PostsList = () => {
   const {
-    data: posts,
+    data: posts = [],
     isLoading,
     isSuccess,
     isError,
     error,
   } = useGetPostsQuery();
+
+  const sortedPosts = useMemo(
+    () => posts.slice().sort((a, b) => b.date.localeCompare(a.date)),
+    [posts]
+  );
 
   let content = <></>;
 
@@ -18,7 +24,9 @@ export const PostsList = () => {
     content = <Spinner text="Loading..." />;
   }
   if (isSuccess) {
-    content = posts.map((post) => <PostExcerpt key={post.id} post={post} />);
+    content = sortedPosts.map((post) => (
+      <PostExcerpt key={post.id} post={post} />
+    ));
   }
   if (isError) {
     content = <div>{error.toString()}</div>;
