@@ -1,27 +1,27 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
-import { postUpdated, selectPostById } from './postsSlice';
+import { useGetPostQuery, useEditPostMutation } from '../api/apiSlice';
 
 export const EditPostForm = () => {
   const { postId } = useParams();
-  const post = useSelector((state) => selectPostById(state, postId));
+
+  const { data: post } = useGetPostQuery(postId);
+  const [updatePost, { isLoading }] = useEditPostMutation();
 
   const [title, setTitle] = useState(post.title);
   const [content, setContent] = useState(post.content);
 
-  const dispatch = useDispatch();
   const history = useHistory();
 
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onContentChanged = (e) => setContent(e.target.value);
 
-  const onSavePostClicked = (e) => {
+  const onSavePostClicked = async (e) => {
     e.preventDefault();
 
-    if (title && content) {
-      dispatch(postUpdated({ id: postId, title, content }));
+    if (title && content && !isLoading) {
+      await updatePost({ id: postId, title, content });
       history.push(`/posts/${postId}`);
     }
   };
