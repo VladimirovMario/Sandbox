@@ -47,6 +47,9 @@ export default function todosReducer(state = initialState, action) {
         };
       });
     }
+    case 'todos/todoDeleted': {
+      return state.filter((todo) => todo.id !== action.payload);
+    }
     default:
       return state;
   }
