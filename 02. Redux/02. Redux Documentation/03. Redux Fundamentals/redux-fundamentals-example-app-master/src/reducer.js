@@ -55,6 +55,16 @@ export default function appReducer(state = initialState, action) {
           };
         }),
       };
+    case 'filters/statusFilterChanged':
+      return {
+        // Copy the whole state
+        ...state,
+        filters: {
+          // copy the other filter fields
+          ...state.filters,
+          status: action.payload,
+        },
+      };
     default:
       // If this reducer doesn't recognize the action type, or doesn't
       // care about this specific action, return the existing state unchanged
