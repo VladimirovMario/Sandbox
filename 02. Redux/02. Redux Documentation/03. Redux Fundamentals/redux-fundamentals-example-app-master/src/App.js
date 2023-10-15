@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <h2>Welcome to the Redux Fundamentals example app!</h2>
       </section>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
