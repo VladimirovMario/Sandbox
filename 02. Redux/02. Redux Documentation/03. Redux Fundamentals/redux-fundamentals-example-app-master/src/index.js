@@ -7,6 +7,11 @@ import './api/server';
 
 import store from './store';
 
+console.log('Dispatching action');
+store.dispatch({ type: 'todos/todoAdded', payload: 'Learn about actions' });
+console.log('Dispatch complete');
+
+/*
 // Log the initial state
 console.log('Initial state: ', store.getState());
 // {todos: [....], filters: {status, colors}}
@@ -39,7 +44,7 @@ unsubscribe();
 
 // Dispatch one more action to see what happens
 store.dispatch({ type: 'todos/todoAdded', payload: 'Try creating a store' });
-
+*/
 ReactDOM.render(
   <React.StrictMode>
     <App />
