@@ -1,8 +1,13 @@
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 import rootReducer from './reducer';
+import {
+  sayHiOnDispatch,
+  includeMeaningOfLife,
+} from './exampleAddons/enhancers';
 
-import { sayHiOnDispatch } from './exampleAddons/enhancers';
+const composedEnhancer = compose(sayHiOnDispatch, includeMeaningOfLife);
 
+/*
 let preloadedState;
 const persistedTodosString = localStorage.getItem('todos');
 
@@ -11,13 +16,11 @@ if (persistedTodosString) {
     todos: JSON.parse(persistedTodosString),
   };
 }
+*/
 
-const store = createStore(
-  rootReducer,
-  undefined,
-  sayHiOnDispatch,
-  preloadedState
-);
+// If you don't have any preloadedState to pass in,
+// you can pass the enhancer as the second argument instead:
+const store = createStore(rootReducer, composedEnhancer);
 export default store;
 
 /*
