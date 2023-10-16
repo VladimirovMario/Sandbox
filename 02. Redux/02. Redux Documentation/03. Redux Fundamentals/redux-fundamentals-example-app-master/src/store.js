@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducer';
-import { print1, print2, print3 } from './exampleAddons/middleware';
+import { loggerMiddleware } from './exampleAddons/loggerMiddleware';
 
-const middlewareEnhancer = applyMiddleware(print1, print2, print3);
+const middlewareEnhancer = applyMiddleware(loggerMiddleware);
 
 const store = createStore(rootReducer, middlewareEnhancer);
 
