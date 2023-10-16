@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { availableColors, capitalize } from '../filters/colors';
 import { StatusFilters } from '../filters/filtersSlice';
 
@@ -68,9 +69,11 @@ const ColorFilters = ({ value: colors, onChange }) => {
 };
 
 export default function Footer() {
-  const status = StatusFilters.All;
-  const colors = [];
-  const todosRemaining = 1;
+  const todosRemaining = useSelector(
+    (state) => state.todos.filter((todo) => !todo.completed).length
+  );
+
+  const { status, colors } = useSelector((state) => state.filters);
 
   const onStatusChange = (status) => {
     console.log('Status change: ', status);
