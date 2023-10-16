@@ -1,3 +1,4 @@
+// https://redux.js.org/tutorials/fundamentals/part-4-store#writing-custom-middleware
 export const print1 = (storeAPI) => (next) => (action) => {
   console.log('1');
   return next(action);
