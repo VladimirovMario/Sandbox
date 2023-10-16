@@ -1,4 +1,4 @@
-// import { createStore } from 'redux';
+import { createStore } from 'redux';
 import rootReducer from './reducer';
 
 let preloadedState;
@@ -13,6 +13,7 @@ if (persistedTodosString) {
 const store = createStore(rootReducer, preloadedState);
 export default store;
 
+/*
 // It might be helpful to take a peek inside a Redux store to see how it works.
 // Here's a miniature example of a working Redux store, in about 25 lines of code:
 // This small version of a Redux store works well enough that you could use it to
@@ -44,3 +45,4 @@ function createStore(reducer, preloadedState) {
 
   return { dispatch, subscribe, getState };
 }
+*/
