@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducer';
 import { loggerMiddleware } from './exampleAddons/loggerMiddleware';
 import { delayedMessageMiddleware } from './exampleAddons/delayedMessageMiddleware';
@@ -8,7 +9,13 @@ const middlewareEnhancer = applyMiddleware(
   delayedMessageMiddleware
 );
 
-const store = createStore(rootReducer, middlewareEnhancer);
+const composedEnhancer = composeWithDevTools(
+  // EXAMPLE: Add whatever middleware you actually want to use here
+  middlewareEnhancer
+  // other store enhancers if any
+);
+
+const store = createStore(rootReducer, composedEnhancer);
 
 export default store;
 
