@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { availableColors, capitalize } from '../filters/colors';
 import { StatusFilters } from '../filters/filtersSlice';
+import { colorFilterChanged } from '../filters/filtersSlice';
 
 const RemainingTodos = ({ count }) => {
   const suffix = count === 1 ? '' : 's';
@@ -91,10 +92,7 @@ export default function Footer() {
   };
 
   const onColorChange = (color, changeType) => {
-    dispatch({
-      type: 'filters/colorFilterChanged',
-      payload: { color, changeType },
-    });
+    dispatch(colorFilterChanged(color, changeType));
     // console.log('Color change: ', { color, changeType });
   };
 
