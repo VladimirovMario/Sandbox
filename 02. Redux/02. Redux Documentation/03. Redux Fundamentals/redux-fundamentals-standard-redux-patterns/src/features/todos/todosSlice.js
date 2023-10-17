@@ -19,6 +19,13 @@ export const selectFilteredTodos = createSelector(
   }
 );
 
+export const selectFilteredTodoIds = createSelector(
+  // Pass our other memoized selector as an input
+  selectFilteredTodos,
+  // And derive data in the output selector
+  (filteredTodos) => filteredTodos.map((todo) => todo.id)
+);
+
 export const selectTodoIds = createSelector(
   // First, pass one or more "input selector" functions:
   (state) => state.todos,
