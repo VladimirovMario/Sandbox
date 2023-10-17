@@ -10,12 +10,10 @@ export const todosLoaded = (todos) => {
 export const todoAdded = (todo) => ({ type: 'todos/todoAdded', payload: todo });
 
 // Thunk function
-export function fetchTodos() {
-  return async function fetchTodosThunk(dispatch, getState) {
-    const response = await client.get('/fakeApi/todos');
-    dispatch(todosLoaded(response.todos));
-  };
-}
+export const fetchTodos = () => async (dispatch, getState) => {
+  const response = await client.get('/fakeApi/todos');
+  dispatch(todosLoaded(response.todos));
+};
 
 // Write a synchronous outer function that receives the `text` parameter:
 export function saveNewTodo(text) {
