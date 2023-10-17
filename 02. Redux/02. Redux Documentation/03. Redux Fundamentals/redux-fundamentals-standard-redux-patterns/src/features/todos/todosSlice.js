@@ -1,5 +1,23 @@
 import { createSelector } from 'reselect';
 import { client } from '../../api/client';
+import { StatusFilters } from '../filters/filtersSlice';
+
+export const selectFilteredTodos = createSelector(
+  // First input selector: all todos
+  (state) => state.todos,
+  // Second input selector: current status filter
+  (state) => state.filters.status,
+  // Output selector: receives both values
+  (todos, status) => {
+    if (status === StatusFilters.All) {
+      return todos;
+    }
+
+    const completedStatus = status === StatusFilters.Completed;
+    // Return either active or completed todos based on filter
+    return todos.filter((todo) => todo.completed === completedStatus);
+  }
+);
 
 export const selectTodoIds = createSelector(
   // First, pass one or more "input selector" functions:
