@@ -1,16 +1,28 @@
-const initialState = [
-  // { id: 0, text: 'Learn React', completed: true },
-  // { id: 1, text: 'Learn Redux', completed: false, color: 'purple' },
-  // { id: 2, text: 'Build something fun!', completed: false, color: 'blue' },
-];
+import { client } from '../../api/client';
+
+const initialState = [];
 
 function nextTodoId(todos) {
   const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1);
   return maxId + 1;
 }
 
+// Thunk function
+export async function fetchTodos(dispatch, getState) {
+  const response = await client.get('/fakeApi/todos');
+  // const stateBefore = getState();
+  // console.log('Todos before dispatch: ', stateBefore.todos.length);
+  dispatch({ type: 'todos/todosLoaded', payload: response.todos });
+  // const stateAfter = getState();
+  // console.log('Todos after dispatch: ', stateAfter.todos.length);
+}
+
 export default function todosReducer(state = initialState, action) {
   switch (action.type) {
+    case 'todos/todosLoaded': {
+      // Replace the existing state entirely by returning the new value
+      return action.payload;
+    }
     case 'todos/todoAdded': {
       // Can return just the new todos array - no extra object around it
       return [
