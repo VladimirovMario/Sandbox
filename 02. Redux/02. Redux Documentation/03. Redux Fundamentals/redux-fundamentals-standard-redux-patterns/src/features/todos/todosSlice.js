@@ -1,11 +1,20 @@
 import { client } from '../../api/client';
 
+export const todosLoaded = (todos) => {
+  return {
+    type: 'todos/todosLoaded',
+    payload: todos,
+  };
+};
+
+export const todoAdded = (todo) => ({ type: 'todos/todoAdded', payload: todo });
+
 // Thunk function
 export async function fetchTodos(dispatch, getState) {
   const response = await client.get('/fakeApi/todos');
   // const stateBefore = getState();
   // console.log('Todos before dispatch: ', stateBefore.todos.length);
-  dispatch({ type: 'todos/todosLoaded', payload: response.todos });
+  dispatch(todosLoaded(response.todos));
   // const stateAfter = getState();
   // console.log('Todos after dispatch: ', stateAfter.todos.length);
 }
@@ -16,7 +25,7 @@ export function saveNewTodo(text) {
   return async function saveNewTodoThunk(dispatch, getState) {
     const initialTodo = { text };
     const response = await client.post('/fakeApi/todos', { todo: initialTodo });
-    dispatch({ type: 'todos/todoAdded', payload: response.todo });
+    dispatch(todoAdded(response.todo));
   };
 }
 
