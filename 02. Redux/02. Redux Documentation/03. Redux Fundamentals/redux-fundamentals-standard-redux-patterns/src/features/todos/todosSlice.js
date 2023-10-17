@@ -2,9 +2,15 @@ import { createSelector } from 'reselect';
 import { client } from '../../api/client';
 import { StatusFilters } from '../filters/filtersSlice';
 
+export const selectTodos = (state) => state.todos;
+
+export const selectTodoById = (state, todoId) => {
+  return selectTodos(state).find((todo) => todo.id === todoId);
+};
+
 export const selectFilteredTodos = createSelector(
   // First input selector: all todos
-  (state) => state.todos,
+  selectTodos,
   // Second input selector: all filter values
   (state) => state.filters,
   // Output selector: receives both values
@@ -35,7 +41,7 @@ export const selectFilteredTodoIds = createSelector(
 
 export const selectTodoIds = createSelector(
   // First, pass one or more "input selector" functions:
-  (state) => state.todos,
+  selectTodos,
   // Then, an "output selector" that receives all the input results as arguments
   // and returns a final result value
   (todos) => todos.map((todo) => todo.id)
