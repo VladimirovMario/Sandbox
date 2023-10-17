@@ -18,7 +18,14 @@ export default function TodoListItem({ id }) {
   };
 
   const handleColorChanged = (e) => {
-    // onColorChange(e.target.value);
+    dispatch({
+      type: 'todos/colorSelected',
+      payload: { color: e.target.value, todoId: todo.id },
+    });
+  };
+
+  const handleDelete = () => {
+    dispatch({ type: 'todos/todoDeleted', payload: todo.id });
   };
 
   const colorOptions = availableColors.map((color) => (
@@ -50,10 +57,7 @@ export default function TodoListItem({ id }) {
             <option value=""></option>
             {colorOptions}
           </select>
-          <button
-            className="destroy"
-            //  onClick={onDelete}
-          >
+          <button className="destroy" onClick={handleDelete}>
             <TimesSolid />
           </button>
         </div>
