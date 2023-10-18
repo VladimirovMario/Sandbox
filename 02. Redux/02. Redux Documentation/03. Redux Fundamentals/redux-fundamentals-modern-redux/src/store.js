@@ -1,15 +1,14 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunkMiddleware from 'redux-thunk';
-import rootReducer from './reducer';
-import { loggerMiddleware } from './exampleAddons/loggerMiddleware';
+import { configureStore } from '@reduxjs/toolkit';
 
-const composedEnhancer = composeWithDevTools(
-  // EXAMPLE: Add whatever middleware you actually want to use here
-  applyMiddleware(loggerMiddleware, thunkMiddleware)
-  // other store enhancers if any
-);
+import todosReducer from './features/todos/todosSlice';
+import filtersReducer from './features/filters/filtersSlice';
 
-const store = createStore(rootReducer, composedEnhancer);
+const store = configureStore({
+  // Define a top-level state field named `todos`, handled by `todosReducer`
+  reducer: {
+    todos: todosReducer,
+    filters: filtersReducer,
+  },
+});
 
 export default store;
