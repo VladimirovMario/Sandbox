@@ -4,7 +4,7 @@ import { StatusFilters } from '../filters/filtersSlice';
 
 const initialState = {
   status: 'idle',
-  entities: [],
+  entities: {},
 };
 
 export default function todosReducer(state = initialState, action) {
@@ -16,61 +16,77 @@ export default function todosReducer(state = initialState, action) {
       };
     }
     case 'todos/todosLoaded': {
+      const newEntities = {};
+      action.payload.forEach((todo) => {
+        newEntities[todo.id] = todo;
+      });
       return {
         ...state,
         status: 'idle',
-        entities: action.payload,
+        entities: newEntities,
       };
     }
     case 'todos/todoAdded': {
+      const todo = action.payload;
       // Return a new todos state array with the new todo item at the end
       return {
         ...state,
-        entities: [...state.entities, action.payload],
+        entities: { ...state.entities, [todo.id]: todo },
       };
     }
     case 'todos/todoToggled': {
+      const todoId = action.payload;
+      const todo = state.entities[todoId];
       return {
         ...state,
-        entities: state.entities.map((todo) => {
-          if (todo.id !== action.payload) {
-            return todo;
-          }
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }),
+        entities: {
+          ...state.entities,
+          [todoId]: { ...todo, completed: !todo.completed },
+        },
       };
     }
     case 'todos/colorSelected': {
       const { color, todoId } = action.payload;
+      const todo = state.entities[todoId];
       return {
         ...state,
-        entities: state.entities.map((todo) => {
-          if (todo.id !== todoId) {
-            return todo;
-          }
-          return { ...todo, color };
-        }),
+        entities: {
+          ...state.entities,
+          [todoId]: { ...todo, color },
+        },
       };
     }
     case 'todos/todoDeleted': {
+      const newEntities = { ...state.entities };
+      delete newEntities[action.payload];
       return {
         ...state,
-        entities: state.entities.filter((todo) => todo.id !== action.payload),
+        entities: newEntities,
       };
     }
     case 'todos/allCompleted': {
+      const newEntities = { ...state.entities };
+      Object.values(newEntities).forEach((todo) => {
+        newEntities[todo.id] = {
+          ...todo,
+          completed: true,
+        };
+      });
       return {
         ...state,
-        entities: state.entities.map((todo) => ({ ...todo, completed: true })),
+        entities: newEntities,
       };
     }
     case 'todos/completedCleared': {
+      const newEntities = { ...state.entities };
+      Object.values(newEntities).forEach((todo) => {
+        if (todo.completed) {
+          delete newEntities[todo.id];
+        }
+      });
       return {
         ...state,
-        entities: state.entities.filter((todo) => !todo.completed),
+        entities: newEntities,
       };
     }
     default:
@@ -78,7 +94,15 @@ export default function todosReducer(state = initialState, action) {
   }
 }
 
-export const selectTodos = (state) => state.todos.entities;
+const selectTodoEntities = (state) => state.todos.entities;
+
+export const selectTodos = createSelector(selectTodoEntities, (entities) =>
+  Object.values(entities)
+);
+
+export const selectTodoById = (state, todoId) => {
+  return selectTodoEntities(state)[todoId];
+};
 
 export const todosLoading = () => ({ type: 'todos/todosLoading' });
 
@@ -88,10 +112,6 @@ export const todosLoaded = (todos) => ({
 });
 
 export const todoAdded = (todo) => ({ type: 'todos/todoAdded', payload: todo });
-
-export const selectTodoById = (state, todoId) => {
-  return selectTodos(state).find((todo) => todo.id === todoId);
-};
 
 export const todoToggled = (todoId) => ({
   type: 'todos/todoToggled',
