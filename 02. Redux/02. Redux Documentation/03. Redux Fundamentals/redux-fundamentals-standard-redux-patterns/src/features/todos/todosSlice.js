@@ -47,6 +47,8 @@ export const selectTodoIds = createSelector(
   (todos) => todos.map((todo) => todo.id)
 );
 
+export const todosLoading = () => ({ type: 'todos/todosLoading' });
+
 export const todosLoaded = (todos) => {
   return {
     type: 'todos/todosLoaded',
@@ -58,6 +60,7 @@ export const todoAdded = (todo) => ({ type: 'todos/todoAdded', payload: todo });
 
 // Thunk function
 export const fetchTodos = () => async (dispatch, getState) => {
+  dispatch(todosLoading());
   const response = await client.get('/fakeApi/todos');
   dispatch(todosLoaded(response.todos));
 };
