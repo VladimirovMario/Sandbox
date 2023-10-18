@@ -13,7 +13,7 @@ export const fetchTodos = createAsyncThunk('todos/fetchTodos', async () => {
 
 export const saveNewTodo = createAsyncThunk(
   'todos/saveNewTodo',
-  async (text) => {
+  async (text, { getState, dispatch }) => {
     const initialTodo = { text };
     const response = await client.post('/fakeApi/todos', { todo: initialTodo });
     return response.todo;
@@ -65,7 +65,6 @@ const todosSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchTodos.fulfilled, (state, action) => {
-        console.log(action.payload);
         const newEntities = {};
         action.payload.forEach((todo) => {
           newEntities[todo.id] = todo;
