@@ -6,9 +6,9 @@ import App from './App';
 
 import './api/server';
 
-import configureStore from './configureStore';
+import configureAppStore from './store';
 
-const store = configureStore();
+const store = configureAppStore();
 
 const renderApp = () =>
   ReactDOM.render(
