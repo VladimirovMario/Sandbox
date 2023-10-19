@@ -1,5 +1,3 @@
-import { createStore } from 'redux';
-
 const round = (number) => Math.random(number * 100) / 100;
 
 const monitorReducerEnhancer =
