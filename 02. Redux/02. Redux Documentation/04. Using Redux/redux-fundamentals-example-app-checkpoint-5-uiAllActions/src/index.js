@@ -10,11 +10,17 @@ import configureStore from './configureStore';
 
 const store = configureStore();
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const renderApp = () =>
+  ReactDOM.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+
+if (process.env.NODE_ENV !== 'production' && module.hot) {
+  module.hot.accept('./App', renderApp);
+}
+renderApp();
