@@ -1,23 +1,19 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { hydrate } from 'react-dom';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import './index.css';
+import counterApp from './reducers';
 
-const container = document.getElementById('root');
-const root = createRoot(container);
+// Create Redux store with state injected by the server
+const store = createStore(counterApp, window.__PRELOADED_STATE__);
 
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+// Allow the passed state to be garbage-collected
+delete window.__PRELOADED_STATE__;
+
+hydrate(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
