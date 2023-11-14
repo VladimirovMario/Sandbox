@@ -24,8 +24,6 @@ async function register(tel, email, username, password) {
     hashedPassword: await bcrypt.hash(password, 10),
   });
 
-  console.log(user);
-
   return createToken(user);
 }
 
