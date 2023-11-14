@@ -5,7 +5,7 @@ const { getAll, createGame } = require('../services/gameService');
 
 const { parseError } = require('../util/parser');
 
-gameController.get('/', async (req, res) => {
+gameController.get('/', hasUser(), async (req, res) => {
   let items = [];
 
   try {
