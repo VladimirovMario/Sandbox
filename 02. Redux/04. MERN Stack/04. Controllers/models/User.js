@@ -1,5 +1,10 @@
 const { Schema, model } = require('mongoose');
 
+const collation = {
+  locale: 'en',
+  strength: 2,
+};
+
 const userSchema = new Schema(
   {
     username: {
@@ -21,9 +26,10 @@ const userSchema = new Schema(
       default: true,
     },
   },
-  {
-    timestamps,
-  }
+  { timestamps: true },
+  { collation: collation }
 );
 
-module.exports = model('User', userSchema);
+const User = model('User', userSchema);
+
+module.exports = User;
