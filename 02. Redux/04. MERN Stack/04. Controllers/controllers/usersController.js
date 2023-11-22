@@ -89,7 +89,7 @@ const updateUser = asyncHandler(async (req, res) => {
     .lean()
     .exec();
   // Allow updates to the original user
-  if ((existing && existing?._id.toString()) !== id) {
+  if (existing && existing?._id.toString() !== id) {
     return res.status(409).json({ message: 'Username already exists' });
   }
 
@@ -98,7 +98,7 @@ const updateUser = asyncHandler(async (req, res) => {
   user.active = active;
   if (password) {
     // Hash password
-    user.password = await bcrypt(password, 10);
+    user.password = await bcrypt.hash(password, 10);
   }
 
   const updatedUser = await user.save();
