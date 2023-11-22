@@ -48,6 +48,14 @@ const usersApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: (result, error, arg) => [{ type: 'User', id: arg.id }],
     }),
+    deleteUser: builder.mutation({
+      query: ({ id }) => ({
+        url: '/users',
+        method: 'PATCH',
+        body: { id },
+      }),
+      providesTags: (result, error, arg) => [{ type: 'User', id: arg.id }],
+    }),
   }),
 });
 
@@ -55,6 +63,7 @@ export const {
   useGetUsersQuery,
   useAddNewUserMutation,
   useUpdateUserMutation,
+  useDeleteUserMutation,
 } = usersApiSlice;
 
 // returns the query result object
