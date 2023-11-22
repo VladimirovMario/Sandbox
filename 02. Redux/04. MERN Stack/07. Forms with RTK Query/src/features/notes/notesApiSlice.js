@@ -16,7 +16,7 @@ const notesApiSlice = apiSlice.injectEndpoints({
         return response.status === 200 && !result.isError;
       },
       // Only for development
-      keepUnusedDataFor: 5,
+      // keepUnusedDataFor: 5,
       transformResponse: (responseData) => {
         const loadedNotes = responseData.map((note) => {
           note.id = note._id;
@@ -41,7 +41,7 @@ const notesApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: { ...initialNoteData },
       }),
-      providesTags: [{ type: 'Note', id: 'List' }],
+      invalidatesTags: [{ type: 'Note', id: 'List' }],
     }),
     updateNote: builder.mutation({
       query: (initialNoteData) => ({
@@ -49,7 +49,7 @@ const notesApiSlice = apiSlice.injectEndpoints({
         method: 'PATCH',
         body: { ...initialNoteData },
       }),
-      providesTags: (result, error, arg) => [{ type: 'Note', id: arg.id }],
+      invalidatesTags: (result, error, arg) => [{ type: 'Note', id: arg.id }],
     }),
     deleteNote: builder.mutation({
       query: ({ id }) => ({
@@ -57,7 +57,7 @@ const notesApiSlice = apiSlice.injectEndpoints({
         method: 'DELETE',
         body: { id },
       }),
-      providesTags: (result, error, arg) => [{ type: 'Note', id: arg.id }],
+      invalidatesTags: (result, error, arg) => [{ type: 'Note', id: arg.id }],
     }),
   }),
 });

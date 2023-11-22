@@ -13,7 +13,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
         return response.status === 200 && !result.isError;
       },
       // Only for development
-      keepUnusedDataFor: 5,
+      // keepUnusedDataFor: 5,
       transformResponse: (responseData) => {
         const loadedUsers = responseData.map((user) => {
           user.id = user._id;
@@ -38,7 +38,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: { ...initialUserData },
       }),
-      providesTags: [{ type: 'User', id: 'List' }],
+      invalidatesTags: [{ type: 'User', id: 'LIST' }],
     }),
     updateUser: builder.mutation({
       query: (initialUserData) => ({
@@ -46,7 +46,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
         method: 'PATCH',
         body: { ...initialUserData },
       }),
-      providesTags: (result, error, arg) => [{ type: 'User', id: arg.id }],
+      invalidatesTags: (result, error, arg) => [{ type: 'User', id: arg.id }],
     }),
     deleteUser: builder.mutation({
       query: ({ id }) => ({
@@ -54,7 +54,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
         method: 'DELETE',
         body: { id },
       }),
-      providesTags: (result, error, arg) => [{ type: 'User', id: arg.id }],
+      invalidatesTags: (result, error, arg) => [{ type: 'User', id: arg.id }],
     }),
   }),
 });
