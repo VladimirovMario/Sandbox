@@ -15,9 +15,9 @@ const UsersList = () => {
           error,
         };
       },
-      pollingInterval: 60000,
-      refetchOnFocus: true,
-      refetchOnMountOrArgChange: true,
+      // pollingInterval: 60000,
+      // refetchOnFocus: true,
+      // refetchOnMountOrArgChange: true,
     }
   );
   // https://redux-toolkit.js.org/rtk-query/usage/queries#query-hook-options
