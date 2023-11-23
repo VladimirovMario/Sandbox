@@ -2,14 +2,28 @@ import User from './User';
 import { useGetUsersQuery } from './usersApiSlice';
 
 const UsersList = () => {
-  const {
-    // { ids: (4) […], entities: {…} }
-    data: users = {},
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-  } = useGetUsersQuery();
+  const { usersIds, isLoading, isSuccess, isError, error } = useGetUsersQuery(
+    undefined,
+    {
+      selectFromResult: ({ data, isLoading, isSuccess, isError, error }) => {
+        const initialUserIds = [];
+        return {
+          usersIds: data?.ids ?? initialUserIds,
+          isLoading,
+          isSuccess,
+          isError,
+          error,
+        };
+      },
+      pollingInterval: 60000,
+      refetchOnFocus: true,
+      refetchOnMountOrArgChange: true,
+    }
+  );
+  // https://redux-toolkit.js.org/rtk-query/usage/queries#query-hook-options
+  // https://redux-toolkit.js.org/rtk-query/usage/queries#selecting-data-from-a-query-result
+  // https://redux-toolkit.js.org/rtk-query/usage/cache-behavior#re-fetching-on-window-focus-with-refetchonfocus
+  // https://redux-toolkit.js.org/rtk-query/usage/cache-behavior#encouraging-re-fetching-with-refetchonmountorargchange
 
   let content = <></>;
 
@@ -22,11 +36,9 @@ const UsersList = () => {
   }
 
   if (isSuccess) {
-    const { ids } = users;
-
-    const tableContent = ids.length
-      ? ids.map((userId) => <User key={userId} userId={userId} />)
-      : null;
+    const tableContent = usersIds.map((userId) => (
+      <User key={userId} userId={userId} />
+    ));
 
     content = (
       <table className="table table--users">
