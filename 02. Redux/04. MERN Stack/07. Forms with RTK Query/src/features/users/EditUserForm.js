@@ -62,12 +62,10 @@ const EditUserForm = ({ user }) => {
     } else {
       await updateUser({ id: user.id, username, roles, active });
     }
-    navigate('/dash/users');
   };
 
   const onDeleteUserClicked = async () => {
     await deleteUser({ id: user.id });
-    navigate('/dash/users');
   };
 
   const options = Object.values(ROLES).map((role) => {
