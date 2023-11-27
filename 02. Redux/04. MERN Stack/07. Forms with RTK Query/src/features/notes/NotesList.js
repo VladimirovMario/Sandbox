@@ -8,7 +8,15 @@ const NotesList = () => {
     isSuccess,
     isError,
     error,
-  } = useGetNotesQuery();
+  } = useGetNotesQuery(undefined, {
+    pollingInterval: 15000,
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+  });
+  // https://redux-toolkit.js.org/rtk-query/usage/queries#query-hook-options
+  // https://redux-toolkit.js.org/rtk-query/usage/queries#selecting-data-from-a-query-result
+  // https://redux-toolkit.js.org/rtk-query/usage/cache-behavior#re-fetching-on-window-focus-with-refetchonfocus
+  // https://redux-toolkit.js.org/rtk-query/usage/cache-behavior#encouraging-re-fetching-with-refetchonmountorargchange
 
   let content = <></>;
 
