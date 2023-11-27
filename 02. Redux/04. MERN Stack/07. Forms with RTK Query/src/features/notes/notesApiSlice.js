@@ -41,7 +41,7 @@ export const notesApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: { ...initialNoteData },
       }),
-      invalidatesTags: [{ type: 'Note', id: 'List' }],
+      invalidatesTags: [{ type: 'Note', id: 'LIST' }],
     }),
     updateNote: builder.mutation({
       query: (initialNoteData) => ({
