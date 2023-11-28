@@ -9,6 +9,7 @@ const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
 const connectDB = require('./config/dbConn');
 const mongoose = require('mongoose');
+const verifyJWT = require('./middleware/verifyJWT');
 
 const port = process.env.PORT || 3300;
 
@@ -26,7 +27,8 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/root'));
 app.use('/auth', require('./routes/authRoutes'));
-app.use('/users', require('./routes/userRoutes'));
+// Applying authorization to all users routes
+app.use('/users', verifyJWT, require('./routes/userRoutes'));
 app.use('/notes', require('./routes/noteRoutes'));
 
 app.all('*', (req, res) => {
