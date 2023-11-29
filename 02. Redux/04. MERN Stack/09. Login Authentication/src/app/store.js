@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { apiSlice } from './api/apiSlice';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import authReducer from '../features/auth/authSlice';
 
 // console.log(process.env.NODE_ENV);
 
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
+    auth: authReducer,
   },
   middleware: (gDM) => gDM().concat(apiSlice.middleware),
   devTools: process.env.NODE_ENV === 'development',
