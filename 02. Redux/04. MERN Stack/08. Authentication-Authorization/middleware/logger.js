@@ -3,6 +3,7 @@ const { v4: uuid } = require('uuid');
 const fs = require('fs');
 const fsPromises = require('fs').promises;
 const path = require('path');
+const allowedOrigins = require('../config/allowedOrigins');
 
 const logEvents = async (message, logFileName) => {
   const dateTime = format(new Date(), 'yyyyMMdd\tHH:mm:ss');
@@ -23,11 +24,13 @@ const logEvents = async (message, logFileName) => {
 };
 
 const logger = (req, res, next) => {
-  // // Todo make this conditional
-  logEvents(`${req.method}\t${req.url}\t${req.headers.origin}`, 'reqLog.log');
-  // // Expected output in log file
-  // // 20231115	15:53:51	fc52e050-056c-46a5-9347-8e37a92f270b	GET	/	undefined
-  // // 20231115	15:53:51	83183666-8975-414e-9515-07e51a550159	GET	/css/style.css	undefined
+  if (allowedOrigins.includes(req.headers.origin) == false) {
+    logEvents(`${req.method}\t${req.url}\t${req.headers.origin}`, 'reqLog.log');
+  }
+  // Expected output in log file
+  // 20231130	18:10:20	416ada9a-080c-4e8f-a379-bc9f79563046	OPTIONS	/auth/refresh	http://localhost:3000
+  // 20231130	18:10:20	df9ae2cf-7365-41cc-9682-4b11deb9f286	GET	/auth/refresh	http://localhost:3000
+  // 20231130	18:10:21	9489815c-8263-421a-808e-be0943264bb3	OPTIONS	/notes	http://localhost:3000
 
   console.log(`<< ${req.method} ${req.path}`);
   next();
