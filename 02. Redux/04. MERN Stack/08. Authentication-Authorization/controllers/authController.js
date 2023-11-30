@@ -81,7 +81,9 @@ const refresh = asyncHandler(async (req, res) => {
         return res.status(403).json({ message: 'Forbidden' });
       }
 
-      const foundUser = await User.findOne({ username: decoded.username });
+      const foundUser = await User.findOne({
+        username: decoded.username,
+      }).exec();
 
       if (!foundUser) {
         return res.status(401).json({ message: 'Unauthorized' });
