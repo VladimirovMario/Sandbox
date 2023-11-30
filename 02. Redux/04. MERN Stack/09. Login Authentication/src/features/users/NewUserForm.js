@@ -95,7 +95,7 @@ const NewUserForm = () => {
           Username: <span className="nowrap">[3-20 letters]</span>
         </label>
         <input
-          className={`form_input ${validUserClass}`}
+          className={`form__input ${validUserClass}`}
           id="username"
           name="username"
           type="text"
@@ -109,7 +109,7 @@ const NewUserForm = () => {
           Password: <span className="nowrap">[4-12 chars incl. !@#$%]</span>
         </label>
         <input
-          className={`form_input ${validPwdClass}`}
+          className={`form__input ${validPwdClass}`}
           id="password"
           name="password"
           type="password"
