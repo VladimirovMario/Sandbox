@@ -22,7 +22,10 @@ const DashHeader = () => {
     }
   }, [isSuccess, navigate]);
 
-  const onLogOutClicked = () => sendLogout();
+  const onLogOutClicked = () => {
+    sendLogout();
+    navigate('/');
+  };
 
   if (isLoading) {
     return <p>Loading...</p>;
