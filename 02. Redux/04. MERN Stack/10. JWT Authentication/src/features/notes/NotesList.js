@@ -1,7 +1,12 @@
+import { useEffect, useState } from 'react';
 import Note from './Note';
 import { useGetNotesQuery } from './notesApiSlice';
 
 const NotesList = () => {
+  // State to track token validity
+  const [isTokenValid, setIsTokenValid] = useState(true);
+
+  // Fetch notes data using RTK Query
   const {
     data: notes = {},
     isLoading,
@@ -9,15 +14,24 @@ const NotesList = () => {
     isError,
     error,
   } = useGetNotesQuery(undefined, {
-    pollingInterval: 15000,
-    refetchOnFocus: true,
-    refetchOnMountOrArgChange: true,
+    // Polling interval based on token validity
+    pollingInterval: isTokenValid ? 15000 : 0,
+    refetchOnFocus: isTokenValid,
+    refetchOnMountOrArgChange: isTokenValid,
   });
   // https://redux-toolkit.js.org/rtk-query/usage/queries#query-hook-options
   // https://redux-toolkit.js.org/rtk-query/usage/queries#selecting-data-from-a-query-result
   // https://redux-toolkit.js.org/rtk-query/usage/cache-behavior#re-fetching-on-window-focus-with-refetchonfocus
   // https://redux-toolkit.js.org/rtk-query/usage/cache-behavior#encouraging-re-fetching-with-refetchonmountorargchange
 
+  // Update token validity based on query success
+  useEffect(() => {
+    if (isTokenValid !== isSuccess) {
+      setIsTokenValid(isSuccess);
+    }
+  }, [isTokenValid, isSuccess]);
+
+  // Content rendering based on loading, success, and error states
   let content = <></>;
 
   if (isLoading) {
@@ -29,6 +43,7 @@ const NotesList = () => {
   }
 
   if (isSuccess) {
+    // Render table with note data if the query is successful
     const { ids } = notes;
 
     const tableContent = ids?.length

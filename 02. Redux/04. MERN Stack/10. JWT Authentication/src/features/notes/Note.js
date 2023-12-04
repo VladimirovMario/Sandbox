@@ -4,9 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 import { selectNoteById } from './notesApiSlice';
+import { memo } from 'react';
 
-const Note = ({ noteId }) => {
+const Note = memo(function Note({ noteId }) {
+  // Navigation hook for redirecting to note edit page
   const navigate = useNavigate();
+
+  // Select note data from Redux store using noteId
   const note = useSelector((state) => selectNoteById(state, noteId));
 
   if (!note) {
@@ -46,6 +50,6 @@ const Note = ({ noteId }) => {
       </td>
     </tr>
   );
-};
+});
 
 export default Note;
