@@ -18,11 +18,21 @@ export const authApiSlice = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           // Wait for the logout request to complete successfully
-          const data = await queryFulfilled;
-          console.log(data);
+          // const data =
+          await queryFulfilled;
+          // console.log(data);
+          // Object { data: {…}, meta: {…} }
+          // data: Object { message: "Cookie cleared" }
+          // meta: Object { request: Request, response: Response }​​
+          // request: Request { method: "POST", url: "http://localhost:3300/auth/logout", referrer: "about:client", … }
+          // response: Response { type: "cors", url: "http://localhost:3300/auth/logout", redirected: false, … }
 
           // Dispatch logout action to update authentication state
           dispatch(logOut());
+
+          // setTimeout(() => {
+          //   dispatch(apiSlice.util.resetApiState());
+          // }, 1000);
 
           // Manually reset the API state for a clean state
           /*
