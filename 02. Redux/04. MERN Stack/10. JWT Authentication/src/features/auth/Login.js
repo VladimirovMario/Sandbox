@@ -5,12 +5,15 @@ import { useDispatch } from 'react-redux';
 import { setCredentials } from './authSlice';
 import { useLoginMutation } from './authApiSlice';
 
+import usePersist from '../../hooks/usePersist';
+
 const Login = () => {
   const userRef = useRef(null);
   const errRef = useRef(null);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('');
+  const [persist, setPersist] = usePersist();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,12 +30,14 @@ const Login = () => {
 
   const handleUsernameInput = (e) => setUsername(e.target.value);
   const handlePasswordInput = (e) => setPassword(e.target.value);
+  const handlePersistToggle = () => setPersist((prev) => !prev);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const { accessToken } = await login({ username, password }).unwrap();
+
       dispatch(setCredentials({ accessToken }));
       setUsername('');
       setPassword('');
@@ -93,6 +98,17 @@ const Login = () => {
           />
 
           <button className="form__submit-button">Sign In</button>
+
+          <label htmlFor="persist" className="form__persist">
+            <input
+              type="checkbox"
+              className="form__checkbox"
+              id="persist"
+              checked={persist}
+              onChange={handlePersistToggle}
+            />
+            Trust this device
+          </label>
         </form>
       </main>
       <footer>
