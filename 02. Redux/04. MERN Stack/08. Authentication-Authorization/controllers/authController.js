@@ -38,8 +38,8 @@ const login = asyncHandler(async (req, res) => {
       },
     },
     accessTokenSecret,
-    { expiresIn: '10s' }
-    // { expiresIn: '15m' }
+    // { expiresIn: '10s' }
+    { expiresIn: '15m' }
   );
 
   const refreshToken = jwt.sign(
@@ -47,8 +47,8 @@ const login = asyncHandler(async (req, res) => {
       username: foundUser.username,
     },
     refreshTokenSecret,
-    { expiresIn: '25s' }
-    // { expiresIn: '7d' }
+    // { expiresIn: '25s' }
+    { expiresIn: '7d' }
   );
 
   // Create secure cookie with refresh token
@@ -99,8 +99,8 @@ const refresh = asyncHandler(async (req, res) => {
           },
         },
         accessTokenSecret,
-        { expiresIn: '20s' }
-        // { expiresIn: '15m' }
+        // { expiresIn: '20s' }
+        { expiresIn: '15m' }
       );
 
       res.json({ accessToken });
