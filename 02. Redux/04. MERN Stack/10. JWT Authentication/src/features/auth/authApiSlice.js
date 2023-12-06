@@ -1,5 +1,5 @@
 import { apiSlice } from '../../app/api/apiSlice';
-import { logOut } from './authSlice';
+import { logOut, setCredentials } from './authSlice';
 
 export const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -62,6 +62,26 @@ export const authApiSlice = apiSlice.injectEndpoints({
         url: '/auth/refresh',
         method: 'GET',
       }),
+      // onQueryStarted is triggered when the refresh query is initiated
+      // https://redux-toolkit.js.org/rtk-query/api/createApi#onquerystarted
+      async onQueryStarted(
+        arg,
+        { dispatch, getState, extra, requestId, queryFulfilled, getCacheEntry }
+      ) {
+        try {
+          // Wait for the refresh request to complete successfully
+          const { data } = await queryFulfilled;
+
+          // Extract the new access token from the response data
+          const { accessToken } = data;
+
+          // Dispatch action to update the user's credentials
+          dispatch(setCredentials({ accessToken }));
+        } catch (error) {
+          // Handle the error appropriately, e.g., display a user-friendly message.
+          console.log(error);
+        }
+      },
     }),
   }),
 });
