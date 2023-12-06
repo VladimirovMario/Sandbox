@@ -6,7 +6,7 @@ import { usersApiSlice } from '../users/usersApiSlice';
 
 const Prefetch = () => {
   useEffect(() => {
-    console.log('subscribing');
+    // console.log('subscribing');
 
     // https://redux-toolkit.js.org/rtk-query/api/created-api/endpoints#description
     // Add a subscription
@@ -14,7 +14,7 @@ const Prefetch = () => {
     const users = store.dispatch(usersApiSlice.endpoints.getUsers.initiate());
 
     return () => {
-      console.log('unsubscribe');
+      // console.log('unsubscribe');
       // The `unsubscribe` callback to be called in the `useEffect` cleanup step
       notes.unsubscribe();
       users.unsubscribe();
