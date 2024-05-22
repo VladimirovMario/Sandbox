@@ -1,0 +1,35 @@
+.App {
+    text-align: center;
+}
+
+.App-header {
+    background-color: #282c34;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+h3 {
+    margin: 0;
+}
+
+article {
+    padding: 24px;
+}
+
+.hover-article {
+    border: 0.2rem solid #fcd403;
+    border-radius: 6px;
+}

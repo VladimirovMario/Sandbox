@@ -1,0 +1,90 @@
+.children-container {
+    position: relative;
+}
+
+.children-container:hover {
+    cursor: pointer;
+}
+
+.children-container:hover .top-start,
+.children-container:hover .top,
+.children-container:hover .top-end {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.top-start,
+.top,
+.top-end {
+    margin: 0;
+    position: absolute;
+    text-wrap: nowrap;
+    box-sizing: border-box;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 10;
+}
+
+.top::before,
+.top-start::before,
+.top-end::before {
+    content: '';
+    position: absolute;
+    border-width: 15px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+    border-bottom: 16px solid #c7cfe2;
+}
+
+.top::before {
+    top: -60%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.top-start::before {
+    top: -60%;
+    left: 15%;
+    transform: translateX(-10%);
+}
+
+.top-end::before {
+    top: -60%;
+    right: 15%;
+    transform: translateX(-10%);
+}
+
+/* https://react-tooltip.com/docs/examples/styling */
+/* https://blog.replaybird.com/css-tooltip-examples/ */
+
+/* tooltip triangle on the top of an element in css  */
+/* https://gist.github.com/Quinten/5720298 */
+/* #element:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-bottom: 16px solid #fff;
+    top: -15px;
+    left: 27px;
+    z-index: 5;
+  }
+  
+  #element:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-bottom: 16px solid #bbb;
+    top: -16px;
+    left: 27px;
+  } */
