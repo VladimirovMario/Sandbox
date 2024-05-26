@@ -103,6 +103,8 @@ This example project is already set up with all dependencies installed. Follow t
 
 This will launch the WebKit browser and run the tests on your React application.
 
+![Screenshot 2024-05-26 162051](https://github.com/VladimirovMario/Sandbox/assets/103949296/c4d9d680-5bf6-492a-8855-4664c58dac93)
+
 ## Additional Resources
 
 - [Playwright Documentation](https://playwright.dev/)
