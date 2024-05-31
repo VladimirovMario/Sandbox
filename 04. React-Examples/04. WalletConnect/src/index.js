@@ -1,20 +1,20 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { ContextProvider } from "./walletConnect/walletConfiguration";
-import { WalletContextProvider } from "./context/WalletContext";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { ContextProvider } from './walletConnect/walletConfiguration';
+import { WalletContextProvider } from './context/WalletContext';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-  <ContextProvider>
-      <WalletContextProvider>
-          <App />
-      </WalletContextProvider>
-  </ContextProvider>
-</React.StrictMode>
+    <React.StrictMode>
+        <ContextProvider>
+            <WalletContextProvider>
+                <App />
+            </WalletContextProvider>
+        </ContextProvider>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

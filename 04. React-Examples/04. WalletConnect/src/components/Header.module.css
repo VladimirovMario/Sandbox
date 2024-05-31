@@ -20,10 +20,10 @@
 }
 
 .nav-actions li:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
-.nav-actions a{
+.nav-actions a {
     text-decoration: none;
     color: white;
 }
