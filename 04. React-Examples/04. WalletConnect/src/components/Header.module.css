@@ -1,0 +1,29 @@
+.header-nav {
+    display: flex;
+    background-color: purple;
+    padding: 12px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    width: 100%;
+    margin: 0;
+}
+
+.nav-actions li {
+    list-style-type: none;
+    text-transform: uppercase;
+    padding: 6px 8px;
+}
+
+.nav-actions li:hover {
+  cursor: pointer;
+}
+
+.nav-actions a{
+    text-decoration: none;
+    color: white;
+}

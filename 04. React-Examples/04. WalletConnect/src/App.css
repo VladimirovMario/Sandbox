@@ -1,0 +1,16 @@
+.main-section {
+    height: 100vh;
+}
+
+.home-section,
+.about-section {
+    max-width: 1028px;
+    padding: 32px;
+}
+
+.home-section article,
+.about-section article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
