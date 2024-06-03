@@ -8,7 +8,12 @@ import { injected, coinbaseWallet } from 'wagmi/connectors';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // 0. Setup queryClient
-const queryClient = new QueryClient();
+let queryClient;
+try {
+    queryClient = new QueryClient();
+} catch (error) {
+    console.error('Error setting up queryClient: ', error);
+}
 
 // 1. Get projectId at https://cloud.walletconnect.com
 const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID;
@@ -37,12 +42,16 @@ const config = createConfig({
 });
 
 // 3. Create modal
-createWeb3Modal({
-    wagmiConfig: config,
-    projectId,
-    enableAnalytics: true, // Optional - defaults to your Cloud configuration
-    enableOnramp: true, // Optional - false as default
-});
+try {
+    createWeb3Modal({
+        wagmiConfig: config,
+        projectId,
+        enableAnalytics: true, // Optional - defaults to your Cloud configuration
+        enableOnramp: true, // Optional - false as default
+    });
+} catch (error) {
+    console.error('Error creating Web3Modal: ', error);
+}
 
 export function ContextProvider({ children }) {
     return (
