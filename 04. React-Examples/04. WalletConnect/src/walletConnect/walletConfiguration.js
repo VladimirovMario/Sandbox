@@ -45,7 +45,11 @@ const config = createConfig({
         ]),
     },
     connectors: [
-        walletConnect({ projectId }),
+        walletConnect({
+            projectId,
+            metadata,
+            relayUrl: 'wss://relay.walletconnect.org',
+        }),
         injected({ shimDisconnect: true }),
         coinbaseWallet({
             appName: metadata.name,
