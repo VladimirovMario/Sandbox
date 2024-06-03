@@ -3,17 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ContextProvider } from './walletConnect/walletConfiguration';
+import { Web3ModalProvider } from './walletConnect/walletConfiguration';
 import { WalletContextProvider } from './context/WalletContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <ContextProvider>
+        <Web3ModalProvider>
             <WalletContextProvider>
                 <App />
             </WalletContextProvider>
-        </ContextProvider>
+        </Web3ModalProvider>
     </React.StrictMode>
 );
 

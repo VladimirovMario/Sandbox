@@ -53,7 +53,7 @@ try {
     console.error('Error creating Web3Modal: ', error);
 }
 
-export function ContextProvider({ children }) {
+export function Web3ModalProvider({ children }) {
     return (
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
