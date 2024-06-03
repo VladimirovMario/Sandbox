@@ -25,7 +25,7 @@
 .connector-container {
     border: 1px solid lightgray;
     padding: 24px 12px;
-    border-radius:36px;
+    border-radius: 36px;
     min-width: 340px;
 }
 
@@ -55,4 +55,12 @@
     cursor: not-allowed;
     background-color: lightgrey;
     color: white;
+}
+
+.connect-address {
+    margin-bottom: 24px;
+}
+.btn.disconnect {
+    margin: 0 auto;
+    display: block;
 }

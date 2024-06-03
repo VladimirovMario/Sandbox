@@ -4,7 +4,7 @@ export default function WalletConnectButton() {
     const { open } = useWeb3Modal();
     return (
         <>
-            <button onClick={() => open()}>Open Connect Modal</button>
+            <button className='btn' onClick={() => open()}>Open Connect Modal</button>
         </>
     );
 }
