@@ -32,7 +32,7 @@ const config = createConfig({
         [polygon.id]: http(),
     },
     connectors: [
-        walletConnect({ projectId, metadata, showQrModal: false }),
+        walletConnect({ projectId }),
         injected({ shimDisconnect: true }),
         coinbaseWallet({
             appName: metadata.name,
