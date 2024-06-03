@@ -1,7 +1,13 @@
 import { createWeb3Modal } from '@web3modal/wagmi/react';
 import { walletConnect } from 'wagmi/connectors';
 
-import { http, createConfig, WagmiProvider } from 'wagmi';
+import {
+    http,
+    createConfig,
+    WagmiProvider,
+    fallback,
+    createStorage,
+} from 'wagmi';
 import { polygon } from 'wagmi/chains';
 import { injected, coinbaseWallet } from 'wagmi/connectors';
 
@@ -28,8 +34,15 @@ const metadata = {
 
 const config = createConfig({
     chains: [polygon],
+    storage: createStorage({
+        key: 'localStorage',
+        storage: window.localStorage,
+    }),
     transports: {
-        [polygon.id]: http(),
+        [polygon.id]: fallback([
+            http('https://polygon-rpc.com'),
+            http(process.env.REACT_APP_INFURA_URL),
+        ]),
     },
     connectors: [
         walletConnect({ projectId }),
