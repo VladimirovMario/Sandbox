@@ -22,7 +22,7 @@ const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID;
 const metadata = {
     name: 'Web3Modal',
     description: 'Web3Modal Example',
-    url: 'https://web3modal.com', // origin must match your domain & subdomain
+    url: process.env.REACT_APP_HOST, // origin must match your domain & subdomain
     icons: ['https://avatars.githubusercontent.com/u/37784886'],
 };
 
