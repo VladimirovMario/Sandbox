@@ -50,3 +50,9 @@
     border: 1px solid purple;
     border-radius: 8px;
 }
+
+.btn:disabled {
+    cursor: not-allowed;
+    background-color: lightgrey;
+    color: white;
+}
