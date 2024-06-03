@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useConnect } from 'wagmi';
 
 export default function WalletOptions() {
@@ -8,15 +9,39 @@ export default function WalletOptions() {
             <h3>Our connectors</h3>
             <div className="connector-list">
                 {connectors.map((connector) => (
-                    <button
-                        className="btn"
+                    <WalletOption
                         key={connector.uid}
+                        connector={connector}
                         onClick={() => connect({ connector })}
-                    >
-                        {connector.name}
-                    </button>
+                    />
                 ))}
             </div>
         </div>
+    );
+}
+
+function WalletOption({ connector, onClick }) {
+    const [ready, setReady] = useState(false);
+
+    useEffect(() => {
+        connector
+            .getProvider()
+            .then((provider) => {
+                setReady(!!provider);
+            })
+            .catch((err) => {
+                console.error('Error getting provider' + err);
+            });
+    }, [connector]);
+
+    return (
+        <button
+            disabled={!ready}
+            onClick={onClick}
+            className="btn"
+            key={connector.uid}
+        >
+            {connector.name}
+        </button>
     );
 }
