@@ -70,7 +70,7 @@ try {
     console.error('Error creating Web3Modal: ', error);
 }
 
-export function Web3ModalProvider({ children }) {
+function Web3ModalProvider({ children }) {
     return (
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
@@ -79,3 +79,5 @@ export function Web3ModalProvider({ children }) {
         </WagmiProvider>
     );
 }
+
+export { config, Web3ModalProvider };
