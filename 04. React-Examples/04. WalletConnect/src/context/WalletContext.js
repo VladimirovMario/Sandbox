@@ -6,11 +6,33 @@ const WalletContext = createContext(null);
 
 function WalletContextProvider({ children }) {
     // Config to use instead of retrieving from the from nearest WagmiProvider.
-    const { address, chainId, isConnected, isDisconnected } = useAccount({
+    const {
+        address,
+        addresses,
+        chain,
+        chainId,
+        connector,
+        isConnecting,
+        isReconnecting,
+        isConnected,
+        isDisconnected,
+        status,
+    } = useAccount({
         config,
     });
 
-    const initialValues = { address, chainId, isConnected, isDisconnected };
+    const initialValues = {
+        address,
+        addresses,
+        chain,
+        chainId,
+        connector,
+        isConnecting,
+        isReconnecting,
+        isConnected,
+        isDisconnected,
+        status,
+    };
 
     return (
         <WalletContext.Provider value={initialValues}>
