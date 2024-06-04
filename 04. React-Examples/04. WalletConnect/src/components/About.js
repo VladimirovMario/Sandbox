@@ -13,6 +13,7 @@ export default function About() {
         isConnected,
         isDisconnected,
         status,
+        openWeb3Modal,
     } = useWalletContext();
 
     let content = <></>;
@@ -20,6 +21,7 @@ export default function About() {
     if (isConnecting) {
         content = <p className="centered-text">Waiting for connection...</p>;
     } else if (isDisconnected) {
+        openWeb3Modal();
         content = <p className="centered-text">Please connect your wallet</p>;
     } else {
         content = <p className="centered-text">Connected</p>;

@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react';
 import { useAccount } from 'wagmi';
 import { config } from '../walletConnect/walletConfiguration';
+import { useWeb3Modal } from '@web3modal/wagmi/react';
 
 const WalletContext = createContext(null);
 
@@ -20,6 +21,19 @@ function WalletContextProvider({ children }) {
     } = useAccount({
         config,
     });
+    const { open } = useWeb3Modal();
+
+    const openWeb3Modal = (modalView) => {
+        let options = {};
+        if (modalView) {
+            options = modalView;
+        }
+        open(options)
+            .then((_) => {})
+            .catch((err) => {
+                console.error(err);
+            });
+    };
 
     const initialValues = {
         address,
@@ -32,6 +46,7 @@ function WalletContextProvider({ children }) {
         isConnected,
         isDisconnected,
         status,
+        openWeb3Modal,
     };
 
     return (
