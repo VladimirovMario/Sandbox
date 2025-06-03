@@ -12,13 +12,15 @@ export default defineConfig(async ({ command, mode, isSsrBuild, isPreview }) => 
         loggerWarn(msg, options);
     };
 
-    const env = loadEnv(mode, process.cwd(), 'VITE_');
+    const envPrefix = 'ENV_VARIABLE';
+    const env = loadEnv(mode, process.cwd(), envPrefix);
 
     const config = {
         base: '/',
         plugins: [react()],
         customLogger: logger,
         clearScreen: false,
+        envPrefix, // envPrefix should not be set as '', which will expose all your env variables and cause unexpected leaking of sensitive information
     };
 
     if (mode === 'production') {
