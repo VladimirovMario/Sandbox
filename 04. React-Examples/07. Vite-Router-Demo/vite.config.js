@@ -1,4 +1,4 @@
-import { createLogger, defineConfig } from 'vite';
+import { loadEnv, createLogger, defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
@@ -11,6 +11,8 @@ export default defineConfig(async ({ command, mode, isSsrBuild, isPreview }) => 
         if (msg.includes('vite:css') && msg.includes(' is empty')) return;
         loggerWarn(msg, options);
     };
+
+    const env = loadEnv(mode, process.cwd(), 'VITE_');
 
     const config = {
         base: '/',
@@ -30,6 +32,7 @@ export default defineConfig(async ({ command, mode, isSsrBuild, isPreview }) => 
     console.info('isPreview', isPreview);
     console.info('async data', await delayForDemo());
     console.info('createLogger', logger);
+    console.info('env', env);
     console.groupEnd();
 
     return config;
