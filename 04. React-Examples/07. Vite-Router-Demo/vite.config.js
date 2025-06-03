@@ -16,6 +16,7 @@ export default defineConfig(async ({ command, mode, isSsrBuild, isPreview }) => 
         base: '/',
         plugins: [react()],
         customLogger: logger,
+        clearScreen: false,
     };
 
     if (mode === 'production') {
