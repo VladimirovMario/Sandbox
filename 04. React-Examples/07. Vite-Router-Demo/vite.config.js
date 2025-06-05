@@ -22,7 +22,7 @@ export default defineConfig(async ({ command, mode, isSsrBuild, isPreview }) => 
         clearScreen: false,
         envPrefix, // envPrefix should not be set as '', which will expose all your env variables and cause unexpected leaking of sensitive information
         server: {
-            open: 'index.html',
+            open: '/',
             port: 3000,
             // strictPort: true
             /*(if strictPort: true is uncommented) — Forces Vite to fail and exit if port 3000 is already in use.
