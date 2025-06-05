@@ -3,7 +3,7 @@ import Navigation from './Navigation';
 export default function Header() {
     return (
         <header>
-            <nav>
+            <nav className='header-nav'>
                 <Navigation />
             </nav>
         </header>

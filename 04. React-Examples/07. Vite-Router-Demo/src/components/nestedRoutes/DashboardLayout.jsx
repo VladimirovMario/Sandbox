@@ -4,7 +4,7 @@ import { Outlet, Link } from '../../router/reactRouter';
 // <Outlet /> will render nested routes like /dashboard/settings
 export default function DashboardLayout() {
     return (
-        <>
+        <section className="section">
             <h2>Dashboard</h2>
             <p>
                 Persistent layout: remains visible on all nested dashboard
@@ -19,6 +19,6 @@ export default function DashboardLayout() {
                 </li>
             </ul>
             <Outlet />
-        </>
+        </section>
     );
 }
