@@ -32,7 +32,7 @@ export default defineConfig(async ({ command, mode, isSsrBuild, isPreview }) => 
     };
 
     if (mode === 'production') {
-        config.base = '/vite/';
+        config.base = '/';
     }
 
     console.group('Configuring Vite');
