@@ -1,6 +1,7 @@
 import App from '../components/App';
 import Home from '../components/Home';
 import About from '../components/About';
+import PageNotFound from '../components/PageNotFound';
 
 const routes = [
     {
@@ -9,6 +10,7 @@ const routes = [
         children: [
             { index: true, Component: Home },
             { path: 'about', Component: About },
+            { path: '*', Component: PageNotFound },
         ],
     },
 ];
