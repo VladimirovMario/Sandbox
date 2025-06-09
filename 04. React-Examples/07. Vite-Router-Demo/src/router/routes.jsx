@@ -20,6 +20,8 @@ const routes = [
                 // Modern lazy-loading with object syntax (React Router v7+)
                 lazy: {
                     Component: async () => {
+                        // simulate 2 second delay
+                        await new Promise((res) => setTimeout(res, 2000));
                         // Using default export from About.jsx
                         return (await import('../components/About')).default;
 
