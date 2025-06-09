@@ -1,16 +1,37 @@
-import { Link } from '../router/reactRouter';
+import { NavLink } from '../router/reactRouter';
 
 export default function Navigation() {
     return (
         <ul>
             <li>
-                <Link to="/">Home</Link>
+                <NavLink
+                    className={({ isActive, isPending }) =>
+                        isPending ? 'pending' : isActive ? 'active' : ''
+                    }
+                    to="/"
+                >
+                    Home
+                </NavLink>
             </li>
             <li>
-                <Link to="/about">About</Link>
+                <NavLink
+                    className={({ isActive, isPending }) =>
+                        isPending ? 'pending' : isActive ? 'active' : ''
+                    }
+                    to="/about"
+                >
+                    About
+                </NavLink>
             </li>
             <li>
-                <Link to="/dashboard">Dashboard</Link>
+                <NavLink
+                    className={({ isActive, isPending }) =>
+                        isPending ? 'pending' : isActive ? 'active' : ''
+                    }
+                    to="/dashboard"
+                >
+                    Dashboard
+                </NavLink>
             </li>
         </ul>
     );

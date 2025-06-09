@@ -17,8 +17,3 @@
   align-items: center;
   gap: 1.2rem;
 }
-
-.header-nav a {
-  text-transform: uppercase;
-  color: #daebf4;
-}

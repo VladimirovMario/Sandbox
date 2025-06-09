@@ -5,6 +5,7 @@ import {
     RouterProvider,
     Outlet,
     Link,
+    NavLink,
 } from 'react-router';
 
-export { createBrowserRouter, RouterProvider, Outlet, Link };
+export { createBrowserRouter, RouterProvider, Outlet, Link, NavLink };
