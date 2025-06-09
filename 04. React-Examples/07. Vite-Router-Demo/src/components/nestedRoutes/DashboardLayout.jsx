@@ -1,4 +1,4 @@
-import { Outlet, Link } from '../../router/reactRouter';
+import { Outlet, NavLink } from '../../router/reactRouter';
 
 // This is the parent layout for all dashboard routes
 // <Outlet /> will render nested routes like /dashboard/settings
@@ -12,10 +12,25 @@ export default function DashboardLayout() {
             </p>
             <ul>
                 <li>
-                    <Link to="/dashboard">dashboard</Link>
+                    <NavLink
+                        to="/dashboard"
+                        className={({ isActive, isPending }) =>
+                            isPending ? 'pending' : isActive ? 'active' : ''
+                        }
+                        end
+                    >
+                        dashboard
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to="/dashboard/settings">settings</Link>
+                    <NavLink
+                        className={({ isActive, isPending }) =>
+                            isPending ? 'pending' : isActive ? 'active' : ''
+                        }
+                        to="settings"
+                    >
+                        settings
+                    </NavLink>
                 </li>
             </ul>
             <Outlet />
