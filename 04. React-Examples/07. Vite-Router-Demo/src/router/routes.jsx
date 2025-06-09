@@ -4,11 +4,15 @@ import DashboardLayout from '../components/nestedRoutes/DashboardLayout';
 import DashboardOverview from '../components/nestedRoutes/DashboardOverview';
 import AccountSettings from '../components/nestedRoutes/AccountSettings';
 import PageNotFound from '../components/PageNotFound';
+import { HydrateFallback } from '../components/HydrateFallback';
 
 const routes = [
     {
         path: '/',
         Component: App,
+        // https://reactrouter.com/upgrading/v6#v7_partialhydration
+        // https://github.com/remix-run/react-router/issues/12563#issuecomment-2923482047
+        HydrateFallback: HydrateFallback,
         children: [
             { index: true, Component: Home },
             {
