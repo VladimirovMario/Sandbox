@@ -31,7 +31,11 @@ a.active {
   color: red;
 }
 a.pending {
-  color: blue;
+  color: #c6ee6d;
+}
+
+a.active, a.pending {
+  transition: color 0.3s ease-in-out;
 }
 
 body {
