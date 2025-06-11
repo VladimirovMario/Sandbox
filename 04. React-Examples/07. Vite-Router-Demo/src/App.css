@@ -1,3 +1,5 @@
+@import url('./global-loader.css');
+
 .logo {
   height: 6em;
   padding: 1.5em;

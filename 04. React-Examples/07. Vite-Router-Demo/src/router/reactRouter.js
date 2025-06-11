@@ -6,6 +6,14 @@ import {
     Outlet,
     Link,
     NavLink,
+    useNavigation,
 } from 'react-router';
 
-export { createBrowserRouter, RouterProvider, Outlet, Link, NavLink };
+export {
+    createBrowserRouter,
+    RouterProvider,
+    Outlet,
+    Link,
+    NavLink,
+    useNavigation,
+};
