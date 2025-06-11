@@ -2,7 +2,6 @@ import App from '../components/App';
 import Home from '../components/Home';
 import DashboardLayout from '../components/nestedRoutes/DashboardLayout';
 import DashboardOverview from '../components/nestedRoutes/DashboardOverview';
-import AccountSettings from '../components/nestedRoutes/AccountSettings';
 import PageNotFound from '../components/PageNotFound';
 import { HydrateFallback } from '../components/HydrateFallback';
 
@@ -41,7 +40,21 @@ const routes = [
                 Component: DashboardLayout,
                 children: [
                     { index: true, Component: DashboardOverview },
-                    { path: 'settings', Component: AccountSettings },
+                    {
+                        path: 'settings',
+                        lazy: {
+                            Component: async () => {
+                                await new Promise((res) =>
+                                    setTimeout(res, 2000)
+                                );
+                                return (
+                                    await import(
+                                        '../components/nestedRoutes/AccountSettings'
+                                    )
+                                ).default;
+                            },
+                        },
+                    },
                 ],
             },
             { path: '*', Component: PageNotFound },
