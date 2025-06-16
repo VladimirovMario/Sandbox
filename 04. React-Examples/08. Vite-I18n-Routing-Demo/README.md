@@ -1,12 +1,28 @@
-# React + Vite
+# 🌍 Vite React Router Multilingual Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a multilingual React project built with **Vite**, **React Router v7**, and (soon) **i18next**. It demonstrates clean URL-based language routing and lazy-loaded pages.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🧭 Modern React Router v7 with lazy routes
+- 🧼 Automatic slash normalization (e.g. `//about` → `/about`)
+- 🌐 URL-based language handling with optional default route
+- ⚙️ Ready to integrate i18next for translation support
+- 💡 Clean and reusable `LanguageAndPathGuard` logic
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Initial Production Build (Before i18next)
+
+```txt
+vite v6.3.5 building for production...
+✓ 58 modules transformed.
+
+dist/index.html                            0.48 kB │ gzip:  0.31 kB
+dist/assets/react-CHdo91hT.svg             4.13 kB │ gzip:  2.05 kB
+dist/assets/index-CKDEsKiw.css             3.00 kB │ gzip:  1.29 kB
+dist/assets/About-Dqtdkc51.js              0.21 kB │ gzip:  0.17 kB
+dist/assets/AccountSettings-DcqPfM74.js    0.40 kB │ gzip:  0.29 kB
+dist/assets/index-DkrBnYPv.js            272.40 kB │ gzip: 87.63 kB
+
+✓ built in 1.18s
