@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import reactLogo from '../assets/react.svg';
 import viteLogo from '/vite.svg';
+import { useTranslation } from 'react-i18next';
 
 export default function Home() {
     const [count, setCount] = useState(0);
+    const { t } = useTranslation();
 
     return (
         <section className='section'>
@@ -19,7 +21,7 @@ export default function Home() {
                     />
                 </a>
             </div>
-            <h1>Vite + React</h1>
+            <h1>{t('Welcome')} Vite + React</h1>
             <div className="card">
                 <button onClick={() => setCount((count) => count + 1)}>
                     count is {count}
