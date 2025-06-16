@@ -7,6 +7,9 @@ import {
     Link,
     NavLink,
     useNavigation,
+    useParams,
+    useNavigate,
+    useLocation,
 } from 'react-router';
 
 export {
@@ -16,4 +19,7 @@ export {
     Link,
     NavLink,
     useNavigation,
+    useParams,
+    useNavigate,
+    useLocation,
 };

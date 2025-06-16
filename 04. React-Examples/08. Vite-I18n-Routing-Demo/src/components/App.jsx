@@ -1,4 +1,5 @@
 import { Outlet, useNavigation } from '../router/reactRouter';
+import { LanguageAndPathGuard } from './guards/LanguageAndPathGuard';
 import Footer from './Footer';
 import Header from './Header';
 import GlobalLoader from './GlobalLoader';
@@ -19,7 +20,9 @@ export default function App() {
             */}
             <GlobalLoader isLoading={isLoading} />
             <main>
-                <Outlet />
+                <LanguageAndPathGuard>
+                    <Outlet />
+                </LanguageAndPathGuard>
             </main>
             <Footer />
         </>
