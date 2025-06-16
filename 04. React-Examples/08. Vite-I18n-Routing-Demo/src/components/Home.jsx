@@ -5,10 +5,21 @@ import { useTranslation } from 'react-i18next';
 
 export default function Home() {
     const [count, setCount] = useState(0);
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+
+    const languages = [
+        {
+            code: 'en',
+            name: 'English',
+        },
+        {
+            code: 'de',
+            name: 'German',
+        },
+    ];
 
     return (
-        <section className='section'>
+        <section className="section">
             <div>
                 <a href="https://vite.dev" target="_blank">
                     <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -23,6 +34,12 @@ export default function Home() {
             </div>
             <h1>{t('Welcome')} Vite + React</h1>
             <div className="card">
+                {languages.map((e) => (
+                    <button
+                    key={e.code}
+                    onClick={()=> i18n.changeLanguage(e.code)}
+                    >{e.name}</button>
+                ))}
                 <button onClick={() => setCount((count) => count + 1)}>
                     count is {count}
                 </button>
