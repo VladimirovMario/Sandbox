@@ -36,9 +36,14 @@ export default function Home() {
             <div className="card">
                 {languages.map((e) => (
                     <button
-                    key={e.code}
-                    onClick={()=> i18n.changeLanguage(e.code)}
-                    >{e.name}</button>
+                        className={
+                            i18n.resolvedLanguage === e.code ? 'active' : ''
+                        }
+                        key={e.code}
+                        onClick={() => i18n.changeLanguage(e.code)}
+                    >
+                        {e.name}
+                    </button>
                 ))}
                 <button onClick={() => setCount((count) => count + 1)}>
                     count is {count}
