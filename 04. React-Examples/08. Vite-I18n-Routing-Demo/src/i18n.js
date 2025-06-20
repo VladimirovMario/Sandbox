@@ -9,6 +9,7 @@ i18n.use(initReactI18next)
     .use(LanguageDetector)
     .use(HttpApi) // passes i18n down to react-i18next
     .init({
+        load: 'languageOnly',
         debug: process.env.NODE_ENV === 'development',
         fallbackLng: ['en', 'de', 'bg', 'tr'],
         supportedLngs: ['en', 'de', 'bg', 'tr'],
@@ -16,7 +17,10 @@ i18n.use(initReactI18next)
             escapeValue: false,
             // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
         },
-        loadPath: '/locales/{{lng}}/{{ns}}.json',
+        backend: {
+            // for all available options read the backend's repository readme file
+            loadPath: '/locales/{{lng}}/{{ns}}.json',
+        },
         react: { useSuspense: true },
         // https://stackoverflow.com/questions/58871043/react-i18next-suspense
     });

@@ -16,6 +16,14 @@ export default function Home() {
             code: 'de',
             name: 'German',
         },
+        {
+            code: 'bg',
+            name: 'Български',
+        },
+        {
+            code: 'tr',
+            name: 'Türkçe',
+        },
     ];
 
     return (
