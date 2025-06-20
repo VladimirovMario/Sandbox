@@ -1,20 +1,40 @@
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+const languageFlags = {
+    en: '🇬🇧',
+    de: '🇩🇪',
+    bg: '🇧🇬',
+    tr: '🇹🇷',
+};
 
 export function LanguageSwitcher() {
     const { i18n } = useTranslation();
+    const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
+
+    const changeLanguage = (e) => {
+        const newLang = e.target.value;
+        setSelectedLanguage(newLang);
+        i18n.changeLanguage(newLang);
+    };
+
+    useEffect(() => {
+        if (i18n.language !== selectedLanguage) {
+            setSelectedLanguage(i18n.language);
+        }
+    }, [i18n.language, selectedLanguage]);
 
     return (
-        <div>
+        <select
+            name="language"
+            value={selectedLanguage}
+            onChange={changeLanguage}
+        >
             {i18n.languages.map((lng) => (
-                <button
-                    key={lng}
-                    className={i18n.language === lng ? 'active' : ''}
-                    onClick={() => i18n.changeLanguage(lng)}
-                    disabled={i18n.language === lng}
-                >
-                    {lng.toUpperCase()}
-                </button>
+                <option key={lng} value={lng}>
+                    {languageFlags[lng] || lng.toUpperCase()}
+                </option>
             ))}
-        </div>
+        </select>
     );
 }
