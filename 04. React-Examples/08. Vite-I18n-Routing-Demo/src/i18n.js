@@ -9,6 +9,7 @@ i18n.use(initReactI18next)
     .use(LanguageDetector)
     .use(HttpApi) // passes i18n down to react-i18next
     .init({
+        defaultNS: 'translation',
         load: 'languageOnly',
         debug: process.env.NODE_ENV === 'development',
         fallbackLng: ['en', 'de', 'bg', 'tr'],
