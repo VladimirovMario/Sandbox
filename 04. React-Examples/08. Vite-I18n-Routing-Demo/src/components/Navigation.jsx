@@ -1,10 +1,16 @@
 import { useTranslation } from 'react-i18next';
 import { NavLink } from '../router/reactRouter';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import HashLinkItem from './common/HashLinkItem';
 
 export default function Navigation() {
     const { i18n } = useTranslation();
-    const homePath = i18n.language !== 'en' ? `/${i18n.language}/` : '/';
+
+    function getLangPrefix(language) {
+        return language !== 'en' ? `/${language}/` : '/';
+    }
+
+    const langPrefix = getLangPrefix(i18n.language);
 
     return (
         <ul>
@@ -14,10 +20,16 @@ export default function Navigation() {
                     className={({ isActive, isPending }) =>
                         isPending ? 'pending' : isActive ? 'active' : ''
                     }
-                    to={homePath}
+                    to={langPrefix}
+                    end
                 >
                     Home
                 </NavLink>
+            </li>
+            <li>
+                <HashLinkItem to={`${langPrefix}#how-it-works`}>
+                    How it works
+                </HashLinkItem>
             </li>
             <li>
                 <NavLink

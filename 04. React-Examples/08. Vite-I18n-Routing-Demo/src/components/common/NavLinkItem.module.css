@@ -1,0 +1,19 @@
+.inactive.link {
+    --color-primary: #646cff;
+    --color-secondary: #535bf2;
+    color: var(--color-primary);
+}
+
+.inactive.link:hover {
+    color: var(--color-secondary);
+}
+
+.active.link {
+    --color-secondary: red;
+    color: var(--color-secondary);
+}
+
+.pending.link {
+    --color-accent: greenyellow;
+    color: var(--color-accent);
+}
