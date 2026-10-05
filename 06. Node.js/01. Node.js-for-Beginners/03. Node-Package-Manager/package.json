@@ -1,0 +1,17 @@
+{
+  "name": "node-package-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "date-fns": "^4.4.0",
+    "uuid": "^14.0.2"
+  }
+}
