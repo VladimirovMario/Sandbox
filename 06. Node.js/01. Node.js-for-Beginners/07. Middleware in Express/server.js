@@ -3,21 +3,25 @@ const app = express();
 const path = require('node:path');
 const PORT = process.env.PORT || 3500;
 
-// app.get('/', (req, res, next) => {
-//   const options = {
-//     root: path.join(__dirname, 'views'),
-//   };
+// custom middleware logger
+app.use((req, res, next) => {
+  console.log(req.method, req.path);
+  next();
+});
 
-//   const fileName = 'index.html';
-//   res.sendFile(fileName, options, (err) => {
-//     if (err) {
-//       console.log(err);
-//       next(err);
-//     } else {
-//       console.log('Send: ', fileName);
-//     }
-//   });
-// });
+// built-in middleware to handle urlencoded data
+// in other words, form data
+// parse requests with a Content-Type of application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+
+// This is a built-in middleware function in Express.
+// It parses incoming requests with JSON payloads and is based on body-parser.
+app.use(express.json());
+
+// express.static is a built‑in middleware that serves files from a directory on disk as HTTP responses.
+// It looks up the requested URL path, joins it with the configured root directory, and streams the file back to the client.
+// If the file isn’t found, the middleware calls next() so subsequent handlers can run.
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
