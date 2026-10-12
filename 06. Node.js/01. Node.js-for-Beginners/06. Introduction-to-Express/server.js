@@ -1,110 +1,70 @@
-const { createServer } = require('node:http');
-const fs = require('node:fs');
-const fsPromises = require('node:fs/promises');
+const express = require('express');
+const app = express();
 const path = require('node:path');
-
-const logEvents = require('./logEvents');
-const EventEmitter = require('node:events');
-
-class MyEmitter extends EventEmitter {}
-const myEmitter = new MyEmitter();
-myEmitter.on('log', (message, fileName) => {
-  logEvents(message, fileName);
-});
-
 const PORT = process.env.PORT || 3500;
 
-const serveFile = async (filePath, contentType, response) => {
-  try {
-    const rawData = await fsPromises.readFile(
-      filePath,
-      contentType.includes('image') === false ? 'utf-8' : '',
-    );
-    const data =
-      contentType === 'application/json' ? JSON.parse(rawData) : rawData;
-    response.writeHead(filePath.includes('404.html') ? 404 : 200, {
-      'Content-Type': contentType,
-    });
-    response.end(
-      contentType === 'application/json' ? JSON.stringify(data) : data,
-    );
-  } catch (err) {
-    console.error(err);
-    myEmitter.emit('log', `${err.name}: ${err.message}`, 'errLog.txt');
+// app.get('/', (req, res, next) => {
+//   const options = {
+//     root: path.join(__dirname, 'views'),
+//   };
 
-    response.statusCode = 500;
-    response.end();
-  }
-};
+//   const fileName = 'index.html';
+//   res.sendFile(fileName, options, (err) => {
+//     if (err) {
+//       console.log(err);
+//       next(err);
+//     } else {
+//       console.log('Send: ', fileName);
+//     }
+//   });
+// });
 
-const server = createServer((req, res) => {
-  console.log(req.url, req.method);
-  myEmitter.emit('log', `${req.url}\t${req.method}`, 'reqLog.txt');
-
-  const extension = path.extname(req.url);
-
-  let contentType;
-
-  switch (extension) {
-    case '.css':
-      contentType = 'text/css';
-      break;
-    case '.js':
-      contentType = 'text/javascript';
-      break;
-    case '.json':
-      contentType = 'application/json';
-      break;
-    case '.jpg':
-      contentType = 'image/jpeg';
-      break;
-    case '.png':
-      contentType = 'image/png';
-      break;
-    case '.txt':
-      contentType = 'text/plain';
-      break;
-    default:
-      contentType = 'text/html';
-  }
-
-  let filePath =
-    contentType === 'text/html' && req.url === '/'
-      ? path.join(__dirname, 'views', 'index.html')
-      : contentType === 'text/html' && req.url.slice(-1) === '/'
-        ? path.join(__dirname, 'views', req.url, 'index.html')
-        : contentType === 'text/html'
-          ? path.join(__dirname, 'views', req.url)
-          : path.join(__dirname, req.url);
-
-  // makes .html extension not required in the browser
-  if (!extension && req.url.slice(-1) !== '/') {
-    filePath += '.html';
-  }
-
-  const fileExist = fs.existsSync(filePath);
-  if (fileExist) {
-    // serve the file
-    serveFile(filePath, contentType, res);
-  } else {
-    switch (path.parse(filePath).base) {
-      case 'old-page.html':
-        res.writeHead(301, { Location: '/new-page.html' });
-        res.end();
-        break;
-      case 'www-page.html':
-        res.writeHead(301, { Location: '/' });
-        res.end();
-        break;
-
-      default:
-        // serve 404 response
-        serveFile(path.join(__dirname, 'views', '404.html'), 'text/html', res);
-        break;
-    }
-  }
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-server.listen(PORT, () => {
+app.get('/new-page{.html}', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'new-page.html'));
+});
+
+app.get('/old-page{.html}', (req, res) => {
+  res.redirect(301, '/new-page.html');
+});
+
+// Rout handlers
+app.get(
+  '/hello{.html}',
+  (req, res, next) => {
+    console.log('Attempted to load hello.html');
+    next();
+  },
+  (req, res) => {
+    res.send('Hello world');
+  },
+);
+
+const one = (req, res, next) => {
+  console.log('one');
+  next();
+};
+
+const two = (req, res, next) => {
+  console.log('two');
+  next();
+};
+
+const three = (req, res) => {
+  console.log('three');
+  res.send('Middleware chain finished');
+};
+
+app.get('/chain', [one, two, three]);
+
+// https://expressjs.com/en/5x/starter/faq/#how-do-i-handle-404-responses
+app.use((req, res, next) => {
+  res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+});
+
+app.listen(PORT, () => {
   console.log(`Rest service operational.\nhttp://localhost:${PORT}`);
 });
