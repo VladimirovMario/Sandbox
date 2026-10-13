@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // express.static is a built‑in middleware that serves files from a directory on disk as HTTP responses.
+// It serves static assets such as HTML files, images, and so on.
 // It looks up the requested URL path, joins it with the configured root directory, and streams the file back to the client.
 // If the file isn’t found, the middleware calls next() so subsequent handlers can run.
 app.use(express.static('public'));
