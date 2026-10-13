@@ -85,6 +85,17 @@ app.get('/chain', [one, two, three]);
 // https://expressjs.com/en/5x/starter/faq/#how-do-i-handle-404-responses
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+  // console.log(req.get('Accept'));
+  // console.log(req.accepts('application/json'));
+  // if (req.accepts('html')) {
+  //   res.status(404).json({ error: '404 Page not fount' });
+  // } else if (req.accepts('json')) {
+  //   res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+  // } else {
+  //   // Check if the given type(s) is acceptable, returning the best match when true,
+  //   // otherwise undefined, in which case you should respond with 406 "Not Acceptable"
+  //   res.status(406).json({ error: 'Not Acceptable' });
+  // }
 });
 
 app.use(errorHandler);
