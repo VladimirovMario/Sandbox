@@ -2,10 +2,28 @@ const express = require('express');
 const app = express();
 const path = require('node:path');
 const { logger } = require('./middleware/logEvents');
+const cors = require('cors');
 const PORT = process.env.PORT || 3500;
 
 // custom middleware logger
 app.use(logger);
+
+// CORS is a Node.js middleware for Express/Connect that sets CORS response headers.
+// These headers tell browsers which origins can read responses from your server.
+
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS
+// https://web.dev/articles/cross-origin-resource-sharing
+const whiteList = ['https://www.youtube.com'];
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whiteList.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by Cors!'));
+    }
+  },
+};
+app.use(cors(corsOptions));
 
 // built-in middleware to handle urlencoded data
 // in other words, form data
