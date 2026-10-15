@@ -34,9 +34,7 @@ app.use('/subdir', express.static(path.join(__dirname, '/public')));
 // routes
 app.use('/', require('./routes/root'));
 app.use('/subdir', require('./routes/subDir'));
-app.use((req, res, next) =>
-  res.status(404).sendFile(path.join(__dirname, 'views', '404.html')),
-);
+app.use(require('./routes/notFound'));
 
 // custom error middleware
 app.use(errorHandler);
