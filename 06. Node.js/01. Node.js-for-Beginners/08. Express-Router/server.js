@@ -34,6 +34,7 @@ app.use('/subdir', express.static(path.join(__dirname, '/public')));
 // routes
 app.use('/', require('./routes/root'));
 app.use('/subdir', require('./routes/subDir'));
+app.use('/employees', require('./routes/api/employees'));
 app.use(require('./routes/notFound'));
 
 // custom error middleware
