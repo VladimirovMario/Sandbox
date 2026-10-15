@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('node:path');
 const { logger } = require('./middleware/logEvents');
+const corsOptions = require('./config/corsOptions');
 const cors = require('cors');
 const { errorHandler } = require('./middleware/errorHandler');
 const PORT = process.env.PORT || 3500;
@@ -10,16 +11,6 @@ const PORT = process.env.PORT || 3500;
 app.use(logger);
 
 // Node.js middleware for Express/Connect that sets CORS response headers
-const whiteList = ['https://www.youtube.com'];
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whiteList.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by Cors!'));
-    }
-  },
-};
 app.use(cors(corsOptions));
 
 // built-in middleware to handle urlencoded data
