@@ -40,6 +40,9 @@ app.use(express.json());
 // It looks up the requested URL path, joins it with the configured root directory, and streams the file back to the client.
 // If the file isn’t found, the middleware calls next() so subsequent handlers can run.
 app.use(express.static('public'));
+app.use('/subdir', express.static(path.join(__dirname, '/public')));
+
+app.use('/subdir', require('./routes/subDir'));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
