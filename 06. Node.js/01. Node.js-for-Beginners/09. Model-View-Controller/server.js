@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const path = require('node:path');
 const { logger } = require('./middleware/logEvents');
 const corsOptions = require('./config/corsOptions');
 const cors = require('cors');
@@ -20,11 +19,9 @@ app.use(express.json());
 
 // built‑in middleware that serves files from a directory on disk as HTTP responses
 app.use(express.static('public'));
-app.use('/subdir', express.static(path.join(__dirname, '/public')));
 
 // routes
 app.use('/', require('./routes/root'));
-app.use('/subdir', require('./routes/subDir'));
 app.use('/employees', require('./routes/api/employees'));
 app.use(require('./routes/notFound'));
 
