@@ -1,0 +1,11 @@
+[
+  {
+    "userName": "Jane",
+    "password": "$2b$10$rJTwc91biPN7AS/ZuHjJLeliMTn0ZxVeev6blAgCPrnW3xz5ogmUe"
+  },
+  {
+    "userName": "Peter",
+    "password": "$2b$10$M8iX4vpcbOHsHjv.lJQwQeO7LVXqVd2jp4Pk072OYnxxWkf0uLnvm",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IlBldGVyIiwiaWF0IjoxNzkyMTQ0NzI3LCJleHAiOjE3OTIyMzExMjd9.s4-6voYcMen1s-1wEbsBlNviLD0bjY-cqgnYuGIRraE"
+  }
+]
