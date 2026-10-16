@@ -6,6 +6,7 @@ const corsOptions = require('./config/corsOptions');
 const cors = require('cors');
 const { errorHandler } = require('./middleware/errorHandler');
 const verifyJWT = require('./middleware/verifyJWT');
+const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 3500;
 
 // custom middleware logger
@@ -18,6 +19,9 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 // built-in middleware that parses incoming requests with JSON payloads
 app.use(express.json());
+
+// middleware for  cookies
+app.use(cookieParser());
 
 // built‑in middleware that serves files from a directory on disk as HTTP responses
 app.use(express.static('public'));
