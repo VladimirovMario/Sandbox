@@ -30,6 +30,7 @@ app.use(express.static('public'));
 app.use('/', require('./routes/root'));
 app.use('/register', require('./routes/api/register'));
 app.use('/login', require('./routes/api/login'));
+app.use('/refresh', require('./routes/api/refresh'));
 app.use('/employees', verifyJWT, require('./routes/api/employees'));
 app.use(require('./routes/notFound'));
 

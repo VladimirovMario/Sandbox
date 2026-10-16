@@ -12,7 +12,6 @@ const handleRefreshToken = (req, res) => {
   if (!cookies?.jwt) {
     return res.status(401).json({ message: 'Unauthorized!' });
   }
-  console.log(cookies);
   const refreshToken = cookies.jwt;
 
   const foundUser = usersDB.users.find(
