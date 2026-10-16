@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
+    "nodemon": "nodemon server",
     "dev": "node --watch server"
   },
   "keywords": [],
@@ -19,6 +20,7 @@
     "dotenv": "^18.0.8",
     "express": "^5.3.0",
     "jsonwebtoken": "^9.0.3",
+    "nodemon": "^3.1.14",
     "uuid": "^14.0.2"
   }
 }

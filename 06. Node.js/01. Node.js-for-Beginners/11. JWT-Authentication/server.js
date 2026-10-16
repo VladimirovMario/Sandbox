@@ -31,6 +31,7 @@ app.use('/', require('./routes/root'));
 app.use('/register', require('./routes/api/register'));
 app.use('/login', require('./routes/api/login'));
 app.use('/refresh', require('./routes/api/refresh'));
+app.use('/logout', require('./routes/api/logout'));
 app.use('/employees', verifyJWT, require('./routes/api/employees'));
 app.use(require('./routes/notFound'));
 
