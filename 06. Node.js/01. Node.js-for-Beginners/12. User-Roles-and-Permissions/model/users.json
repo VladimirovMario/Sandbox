@@ -1,11 +1,27 @@
 [
   {
     "userName": "Jane",
+    "roles": {
+      "Admin": 5150,
+      "Editor": 1984,
+      "User": 2001
+    },
     "password": "$2b$10$rJTwc91biPN7AS/ZuHjJLeliMTn0ZxVeev6blAgCPrnW3xz5ogmUe"
   },
   {
     "userName": "Peter",
+    "roles": {
+      "User": 2001
+    },
     "password": "$2b$10$M8iX4vpcbOHsHjv.lJQwQeO7LVXqVd2jp4Pk072OYnxxWkf0uLnvm",
     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IlBldGVyIiwiaWF0IjoxNzkyMTQ0NzI3LCJleHAiOjE3OTIyMzExMjd9.s4-6voYcMen1s-1wEbsBlNviLD0bjY-cqgnYuGIRraE"
+  },
+  {
+    "userName": "Nelson",
+    "roles": {
+      "Editor": 1984,
+      "User": 2001
+    },
+    "password": "$2b$10$4DobOzoKsiQWsO30HxIrS.MMT7as9YMrbK7GDkVHCf9RZAlhgvCPm"
   }
 ]
