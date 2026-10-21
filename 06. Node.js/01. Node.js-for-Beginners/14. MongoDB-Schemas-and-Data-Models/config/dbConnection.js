@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-const CONNECTION_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
+
+const DATABASE = 'CompanyDB';
+const CONNECTION_URI =
+  process.env.MONGODB_URI || `mongodb://127.0.0.1:27017/${DATABASE}`;
 
 async function connectDB() {
   try {
