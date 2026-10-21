@@ -24,7 +24,7 @@ const handleRefreshToken = (req, res) => {
 
   jwt.verify(
     refreshToken,
-    process.env.REFRESH_TOKEN_SECRET,
+    process.env.REFRESH_TOKEN_SECRET || 'your_refresh_token_secret',
     (err, verified) => {
       if (err) {
         return res.status(403).json({ message: 'Forbidden' });
@@ -38,7 +38,7 @@ const handleRefreshToken = (req, res) => {
             roles,
           },
         },
-        process.env.ACCESS_TOKEN_SECRET,
+        process.env.ACCESS_TOKEN_SECRET || 'your_access_token_secret',
         { expiresIn: '60s' },
       );
       res.json({ accessToken });
