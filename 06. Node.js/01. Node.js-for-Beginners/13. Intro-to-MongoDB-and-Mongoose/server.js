@@ -1,6 +1,7 @@
 const express = require('express');
-const app = express();
 require('dotenv').config();
+const mongoose = require('mongoose');
+const { connectDB } = require('./config/dbConnection');
 const { logger } = require('./middleware/logEvents');
 const corsOptions = require('./config/corsOptions');
 const cors = require('cors');
@@ -10,6 +11,9 @@ const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
 const PORT = process.env.PORT || 3500;
 
+const app = express();
+// Connection to Database
+connectDB();
 // custom middleware logger
 app.use(logger);
 
@@ -41,6 +45,13 @@ app.use(require('./routes/notFound'));
 // custom error middleware
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Rest service operational\nhttp://localhost:${PORT}`);
+mongoose.connection.on('error', (err) => {
+  console.error(err);
+});
+
+mongoose.connection.once('open', () => {
+  console.log('Database connected');
+  app.listen(PORT, () => {
+    console.log(`Rest service operational\nhttp://localhost:${PORT}`);
+  });
 });
