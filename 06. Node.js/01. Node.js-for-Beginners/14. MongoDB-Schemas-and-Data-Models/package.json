@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "nodemon": "nodemon server",
-    "dev": "node --watch server"
+    "dev": "node --env-file=.env --env-file=.development.env --watch server.js",
+    "start": "node --env-file=.env server.js",
+    "nodemon": "nodemon server"
   },
   "keywords": [],
   "author": "",
