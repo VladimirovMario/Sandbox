@@ -1,12 +1,9 @@
 const mongoose = require('mongoose');
-
-const DATABASE = 'CompanyDB';
-const CONNECTION_URI =
-  globalThis.process.env.MONGODB_URI || `mongodb://127.0.0.1:27017/${DATABASE}`;
+const { ENV_VARIABLES } = require('../constants/envVariables');
 
 async function connectDB() {
   try {
-    await mongoose.connect(CONNECTION_URI);
+    await mongoose.connect(ENV_VARIABLES.mongoDBUri);
   } catch (error) {
     console.error(error);
   }
