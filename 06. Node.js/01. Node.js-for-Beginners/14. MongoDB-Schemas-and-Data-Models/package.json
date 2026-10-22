@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "node --env-file=.env --env-file=.development.env --watch server.js",
-    "start": "node --env-file=.env server.js",
-    "nodemon": "nodemon server"
+    "start": "node --env-file=.env server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,11 +16,9 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
     "date-fns": "^4.4.0",
-    "dotenv": "^18.0.8",
     "express": "^5.3.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.11.2",
-    "nodemon": "^3.1.14",
     "uuid": "^14.0.2"
   },
   "devDependencies": {
