@@ -42,5 +42,5 @@ app.use(require('./routes/notFound'));
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`Rest service operational.\nhttp://localhost:${PORT}`);
+  console.log(`Rest service operational\nhttp://localhost:${PORT}`);
 });

@@ -30,10 +30,16 @@ const handleLogin = async (req, res) => {
     if (!match) {
       return res.status(401).json({ message: 'Unauthorized!' });
     }
+
+    const roles = Object.values(foundUser.roles);
     // create JWT
     const accessToken = jwt.sign(
       {
-        userName: foundUser.userName,
+        // https://auth0.com/docs/secure/tokens/json-web-tokens/json-web-token-claims
+        UserInfo: {
+          userName: foundUser.userName,
+          roles,
+        },
       },
       process.env.ACCESS_TOKEN_SECRET,
       // { expiresIn: '1h' },

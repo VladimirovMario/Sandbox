@@ -29,9 +29,14 @@ const handleRefreshToken = (req, res) => {
       if (err) {
         return res.status(403).json({ message: 'Forbidden' });
       }
+      const roles = Object.values(foundUser.roles);
       const accessToken = jwt.sign(
         {
-          userName: verified.userName,
+          // https://auth0.com/docs/secure/tokens/json-web-tokens/json-web-token-claims
+          UserInfo: {
+            userName: verified.userName,
+            roles,
+          },
         },
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: '60s' },
