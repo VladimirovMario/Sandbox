@@ -32,7 +32,7 @@ const handleLogout = async (req, res) => {
   usersDB.setUsers([...otherUsers, { ...foundUser, refreshToken: '' }]);
   const filePath = path.join(__dirname, '..', 'model', 'users.json');
   await fsPromises.writeFile(filePath, JSON.stringify(usersDB.users, null, 2));
-  res.clearCookie('jwt', { httpOnly: true }); // secure: true - only for servers on https
+  res.clearCookie('jwt', { httpOnly: true, secure: true }); // secure: true - only for servers on https
   return res.sendStatus(204);
 };
 
