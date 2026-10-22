@@ -1,33 +1,25 @@
-const usersDB = {
-  users: require('../model/users.json'),
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
-
+const User = require('../model/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const fsPromises = require('fs/promises');
-const path = require('path');
 const { ENV_VARIABLES } = require('../constants/envVariables');
 
 const handleLogin = async (req, res) => {
-  const { user, pass } = req.body;
+  const { userName, password } = req.body;
 
-  if (!user || !pass) {
+  if (!userName || !password) {
     return res
       .status(409)
       .json({ message: 'Username and password are required.' });
   }
 
-  const foundUser = usersDB.users.find((person) => person.userName === user);
-
-  if (!foundUser) {
-    return res.status(401).json({ message: 'Unauthorized!' });
-  }
-
   try {
-    const match = await bcrypt.compare(pass, foundUser.password);
+    const foundUser = await User.findOne({ userName }).exec();
+
+    if (!foundUser) {
+      return res.status(401).json({ message: 'Unauthorized!' });
+    }
+
+    const match = await bcrypt.compare(password, foundUser.password);
     if (!match) {
       return res.status(401).json({ message: 'Unauthorized!' });
     }
@@ -56,15 +48,8 @@ const handleLogin = async (req, res) => {
       { expiresIn: '1d' },
     );
 
-    const otherUsers = usersDB.users.filter(
-      (person) => person.userName !== foundUser.userName,
-    );
-    usersDB.setUsers([...otherUsers, { ...foundUser, refreshToken }]);
-    const filePath = path.join(__dirname, '..', 'model', 'users.json');
-    await fsPromises.writeFile(
-      filePath,
-      JSON.stringify(usersDB.users, null, 2),
-    );
+    foundUser.refreshToken = refreshToken;
+    await foundUser.save();
 
     res.cookie('jwt', refreshToken, {
       maxAge: 24 * 60 * 60 * 1000,
@@ -74,7 +59,6 @@ const handleLogin = async (req, res) => {
   } catch (error) {
     res.json({ message: error.message });
   }
-  res.end();
 };
 
 module.exports = {

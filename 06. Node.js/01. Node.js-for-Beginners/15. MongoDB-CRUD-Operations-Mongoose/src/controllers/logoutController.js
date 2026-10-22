@@ -1,11 +1,4 @@
-const usersDB = {
-  users: require('../model/users.json'),
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
-const fsPromises = require('fs/promises');
-const path = require('path');
+const User = require('../model/User');
 
 const handleLogout = async (req, res) => {
   // On the client delete in memory accessToken
@@ -16,24 +9,23 @@ const handleLogout = async (req, res) => {
   }
   const refreshToken = cookies.jwt;
 
-  const foundUser = usersDB.users.find(
-    (person) => person.refreshToken === refreshToken,
-  );
+  try {
+    const foundUser = await User.findOne({ refreshToken }).exec();
 
-  if (!foundUser) {
-    res.clearCookie('jwt', { httpOnly: true });
+    foundUser.refreshToken = '';
+    await foundUser.save();
+
+    res.clearCookie('jwt', { httpOnly: true }); // secure: true - only for servers on https
+
     return res.sendStatus(204);
+  } catch (error) {
+    res.clearCookie('jwt', { httpOnly: true });
+    // TODO: Determine which errors can occur and return appropriate status codes and messages.
+    res.status(500).json({
+      message: error.message,
+      details: 'Failed to logout refresh token',
+    });
   }
-
-  // Delete refreshToken in the database
-  const otherUsers = usersDB.users.filter(
-    (person) => person.refreshToken !== refreshToken,
-  );
-  usersDB.setUsers([...otherUsers, { ...foundUser, refreshToken: '' }]);
-  const filePath = path.join(globalThis.__dirname, '..', 'model', 'users.json');
-  await fsPromises.writeFile(filePath, JSON.stringify(usersDB.users, null, 2));
-  res.clearCookie('jwt', { httpOnly: true }); // secure: true - only for servers on https
-  return res.sendStatus(204);
 };
 
 module.exports = { handleLogout };
