@@ -34,10 +34,6 @@ const handleLogin = async (req, res) => {
     const roles = Object.values(foundUser.roles);
     // create JWT
 
-    console.log(
-      'process.env.ACCESS_TOKEN_SECRET',
-      process.env.ACCESS_TOKEN_SECRET,
-    );
     const accessToken = jwt.sign(
       {
         // https://auth0.com/docs/secure/tokens/json-web-tokens/json-web-token-claims
