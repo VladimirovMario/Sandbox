@@ -9,6 +9,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const fsPromises = require('fs/promises');
 const path = require('path');
+const { ENV_VARIABLES } = require('../constants/envVariables');
 
 const handleLogin = async (req, res) => {
   const { user, pass } = req.body;
@@ -42,7 +43,7 @@ const handleLogin = async (req, res) => {
           roles,
         },
       },
-      process.env.ACCESS_TOKEN_SECRET || 'your_access_token_secret',
+      ENV_VARIABLES.accessTokenSecret,
       // { expiresIn: '1h' },
       { expiresIn: '60s' },
     );
@@ -51,7 +52,7 @@ const handleLogin = async (req, res) => {
       {
         userName: foundUser.userName,
       },
-      process.env.REFRESH_TOKEN_SECRET || 'your_refresh_token_secret',
+      ENV_VARIABLES.refreshTokenSecret,
       { expiresIn: '1d' },
     );
 

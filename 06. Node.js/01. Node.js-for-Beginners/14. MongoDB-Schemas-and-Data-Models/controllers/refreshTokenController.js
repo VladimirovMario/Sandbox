@@ -5,6 +5,7 @@ const usersDB = {
   },
 };
 const jwt = require('jsonwebtoken');
+const { ENV_VARIABLES } = require('../constants/envVariables');
 
 const handleRefreshToken = (req, res) => {
   const cookies = req.cookies;
@@ -24,7 +25,7 @@ const handleRefreshToken = (req, res) => {
 
   jwt.verify(
     refreshToken,
-    process.env.REFRESH_TOKEN_SECRET || 'your_refresh_token_secret',
+    ENV_VARIABLES.refreshTokenSecret,
     (err, verified) => {
       if (err) {
         return res.status(403).json({ message: 'Forbidden' });
@@ -38,7 +39,7 @@ const handleRefreshToken = (req, res) => {
             roles,
           },
         },
-        process.env.ACCESS_TOKEN_SECRET || 'your_access_token_secret',
+        ENV_VARIABLES.accessTokenSecret,
         { expiresIn: '60s' },
       );
       res.json({ accessToken });
