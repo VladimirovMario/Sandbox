@@ -9,7 +9,7 @@ const { errorHandler } = require('./middleware/errorHandler');
 const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
-const PORT = process.env.PORT || 3000;
+const { ENV_VARIABLES } = require('./constants/envVariables');
 
 const app = express();
 // Connection to Database
@@ -51,7 +51,9 @@ mongoose.connection.on('error', (err) => {
 
 mongoose.connection.once('open', () => {
   console.log('Database connected');
-  app.listen(PORT, () => {
-    console.log(`Rest service operational\nhttp://localhost:${PORT}`);
+  app.listen(ENV_VARIABLES.port, () => {
+    console.log(
+      `Rest service operational\nhttp://localhost:${ENV_VARIABLES.port}`,
+    );
   });
 });
