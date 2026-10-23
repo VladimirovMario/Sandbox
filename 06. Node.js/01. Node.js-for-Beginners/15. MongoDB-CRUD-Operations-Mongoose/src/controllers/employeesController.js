@@ -1,75 +1,143 @@
-const data = {
-  employees: require('../model/employees.json'),
-  setEmployees: function (data) {
-    this.employees = data;
-  },
+const Employee = require('../model/Employee');
+const mongoose = require('mongoose');
+
+const getAllEmployees = async (req, res) => {
+  try {
+    // Mongoose find() always returns an array.
+    // If no documents match, it returns [] instead of null.
+    // An empty array is a valid result, so return 200 OK.
+    const employees = await Employee.find({});
+    return res.status(200).json(employees);
+  } catch (error) {
+    console.error(error.message);
+    return res
+      .status(500)
+      .json({ message: 'Something went wrong reading employees' });
+  }
 };
 
-const getAllEmployees = (_, res) => {
-  res.json(data.employees);
-};
-
-const createEmployee = (req, res) => {
+const createEmployee = async (req, res) => {
   const { firstName, lastName } = req.body;
 
   if (!firstName || !lastName) {
-    return res.json({ message: 'First and last name are required!' });
+    return res
+      .status(400)
+      .json({ message: 'First and last name are required!' });
   }
 
-  const id = data.employees[data.employees.length - 1]?.id + 1 || 1;
-  const newEmployee = { id, firstName, lastName };
+  try {
+    const newEmployee = await Employee.create({ firstName, lastName });
+    return res.status(201).json(newEmployee);
+  } catch (error) {
+    console.error(error);
 
-  data.setEmployees([...data.employees, newEmployee]);
-  res.status(201).json(newEmployee);
+    if (error.name === 'ValidationError') {
+      return res.status(400).json({
+        message: 'Employee validation failed',
+      });
+    }
+
+    return res
+      .status(500)
+      .json({ message: 'Something went wrong creating an employee' });
+  }
 };
 
-const updateEmployee = (req, res) => {
+const updateEmployee = async (req, res) => {
   const { firstName, lastName, id } = req.body;
+  const { invalidId, message } = validateId(id);
 
-  const employee = data.employees.find((emp) => emp.id === parseInt(id));
-  if (!employee) {
-    return res.status(400).json({ message: `Employee ID ${id} not found!` });
+  if (invalidId) {
+    return res.status(400).json({ message });
   }
 
-  if (firstName) {
-    employee.firstName = firstName;
-  }
-  if (lastName) {
-    employee.lastName = lastName;
-  }
+  try {
+    const employee = await Employee.findById(id).exec();
+    if (!employee) {
+      return res.status(404).json({ message: `Employee ID ${id} not found!` });
+    }
 
-  const filteredEmployees = data.employees.filter(
-    (emp) => emp.id !== employee.id,
-  );
-  const unsortedEmployees = [employee, ...filteredEmployees];
-  data.setEmployees(unsortedEmployees.sort((a, b) => a.id - b.id));
+    employee.firstName = firstName ?? employee.firstName;
+    employee.lastName = lastName ?? employee.lastName;
+    await employee.save();
 
-  res.json(employee);
+    res.status(200).json(employee);
+  } catch (error) {
+    console.error(error);
+    if (error.name === 'ValidationError') {
+      return res.status(400).json({
+        message: 'Employee update failed',
+      });
+    }
+
+    res.status(500).json({ message: error.message });
+  }
 };
 
-const deleteEmployee = (req, res) => {
+const deleteEmployee = async (req, res) => {
   const { id } = req.body;
-  const employee = data.employees.find((emp) => emp.id === parseInt(id));
-  if (!employee) {
-    return res.status(400).json({ message: `Employee ID ${id} not found!` });
+  const { invalidId, message } = validateId(id);
+
+  if (invalidId) {
+    return res.status(400).json({ message });
   }
 
-  const filteredEmployees = data.employees.filter(
-    (emp) => emp.id !== employee.id,
-  );
+  try {
+    const deletedEmployee = await Employee.findByIdAndDelete(id).exec();
+    if (!deletedEmployee) {
+      return res.status(404).json({ message: 'Employee not found' });
+    }
 
-  data.setEmployees([...filteredEmployees]);
-  res.json({ message: `Employee with ID ${id} was  removed!` });
+    res.status(200).json({ message: `Employee with ID ${id} was removed!` });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: 'Something went wrong deleting the employee' });
+  }
 };
 
-const getEmployeeById = (req, res) => {
+const getEmployeeById = async (req, res) => {
   const id = req.params.id;
-  const employee = data.employees.find((emp) => emp.id === parseInt(id));
-  if (!employee) {
-    return res.status(400).json({ message: `Employee ID ${id} not found!` });
+
+  if (!mongoose.isObjectIdOrHexString(id)) {
+    return res.status(400).json({ message: 'Invalid employee ID format' });
   }
-  res.json(employee);
+
+  try {
+    const employee = await Employee.findById(id).exec();
+    if (!employee) {
+      return res.status(404).json({ message: 'Employee not found' });
+    }
+
+    res.status(200).json(employee);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: 'Something went wrong updating the employee' });
+  }
 };
+
+function validateId(id) {
+  if (!id) {
+    return {
+      invalidId: true,
+      message: 'Id parameter is required',
+    };
+  }
+
+  // Returns true if the given value is a Mongoose ObjectId (using instanceof)
+  // or if the given value is a 24 character hex string, which is the most commonly used string representation of an ObjectId.
+  if (!mongoose.isObjectIdOrHexString(id)) {
+    return {
+      invalidId: true,
+      message: 'Invalid employee ID format',
+    };
+  }
+
+  return { invalidId: false, message: '' };
+}
 
 module.exports = {
   getAllEmployees,
