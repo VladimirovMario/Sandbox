@@ -39,6 +39,7 @@ app.use('/login', require('./src/routes/api/login'));
 app.use('/refresh', require('./src/routes/api/refresh'));
 app.use('/logout', require('./src/routes/api/logout'));
 app.use('/employees', verifyJWT, require('./src/routes/api/employees'));
+app.use('/users', verifyJWT, require('./src/routes/api/users'));
 app.use(require('./src/routes/notFound'));
 
 // custom error middleware
