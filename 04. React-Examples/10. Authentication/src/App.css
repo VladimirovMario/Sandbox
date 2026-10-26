@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+.register-section,
+.login-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-title {
+  text-align: center;
+}
+
+.register-form,
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(100%, 412px);
+}
+
+.register-form input,
+.login-form input {
+  width: 100%;
+  padding: 8px 12px;
+  overflow: hidden;
+  border: 3px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.register-form input:focus,
+.login-form input:focus {
+  border: 3px solid #555;
+}
+
+.pass-container {
+  position: relative;
+}
+
+.toggle-pass {
+  cursor: pointer;
+  transform: translateY(-50%);
+  padding: 8px 12px;
+  background-color: transparent;
+  text-transform: uppercase;
+  border-radius: 6px;
+  border: transparent;
+
+  position: absolute;
+  right: 0px;
+  top: 50%;
+}
+
+.register-cta,
+.login-cta {
+  padding: 8px 12px;
+  border: 3px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+}
