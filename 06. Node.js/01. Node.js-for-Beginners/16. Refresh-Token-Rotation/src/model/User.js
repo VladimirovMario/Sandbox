@@ -8,7 +8,7 @@ const userSchema = new Schema({
     Admin: Number,
   },
   password: { type: String, required: true },
-  refreshToken: String,
+  refreshToken: [String],
 });
 
 const User = model('User', userSchema);
