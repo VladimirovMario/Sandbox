@@ -40,41 +40,53 @@ function Register() {
     <section className="register-section">
       <h2 className="section-title">Register</h2>
       <form className="register-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="userName"
-          value={values.userName}
-          onChange={handlesChange}
-        />
-        <div className="pass-container">
+        <div>
+          <label htmlFor="registerUser">Username</label>
           <input
-            type={isPassVisible ? 'text' : 'password'}
-            name="password"
-            value={values.password}
+            id="registerUser"
+            type="text"
+            name="userName"
+            value={values.userName}
             onChange={handlesChange}
           />
-          <button
-            className="toggle-pass"
-            type="button"
-            onClick={() => setIsPassVisible(!isPassVisible)}
-          >
-            {isPassVisible ? 'hide' : 'show'}
-          </button>
         </div>
-        <div className="pass-container">
-          <input
-            type={isConfirmVisible ? 'text' : 'password'}
-            name="confirmPassword"
-            value={values.confirmPassword}
-            onChange={handlesChange}
-          />
-          <button
-            className="toggle-pass"
-            type="button"
-            onClick={() => setIsConfirmVisible(!isConfirmVisible)}
-          >
-            {isConfirmVisible ? 'hide' : 'show'}
-          </button>
+        <div>
+          <label htmlFor="registerPassword">Password</label>
+          <div className="pass-container">
+            <input
+              id="registerPassword"
+              type={isPassVisible ? 'text' : 'password'}
+              name="password"
+              value={values.password}
+              onChange={handlesChange}
+            />
+            <button
+              className="toggle-pass"
+              type="button"
+              onClick={() => setIsPassVisible(!isPassVisible)}
+            >
+              {isPassVisible ? 'hide' : 'show'}
+            </button>
+          </div>
+        </div>
+        <div>
+          <label htmlFor="registerConfirm">Confirm Password</label>
+          <div className="pass-container">
+            <input
+              id="registerConfirm"
+              type={isConfirmVisible ? 'text' : 'password'}
+              name="confirmPassword"
+              value={values.confirmPassword}
+              onChange={handlesChange}
+            />
+            <button
+              className="toggle-pass"
+              type="button"
+              onClick={() => setIsConfirmVisible(!isConfirmVisible)}
+            >
+              {isConfirmVisible ? 'hide' : 'show'}
+            </button>
+          </div>
         </div>
         <button className="register-cta" type="submit">
           Register

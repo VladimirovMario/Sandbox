@@ -38,26 +38,34 @@ function Login() {
     <section className="login-section">
       <h2 className="section-title">Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="userName"
-          value={values.userName}
-          onChange={handlesChange}
-        />
-        <div className="pass-container">
+        <div>
+          <label htmlFor="userName">Username</label>
           <input
-            type={isPassVisible ? 'text' : 'password'}
-            name="password"
-            value={values.password}
+            id="userName"
+            type="text"
+            name="userName"
+            value={values.userName}
             onChange={handlesChange}
           />
-          <button
-            className="toggle-pass"
-            type="button"
-            onClick={() => setIsPassVisible(!isPassVisible)}
-          >
-            {isPassVisible ? 'hide' : 'show'}
-          </button>
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <div className="pass-container">
+            <input
+              id="password"
+              type={isPassVisible ? 'text' : 'password'}
+              name="password"
+              value={values.password}
+              onChange={handlesChange}
+            />
+            <button
+              className="toggle-pass"
+              type="button"
+              onClick={() => setIsPassVisible(!isPassVisible)}
+            >
+              {isPassVisible ? 'hide' : 'show'}
+            </button>
+          </div>
         </div>
         <button className="login-cta" type="submit">
           Login
