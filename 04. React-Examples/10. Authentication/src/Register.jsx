@@ -1,14 +1,13 @@
 import { useState } from 'react';
 
-function Register() {
+function Register({ initialValues }) {
   const [serverResponse, setServerResponse] = useState();
   const [isPassVisible, setIsPassVisible] = useState(false);
   const [isConfirmVisible, setIsConfirmVisible] = useState(false);
-  const [values, setValues] = useState({
-    userName: '',
-    password: '',
-    confirmPassword: '',
-  });
+  const [values, setValues] = useState(initialValues);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [success, setSuccess] = useState(false);
 
   const handlesChange = (e) => {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
@@ -16,6 +15,20 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (errorMessage) setErrorMessage('');
+    if (success) setSuccess(false);
+
+    if (Object.values(values).some((v) => !v.trim())) {
+      setErrorMessage('Please fill in all fields');
+      return;
+    }
+
+    if (values.password !== values.confirmPassword) {
+      setErrorMessage('Passwords do not match');
+      return;
+    }
+
+    setIsLoading(true);
 
     fetch('http://localhost:3000/register', {
       method: 'POST',
@@ -28,8 +41,25 @@ function Register() {
       },
       credentials: 'include',
     })
-      .then((response) => response.json())
-      .then((json) => setServerResponse(json));
+      .then(async (response) => {
+        if (!response.ok) {
+          const responseBody = await response.json();
+          throw responseBody;
+        }
+        return response.json();
+      })
+      .then((json) => {
+        setValues(initialValues);
+        setServerResponse(json);
+        setSuccess(true);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setErrorMessage(
+          error?.message || 'Registration failed. Please try again.',
+        );
+        setIsLoading(false);
+      });
   };
 
   if (serverResponse) {
@@ -38,6 +68,7 @@ function Register() {
 
   return (
     <section className="register-section">
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <h2 className="section-title">Register</h2>
       <form className="register-form" onSubmit={handleSubmit}>
         <div>
@@ -63,7 +94,7 @@ function Register() {
             <button
               className="toggle-pass"
               type="button"
-              onClick={() => setIsPassVisible(!isPassVisible)}
+              onClick={() => setIsPassVisible((prev) => !prev)}
             >
               {isPassVisible ? 'hide' : 'show'}
             </button>
@@ -82,16 +113,25 @@ function Register() {
             <button
               className="toggle-pass"
               type="button"
-              onClick={() => setIsConfirmVisible(!isConfirmVisible)}
+              onClick={() => setIsConfirmVisible((prev) => !prev)}
             >
               {isConfirmVisible ? 'hide' : 'show'}
             </button>
           </div>
         </div>
-        <button className="register-cta" type="submit">
-          Register
+        <button className="register-cta" type="submit" disabled={isLoading}>
+          {isLoading ? 'Registering...' : 'Register'}
         </button>
       </form>
+      {success && (
+        <>
+          <p className="success-message">{serverResponse?.message}</p>
+          <p className="success-message">
+            You can now log in with your new account.
+          </p>
+          <a href="Login">Login</a>
+        </>
+      )}
     </section>
   );
 }

@@ -7,7 +7,9 @@ function App() {
   return (
     <>
       <main>
-        <Register />
+        <Register
+          initialValues={{ userName: '', password: '', confirmPassword: '' }}
+        />
         <Login />
         <Logout />
       </main>

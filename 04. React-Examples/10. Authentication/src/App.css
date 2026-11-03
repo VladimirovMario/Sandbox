@@ -63,3 +63,20 @@
   cursor: pointer;
   margin-top: 12px;
 }
+
+.register-cta:disabled,
+.login-cta:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+}
+
+.success-message {
+  color: green;
+  text-align: center;
+  margin: 6px;
+}
