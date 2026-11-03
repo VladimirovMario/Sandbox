@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import axios from './api/axios';
+import { apiEndpoints } from './constants/apiEndpoints';
 
 function Register({ initialValues }) {
   const [serverResponse, setServerResponse] = useState();
@@ -13,7 +15,7 @@ function Register({ initialValues }) {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (errorMessage) setErrorMessage('');
     if (success) setSuccess(false);
@@ -30,41 +32,24 @@ function Register({ initialValues }) {
 
     setIsLoading(true);
 
-    fetch('http://localhost:3000/register', {
-      method: 'POST',
-      body: JSON.stringify({
+    try {
+      const response = await axios.post(apiEndpoints.REGISTER, {
         userName: values.userName.trim(),
         password: values.password.trim(),
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-      credentials: 'include',
-    })
-      .then(async (response) => {
-        if (!response.ok) {
-          const responseBody = await response.json();
-          throw responseBody;
-        }
-        return response.json();
-      })
-      .then((json) => {
-        setValues(initialValues);
-        setServerResponse(json);
-        setSuccess(true);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setErrorMessage(
-          error?.message || 'Registration failed. Please try again.',
-        );
-        setIsLoading(false);
       });
+      // console.log('server response:', response.data);
+      // console.log('JSON.stringify(response)', JSON.stringify(response));
+      setValues(initialValues);
+      setServerResponse(response.data);
+      setSuccess(true);
+      setIsLoading(false);
+    } catch (error) {
+      setErrorMessage(
+        error?.message || 'Registration failed. Please try again.',
+      );
+      setIsLoading(false);
+    }
   };
-
-  if (serverResponse) {
-    console.log('server response', serverResponse);
-  }
 
   return (
     <section className="register-section">
