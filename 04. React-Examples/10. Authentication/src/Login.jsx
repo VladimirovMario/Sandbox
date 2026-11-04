@@ -1,4 +1,6 @@
+import axios from 'axios';
 import { useState } from 'react';
+import { apiEndpoints } from './constants/apiEndpoints';
 
 function Login() {
   const [serverResponse, setServerResponse] = useState();
@@ -12,22 +14,14 @@ function Login() {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:3000/login', {
-      method: 'POST',
-      body: JSON.stringify({
-        userName: values.userName.trim(),
-        password: values.password.trim(),
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-      credentials: 'include',
-    })
-      .then((response) => response.json())
-      .then((json) => setServerResponse(json));
+    const response = await axios.post(apiEndpoints.LOGIN, {
+      userName: values.userName.trim(),
+      password: values.password.trim(),
+    });
+    setServerResponse(response.data);
   };
 
   if (serverResponse) {
