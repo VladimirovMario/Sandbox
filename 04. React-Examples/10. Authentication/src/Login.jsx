@@ -24,9 +24,10 @@ function Login({ initialValues }) {
         userName: values.userName.trim(),
         password: values.password.trim(),
       });
+      const accessToken = response.data?.accessToken;
+      handleSetAuth({ accessToken });
 
       setValues(initialValues);
-      handleSetAuth(response.data);
       setIsSubmitting(false);
     } catch (error) {
       setValues(initialValues);
