@@ -1,13 +1,14 @@
 import axios from './api/axios';
 import { useState } from 'react';
 import { apiEndpoints } from './constants/apiEndpoints';
+import { useAuth } from './auth/hooks/useAuth';
 
 function Login({ initialValues }) {
-  const [serverResponse, setServerResponse] = useState();
   const [isPassVisible, setIsPassVisible] = useState(false);
   const [values, setValues] = useState(initialValues);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
+  const { handleSetAuth } = useAuth();
 
   const handlesChange = (e) => {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
@@ -25,18 +26,30 @@ function Login({ initialValues }) {
       });
 
       setValues(initialValues);
-      setServerResponse(response.data);
+      handleSetAuth(response.data);
       setIsSubmitting(false);
     } catch (error) {
-      console.error(error);
-      setError(error.response?.data || 'An error occurred');
+      setValues(initialValues);
       setIsSubmitting(false);
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        setError(error.response.data?.message);
+        console.log(error.response.data);
+        // console.log(error.response.status);
+        // console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        // console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        // console.log('Error', error.message);
+      }
+      // console.log(error.config);
     }
   };
-
-  if (serverResponse) {
-    console.log('server response', serverResponse);
-  }
 
   return (
     <section className="login-section">
