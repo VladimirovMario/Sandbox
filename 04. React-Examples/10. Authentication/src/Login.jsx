@@ -1,14 +1,13 @@
-import axios from 'axios';
+import axios from './api/axios';
 import { useState } from 'react';
 import { apiEndpoints } from './constants/apiEndpoints';
 
-function Login() {
+function Login({ initialValues }) {
   const [serverResponse, setServerResponse] = useState();
   const [isPassVisible, setIsPassVisible] = useState(false);
-  const [values, setValues] = useState({
-    userName: '',
-    password: '',
-  });
+  const [values, setValues] = useState(initialValues);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
 
   const handlesChange = (e) => {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
@@ -16,12 +15,23 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
 
-    const response = await axios.post(apiEndpoints.LOGIN, {
-      userName: values.userName.trim(),
-      password: values.password.trim(),
-    });
-    setServerResponse(response.data);
+    try {
+      const response = await axios.post(apiEndpoints.LOGIN, {
+        userName: values.userName.trim(),
+        password: values.password.trim(),
+      });
+
+      setValues(initialValues);
+      setServerResponse(response.data);
+      setIsSubmitting(false);
+    } catch (error) {
+      console.error(error);
+      setError(error.response?.data || 'An error occurred');
+      setIsSubmitting(false);
+    }
   };
 
   if (serverResponse) {
@@ -31,6 +41,7 @@ function Login() {
   return (
     <section className="login-section">
       <h2 className="section-title">Login</h2>
+      {error && <p className="error-message">{error}</p>}
       <form className="login-form" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="userName">Username</label>
@@ -61,8 +72,8 @@ function Login() {
             </button>
           </div>
         </div>
-        <button className="login-cta" type="submit">
-          Login
+        <button className="login-cta" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Logging in...' : 'Login'}
         </button>
       </form>
     </section>

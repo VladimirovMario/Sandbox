@@ -10,7 +10,7 @@ function App() {
         <Register
           initialValues={{ userName: '', password: '', confirmPassword: '' }}
         />
-        <Login />
+        <Login initialValues={{ userName: '', password: '' }} />
         <Logout />
       </main>
     </>
