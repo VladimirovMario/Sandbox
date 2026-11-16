@@ -1,7 +1,7 @@
-import axios from './api/axios';
+import axios from '../api/axios';
 import { useState } from 'react';
-import { apiEndpoints } from './constants/apiEndpoints';
-import { useAuth } from './auth/hooks/useAuth';
+import { apiEndpoints } from '../constants/apiEndpoints';
+import { useAuth } from '../auth/hooks/useAuth';
 
 function Login({ initialValues }) {
   const [isPassVisible, setIsPassVisible] = useState(false);

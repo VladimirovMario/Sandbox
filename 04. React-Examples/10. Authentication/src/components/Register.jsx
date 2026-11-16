@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import axios from './api/axios';
-import { apiEndpoints } from './constants/apiEndpoints';
+import axios from '../api/axios';
+import { apiEndpoints } from '../constants/apiEndpoints';
 
 function Register({ initialValues }) {
   const [serverResponse, setServerResponse] = useState();
