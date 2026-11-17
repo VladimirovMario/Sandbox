@@ -1,17 +1,21 @@
+import axios from '../api/axios';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../auth/hooks/useAuth';
+import { apiEndpoints } from '../constants/apiEndpoints';
+
 function Logout() {
-  const handleLogout = () => {
-    fetch('http://localhost:3000/logout', {
-      credentials: 'include',
-    }).then((response) => {
-      const responseStatus = response.status;
-      if (responseStatus === 204) {
-        console.log('response', response);
-      }
-    });
-  };
+  const navigate = useNavigate();
+  const { handleLogout } = useAuth();
 
   return (
-    <button className="logout-button" onClick={handleLogout}>
+    <button
+      className="logout-button"
+      onClick={() => {
+        handleLogout();
+        axios.get(apiEndpoints.LOGOUT);
+        navigate('/login');
+      }}
+    >
       Sign Out
     </button>
   );

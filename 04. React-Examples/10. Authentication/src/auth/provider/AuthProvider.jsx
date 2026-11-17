@@ -10,8 +10,10 @@ const AuthProvider = ({ children }) => {
     setAuth(decodedToken.UserInfo);
   };
 
+  const handleLogout = () => setAuth(null);
+
   return (
-    <AuthContext.Provider value={{ auth, handleSetAuth }}>
+    <AuthContext.Provider value={{ auth, handleSetAuth, handleLogout }}>
       {children}
     </AuthContext.Provider>
   );
