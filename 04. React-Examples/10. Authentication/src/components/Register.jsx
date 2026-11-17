@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from '../api/axios';
 import { apiEndpoints } from '../constants/apiEndpoints';
+import { Link } from 'react-router-dom';
 
 function Register({ initialValues }) {
   const [serverResponse, setServerResponse] = useState();
@@ -108,14 +109,20 @@ function Register({ initialValues }) {
           {isLoading ? 'Registering...' : 'Register'}
         </button>
       </form>
-      {success && (
+      {success ? (
         <>
           <p className="success-message">{serverResponse?.message}</p>
           <p className="success-message">
             You can now log in with your new account.
           </p>
-          <a href="Login">Login</a>
+          <Link to="/login">Login</Link>
         </>
+      ) : (
+        <p>
+          <span>
+            <Link to="/login">Already have an account? Login</Link>
+          </span>
+        </p>
       )}
     </section>
   );
