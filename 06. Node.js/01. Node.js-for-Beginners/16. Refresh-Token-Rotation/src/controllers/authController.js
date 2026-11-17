@@ -26,7 +26,7 @@ const handleLogin = async (req, res) => {
       return res.status(401).json({ message: 'Unauthorized!' });
     }
 
-    const roles = Object.values(foundUser.roles);
+    const roles = Object.values(foundUser.roles).filter((role) => role);
     // create JWT
 
     const accessToken = jwt.sign(
