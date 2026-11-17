@@ -1,5 +1,6 @@
 import axios from '../api/axios';
 import { useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { apiEndpoints } from '../constants/apiEndpoints';
 import { useAuth } from '../auth/hooks/useAuth';
 
@@ -9,6 +10,9 @@ function Login({ initialValues }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const { handleSetAuth } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
   const handlesChange = (e) => {
     setValues((state) => ({ ...state, [e.target.name]: e.target.value }));
@@ -29,6 +33,7 @@ function Login({ initialValues }) {
 
       setValues(initialValues);
       setIsSubmitting(false);
+      navigate(from, { replace: true });
     } catch (error) {
       setValues(initialValues);
       setIsSubmitting(false);
@@ -90,6 +95,11 @@ function Login({ initialValues }) {
           {isSubmitting ? 'Logging in...' : 'Login'}
         </button>
       </form>
+      <p>
+        <span>
+          <Link to="/register">Don't have an account</Link>
+        </span>
+      </p>
     </section>
   );
 }
