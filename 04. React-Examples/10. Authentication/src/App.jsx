@@ -9,6 +9,7 @@ import Editor from './components/Editor';
 import Admin from './components/Admin';
 import Lounge from './components/Lounge';
 import NotFound from './components/NotFound';
+import RequireAuth from './components/RequireAuth';
 import './App.css';
 
 function App() {
@@ -35,10 +36,12 @@ function App() {
           <Route path="/unauthorized" element={<Unauthorized />} />
 
           {/* Protected routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="editor" element={<Editor />} />
-          <Route path="admin" element={<Admin />} />
-          <Route path="lounge" element={<Lounge />} />
+          <Route element={<RequireAuth />}>
+            <Route path="/" element={<Home />} />
+            <Route path="editor" element={<Editor />} />
+            <Route path="admin" element={<Admin />} />
+            <Route path="lounge" element={<Lounge />} />
+          </Route>
 
           {/* Not found route */}
           <Route path="*" element={<NotFound />} />
