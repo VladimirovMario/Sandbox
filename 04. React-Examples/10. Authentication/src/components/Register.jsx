@@ -65,6 +65,7 @@ function Register({ initialValues }) {
             name="userName"
             value={values.userName}
             onChange={handlesChange}
+            autoComplete="off"
           />
         </div>
         <div>
