@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom';
+import Users from './Users';
+
 function Admin() {
   return (
     <section>
-      <h1>Admin</h1>
-      <p>
-        You must have been assigned admin privileges to access this section.
-      </p>
+      <h1>Admins Page</h1>
+      <Users />
+      <Link to="/">Home</Link>
     </section>
   );
 }
