@@ -5,9 +5,9 @@ function RequireAuth({ allowedRoles }) {
   const { auth } = useAuth();
   const location = useLocation();
 
-  return auth?.roles?.some((role) => allowedRoles.includes(role)) ? (
+  return auth?.UserInfo?.roles?.some((role) => allowedRoles.includes(role)) ? (
     <Outlet />
-  ) : auth?.userName ? (
+  ) : auth?.UserInfo.userName ? (
     // The state and the from location are used to redirect the user back to the page they were trying to access after login.
     <Navigate to="/unauthorized" state={{ from: location }} replace />
   ) : (

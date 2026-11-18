@@ -7,7 +7,7 @@ const AuthProvider = ({ children }) => {
 
   const handleSetAuth = ({ accessToken }) => {
     const decodedToken = jwtDecode(accessToken);
-    setAuth(decodedToken.UserInfo);
+    setAuth({ accessToken, UserInfo: decodedToken.UserInfo });
   };
 
   const handleLogout = () => setAuth(null);
