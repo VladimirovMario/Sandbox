@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 import useAxiosPrivate from '../auth/hooks/useAxiosPrivate';
 import { apiEndpoints } from '../constants/apiEndpoints';
 import User from './User';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Users() {
   const axiosPrivate = useAxiosPrivate();
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -25,6 +28,7 @@ function Users() {
       } catch (error) {
         setIsLoading(false);
         console.error(error);
+        navigate('/login', { state: { from: location }, replace: true });
       }
     }
 
@@ -32,7 +36,7 @@ function Users() {
       controller.abort();
       clearTimeout(timeoutID);
     };
-  }, [axiosPrivate]);
+  }, [axiosPrivate, location, navigate]);
 
   let content = <></>;
   if (isLoading) {
